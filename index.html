@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#f5a623">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="AnnaDaata">
-<meta name="description" content="Free AI-powered farm advisor for Indian farmers in 11 languages — AnnaDaata AI">
-<title>AnnaDaata AI — అన్నదాత | Free Farm Advisor</title>
+<meta name="apple-mobile-web-app-title" content="FarmSeva">
+<meta name="description" content="Free AI-powered farm advisor for Indian farmers in 11 languages — FarmSeva AI">
+<title>FarmSeva AI — Free Farm Advisor for India</title>
 <link id="mf" rel="manifest">
 <link id="ai" rel="apple-touch-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@ button,textarea,select{font-family:inherit;cursor:pointer}
 <div id="spl">
   <div style="font-size:52px">🌾</div>
   <div class="sp"></div>
-  <div style="color:#7a6a55;font-size:11px;letter-spacing:2px">ANNADATA AI — అన్నదాత</div>
+  <div style="color:#7a6a55;font-size:11px;letter-spacing:2px">FARMSEVA AI</div>
 </div>
 <div id="root"></div>
 
@@ -64,8 +64,8 @@ const GL=c=>LANGS.find(l=>l.code===c)||LANGS[0];
 // ── TRANSLATIONS ──────────────────────────────────────────────────────
 const T={
 en:{tag:"FREE FARM ADVISOR",free:"100% Free Forever",freeD:"No subscriptions · No hidden costs · Works on any phone",
-  pick:"CHOOSE A TOOL",tip:"💡 Today's Tip",tipT:"PM-KISAN + Rythu Bandhu = up to ₹16,500/yr for Telangana farmers. Check Gov Schemes!",
-  pickT:"Choose Your Language",pickS:"AnnaDaata speaks your language",
+  pick:"CHOOSE A TOOL",tip:"💡 Today's Tip",tipT:"AP: Annadata Sukhibhava = ₹20,000/yr · TG: Rythu Bharosa = ₹12,000/yr. Check Gov Schemes!",
+  pickT:"Choose Your Language",pickS:"FarmSeva speaks your language",
   t1:"Diagnose",t2:"80+ Crops",selSt:"🗺️ Select your State",
   cTab:"🇮🇳 Central Schemes",sTab:"🏛️ State Schemes",
   elig:"✅ Eligibility",docs:"📄 Documents",apply:"📝 How to Apply",
@@ -83,8 +83,8 @@ en:{tag:"FREE FARM ADVISOR",free:"100% Free Forever",freeD:"No subscriptions · 
   st:{"crop-doctor":["Yellow leaves on paddy","Brown spots on tomato","White powder on chilli","Wilting cotton"],"pest-alert":["White insects on cotton","Red mites on chilli","Borer in sugarcane","Aphids on mustard"],"planner":["Kharif Telangana, black soil","Rabi Punjab, sandy loam","Year-round Maharashtra"],"mandi":["Soybean price Nagpur","Onion rate Nashik","Cotton Vidarbha"],"schemes":["Small farmer AP 3 acres","Marginal farmer UP","Tribal farmer Jharkhand"],"soil":["Red laterite Karnataka","Black cotton soil Maharashtra","Alluvial soil Bihar"]},
 },
 te:{tag:"ఉచిత వ్యవసాయ సలహాదారు",free:"శాశ్వతంగా ఉచితం",freeD:"చందా లేదు · దాచిన ఖర్చు లేదు · ఏ ఫోన్‌లోనైనా",
-  pick:"సాధనం ఎంచుకోండి",tip:"💡 నేటి చిట్కా",tipT:"PM-KISAN + రైతు బంధు = ₹16,500/సంవ. ప్రభుత్వ పథకాలు చూడండి!",
-  pickT:"మీ భాష ఎంచుకోండి",pickS:"AnnaDaata మీ భాషలో మాట్లాడుతుంది",
+  pick:"సాధనం ఎంచుకోండి",tip:"💡 నేటి చిట్కా",tipT:"PM-KISAN + అన్నదాత సుఖీభవ = ₹20,000/సంవ. ప్రభుత్వ పథకాలు చూడండి!",
+  pickT:"మీ భాష ఎంచుకోండి",pickS:"FarmSeva మీ భాషలో మాట్లాడుతుంది",
   t1:"నిర్ధారణ",t2:"80+ పంటలు",selSt:"🗺️ మీ రాష్ట్రం ఎంచుకోండి",
   cTab:"🇮🇳 కేంద్ర పథకాలు",sTab:"🏛️ రాష్ట్ర పథకాలు",
   elig:"✅ అర్హత",docs:"📄 పత్రాలు",apply:"📝 దరఖాస్తు ఎలా",
@@ -96,7 +96,7 @@ te:{tag:"ఉచిత వ్యవసాయ సలహాదారు",free:"శ�
 },
 hi:{tag:"मुफ्त कृषि सलाहकार",free:"हमेशा के लिए मुफ्त",freeD:"कोई सदस्यता नहीं · छुपी लागत नहीं · किसी भी फोन पर",
   pick:"अपना टूल चुनें",tip:"💡 आज की टिप",tipT:"PM-KISAN + राज्य योजना = ₹10,000+ सालाना! सरकारी योजनाएं जांचें।",
-  pickT:"अपनी भाषा चुनें",pickS:"AnnaDaata आपकी भाषा में बोलता है",
+  pickT:"अपनी भाषा चुनें",pickS:"FarmSeva आपकी भाषा में बोलता है",
   t1:"जांच करें",t2:"80+ फसलें",selSt:"🗺️ अपना राज्य चुनें",
   cTab:"🇮🇳 केंद्रीय योजनाएं",sTab:"🏛️ राज्य योजनाएं",
   elig:"✅ पात्रता",docs:"📄 दस्तावेज",apply:"📝 आवेदन कैसे करें",
@@ -106,42 +106,42 @@ hi:{tag:"मुफ्त कृषि सलाहकार",free:"हमेश�
   ph:{"crop-doctor":"फसल के लक्षण बताएं... फोटो अपलोड करें","pest-alert":"कीड़े का वर्णन करें...","planner":"जमीन [राज्य], मिट्टी, मौसम...","mandi":"[फसल] [जिला] में बेचना...","schemes":"[राज्य] [छोटा] किसान [X] एकड़...","soil":"मिट्टी [रंग], [बनावट]..."},
   st:{"crop-doctor":["धान के पत्ते पीले","टमाटर पर भूरे धब्बे","मिर्च पर सफेद पाउडर","कपास मुरझाई"],"pest-alert":["कपास पर सफेद कीड़े","मिर्च पर लाल घुन","गन्ने में बोरर","सरसों पर माहू"],"planner":["खरीफ मध्यप्रदेश काली मिट्टी","रबी पंजाब रेतीली","साल भर UP"],"mandi":["नागपुर सोयाबीन भाव","नासिक प्याज","विदर्भ कपास"],"schemes":["UP छोटा किसान 2 एकड़","बिहार सीमांत किसान","राजस्थान किसान"],"soil":["काली मिट्टी महाराष्ट्र","लाल मिट्टी MP","जलोढ़ बिहार"]},
 },
-kn:{tag:"ಉಚಿತ ಕೃಷಿ ಸಲಹೆಗಾರ",free:"ಯಾವಾಗಲೂ ಉಚಿತ",freeD:"ಚಂದಾ ಇಲ್ಲ · ಯಾವ ಫೋನ್‌ನಲ್ಲಾದರೂ",pick:"ನಿಮ್ಮ ಸಾಧನ ಆಯ್ಕೆಮಾಡಿ",tip:"💡 ಇಂದಿನ ಸಲಹೆ",tipT:"PM-KISAN + ರೈತ ಸಿರಿ = ₹11,000/ವರ್ಷ. ಸರ್ಕಾರಿ ಯೋಜನೆ ನೋಡಿ!",pickT:"ನಿಮ್ಮ ಭಾಷೆ ಆಯ್ಕೆ",pickS:"AnnaDaata ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ",t1:"ರೋಗ ನಿರ್ಧಾರ",t2:"80+ ಬೆಳೆ",selSt:"🗺️ ರಾಜ್ಯ ಆಯ್ಕೆ",cTab:"🇮🇳 ಕೇಂದ್ರ",sTab:"🏛️ ರಾಜ್ಯ",elig:"✅ ಅರ್ಹತೆ",docs:"📄 ದಾಖಲೆ",apply:"📝 ಅರ್ಜಿ",askAI:"🤖 AI ಕೇಳಿ",runDiag:"🔬 AI ನಿರ್ಧಾರ",analyzing:"ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...",demoT:"ಮಾದರಿ ಭತ್ತ ಫೋಟೋ",demoS:"ನಿಜ ರೋಗ · AI",
+kn:{tag:"ಉಚಿತ ಕೃಷಿ ಸಲಹೆಗಾರ",free:"ಯಾವಾಗಲೂ ಉಚಿತ",freeD:"ಚಂದಾ ಇಲ್ಲ · ಯಾವ ಫೋನ್‌ನಲ್ಲಾದರೂ",pick:"ನಿಮ್ಮ ಸಾಧನ ಆಯ್ಕೆಮಾಡಿ",tip:"💡 ಇಂದಿನ ಸಲಹೆ",tipT:"PM-KISAN + ರೈತ ಸಿರಿ = ₹11,000/ವರ್ಷ. ಸರ್ಕಾರಿ ಯೋಜನೆ ನೋಡಿ!",pickT:"ನಿಮ್ಮ ಭಾಷೆ ಆಯ್ಕೆ",pickS:"FarmSeva ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ",t1:"ರೋಗ ನಿರ್ಧಾರ",t2:"80+ ಬೆಳೆ",selSt:"🗺️ ರಾಜ್ಯ ಆಯ್ಕೆ",cTab:"🇮🇳 ಕೇಂದ್ರ",sTab:"🏛️ ರಾಜ್ಯ",elig:"✅ ಅರ್ಹತೆ",docs:"📄 ದಾಖಲೆ",apply:"📝 ಅರ್ಜಿ",askAI:"🤖 AI ಕೇಳಿ",runDiag:"🔬 AI ನಿರ್ಧಾರ",analyzing:"ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...",demoT:"ಮಾದರಿ ಭತ್ತ ಫೋಟೋ",demoS:"ನಿಜ ರೋಗ · AI",
   tools:{"crop-doctor":{n:"ಬೆಳೆ ವೈದ್ಯ",d:"80+ ಬೆಳೆ ಫೋಟೋ ರೋಗ ನಿರ್ಧಾರ",h:"Crop Doctor",b:"📷 ಫೋಟೋ"},"pest-alert":{n:"ಕೀಟ ಎಚ್ಚರ",d:"ಕೀಟ ಗುರುತು ಸಾವಯವ",h:"Pest Alert",b:""},planner:{n:"ಬೆಳೆ ಯೋಜನೆ",d:"ನಿಮ್ಮ ಭೂಮಿಗೆ ಸೂಕ್ತ ಬೆಳೆ",h:"Crop Planner",b:""},mandi:{n:"ಮಾರ್ಕೆಟ್ ಗೈಡ್",d:"ನ್ಯಾಯ ಬೆಲೆ ಮಾರಾಟ",h:"Mandi Guide",b:""},schemes:{n:"ಸರ್ಕಾರಿ ಯೋಜನೆ",d:"ಕೇಂದ್ರ + ರಾಜ್ಯ ಪ್ರಯೋಜನ",h:"Gov Schemes",b:"S+C"},soil:{n:"ಮಣ್ಣಿನ ಆರೋಗ್ಯ",d:"ಮಣ್ಣು ಸುಧಾರಣೆ ಗೊಬ್ಬರ",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ಬೆಳೆ ಲಕ್ಷಣ... ಫೋಟೋ","pest-alert":"ಕೀಟ ವಿವರ...","planner":"ಭೂಮಿ [ರಾಜ್ಯ]...","mandi":"[ಬೆಳೆ] ಮಾರಾಟ...","schemes":"[ರಾಜ್ಯ] ರೈತ...","soil":"ಮಣ್ಣು [ಬಣ್ಣ]..."},
   st:{"crop-doctor":["ಭತ್ತ ಎಲೆ ಹಳದಿ","ಟೊಮೇಟೊ ಚುಕ್ಕೆ","ಮೆಣಸು ಬಿಳಿ","ಹತ್ತಿ ಬಾಡಿದೆ"],"pest-alert":["ಹತ್ತಿ ಬಿಳಿ ಕೀಟ","ಮೆಣಸು ಕೆಂಪು","ಕಬ್ಬು ಬೋರರ್","ಸಾಸಿವೆ ಹೇನು"],"planner":["ಖರೀಫ್ ಕರ್ನಾಟಕ","ರಬಿ ಪಂಜಾಬ್","ವರ್ಷಪೂರ್ತಿ"],"mandi":["ನಾಗಪೂರ ಸೋಯಾ","ನಾಸಿಕ್ ಈರುಳ್ಳಿ","ವಿದರ್ಭ ಹತ್ತಿ"],"schemes":["ಕರ್ನಾಟಕ ರೈತ","AP ರೈತ","ಝಾರ್ಖಂಡ್"],"soil":["ಕೆಂಪು ಲ್ಯಾಟರೈಟ್","ಕಪ್ಪು ಮಣ್ಣು","ಮೆಕ್ಕಲು"]},
 },
-ta:{tag:"இலவச விவசாய ஆலோசகர்",free:"எப்போதும் இலவசம்",freeD:"சந்தா இல்லை · எந்த போனிலும்",pick:"கருவி தேர்வு",tip:"💡 இன்றைய குறிப்பு",tipT:"PM-KISAN + TN திட்டம் = ₹9,000/ஆண்டு!",pickT:"மொழி தேர்வு",pickS:"AnnaDaata உங்கள் மொழியில்",t1:"கண்டறிதல்",t2:"80+ பயிர்",selSt:"🗺️ மாநிலம்",cTab:"🇮🇳 மத்திய",sTab:"🏛️ மாநில",elig:"✅ தகுதி",docs:"📄 ஆவணங்கள்",apply:"📝 விண்ணப்பம்",askAI:"🤖 AI கேளுங்கள்",runDiag:"🔬 AI நோய் கண்டறி",analyzing:"பகுப்பாய்வு...",demoT:"மாதிரி நெல் புகைப்படம்",demoS:"நிஜ நோய் · AI",
+ta:{tag:"இலவச விவசாய ஆலோசகர்",free:"எப்போதும் இலவசம்",freeD:"சந்தா இல்லை · எந்த போனிலும்",pick:"கருவி தேர்வு",tip:"💡 இன்றைய குறிப்பு",tipT:"PM-KISAN + TN திட்டம் = ₹9,000/ஆண்டு!",pickT:"மொழி தேர்வு",pickS:"FarmSeva உங்கள் மொழியில்",t1:"கண்டறிதல்",t2:"80+ பயிர்",selSt:"🗺️ மாநிலம்",cTab:"🇮🇳 மத்திய",sTab:"🏛️ மாநில",elig:"✅ தகுதி",docs:"📄 ஆவணங்கள்",apply:"📝 விண்ணப்பம்",askAI:"🤖 AI கேளுங்கள்",runDiag:"🔬 AI நோய் கண்டறி",analyzing:"பகுப்பாய்வு...",demoT:"மாதிரி நெல் புகைப்படம்",demoS:"நிஜ நோய் · AI",
   tools:{"crop-doctor":{n:"பயிர் மருத்துவர்",d:"80+ பயிர் நோய் கண்டறிதல்",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"பூச்சி எச்சரிக்கை",d:"பூச்சி இயற்கை சிகிச்சை",h:"Pest Alert",b:""},planner:{n:"பயிர் திட்டம்",d:"நிலத்திற்கு சிறந்த பயிர்",h:"Crop Planner",b:""},mandi:{n:"சந்தை வழிகாட்டி",d:"நியாயமான விலை",h:"Mandi Guide",b:""},schemes:{n:"அரசு திட்டங்கள்",d:"மத்திய + மாநில சலுகை",h:"Gov Schemes",b:"S+C"},soil:{n:"மண் ஆரோக்கியம்",d:"மண் மேம்பாடு உரம்",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"அறிகுறி விவரி... புகைப்படம்","pest-alert":"பூச்சி விவரி...","planner":"நிலம் [மாநிலம்]...","mandi":"[பயிர்] விற்க...","schemes":"[மாநிலம்] விவசாயி...","soil":"மண் [நிறம்]..."},
   st:{"crop-doctor":["நெல் மஞ்சள்","தக்காளி புள்ளி","மிளகாய் வெள்ளை","பருத்தி"],"pest-alert":["பருத்தி வெள்ளை","மிளகாய் சிவப்பு","கரும்பு","கடுகு"],"planner":["கரீப் TN","ரபி பஞ்சாப்","ஆண்டு"],"mandi":["நாக்பூர்","நாசிக்","விதர்பா"],"schemes":["TN விவசாயி","AP","ஜார்கண்ட்"],"soil":["சிவப்பு","கருப்பு","வண்டல்"]},
 },
-ml:{tag:"സൗജന്യ കാർഷിക ഉപദേഷ്ടാവ്",free:"എന്നും സൗജന്യം",freeD:"സബ്‌സ്‌ക്രിപ്‌ഷൻ ഇല്ല · ഏത് ഫോണിലും",pick:"ടൂൾ തിരഞ്ഞെടുക്കൂ",tip:"💡 ടിപ്",tipT:"PM-KISAN + Karshaka = ₹9,000/വർഷം!",pickT:"ഭാഷ തിരഞ്ഞെടുക്കൂ",pickS:"AnnaDaata നിങ്ങളുടെ ഭാഷ",t1:"രോഗ നിർണ്ണയം",t2:"80+ വിള",selSt:"🗺️ സംസ്ഥാനം",cTab:"🇮🇳 കേന്ദ്ര",sTab:"🏛️ സംസ്ഥാന",elig:"✅ യോഗ്യത",docs:"📄 രേഖകൾ",apply:"📝 അപേക്ഷ",askAI:"🤖 AI ചോദിക്കൂ",runDiag:"🔬 AI നിർണ്ണയം",analyzing:"വിശകലനം...",demoT:"മാതൃക നെൽ ഫോട്ടോ",demoS:"AI",
+ml:{tag:"സൗജന്യ കാർഷിക ഉപദേഷ്ടാവ്",free:"എന്നും സൗജന്യം",freeD:"സബ്‌സ്‌ക്രിപ്‌ഷൻ ഇല്ല · ഏത് ഫോണിലും",pick:"ടൂൾ തിരഞ്ഞെടുക്കൂ",tip:"💡 ടിപ്",tipT:"PM-KISAN + Karshaka = ₹9,000/വർഷം!",pickT:"ഭാഷ തിരഞ്ഞെടുക്കൂ",pickS:"FarmSeva നിങ്ങളുടെ ഭാഷ",t1:"രോഗ നിർണ്ണയം",t2:"80+ വിള",selSt:"🗺️ സംസ്ഥാനം",cTab:"🇮🇳 കേന്ദ്ര",sTab:"🏛️ സംസ്ഥാന",elig:"✅ യോഗ്യത",docs:"📄 രേഖകൾ",apply:"📝 അപേക്ഷ",askAI:"🤖 AI ചോദിക്കൂ",runDiag:"🔬 AI നിർണ്ണയം",analyzing:"വിശകലനം...",demoT:"മാതൃക നെൽ ഫോട്ടോ",demoS:"AI",
   tools:{"crop-doctor":{n:"വിള ഡോക്ടർ",d:"80+ ഫോട്ടോ രോഗ നിർണ്ണയം",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"കീടനാശ",d:"കീടം ജൈവ ചികിത്സ",h:"Pest Alert",b:""},planner:{n:"വിള ആസൂ",d:"അനുയോജ്യ വിളകൾ",h:"Crop Planner",b:""},mandi:{n:"വിപണി",d:"ന്യായ വില",h:"Mandi Guide",b:""},schemes:{n:"സർക്കാർ",d:"കേന്ദ്ര + സം",h:"Gov Schemes",b:"S+C"},soil:{n:"മണ്ണ്",d:"മണ്ണ് മെച്ചം",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ലക്ഷണം... ഫോട്ടോ","pest-alert":"കീടം...","planner":"ഭൂമി...","mandi":"[വിള]...","schemes":"കർഷകൻ...","soil":"മണ്ണ്..."},
   st:{"crop-doctor":["നെൽ മഞ്ഞ","തക്കാളി","മുളക്","പരുത്തി"],"pest-alert":["പരുത്തി","മുളക്","കരിമ്പ്","കടുക്"],"planner":["ഖരിഫ്","റബി","വർഷം"],"mandi":["സോയ","ഉള്ളി","ത"],"schemes":["കേ","AP","ഝ"],"soil":["ചെ","കറ","ബ"]},
 },
-mr:{tag:"मोफत शेती सल्लागार",free:"कायमचे मोफत",freeD:"सदस्यता नाही · कोणत्याही फोनवर",pick:"साधन निवडा",tip:"💡 आजची टिप",tipT:"PM-KISAN + शेत तळे = ₹81,000+ मदत!",pickT:"भाषा निवडा",pickS:"AnnaDaata आपल्या भाषेत",t1:"निदान",t2:"80+ पिके",selSt:"🗺️ राज्य निवडा",cTab:"🇮🇳 केंद्रीय",sTab:"🏛️ राज्य",elig:"✅ पात्रता",docs:"📄 कागद",apply:"📝 अर्ज",askAI:"🤖 AI विचारा",runDiag:"🔬 AI निदान",analyzing:"विश्लेषण...",demoT:"नमुना भात फोटो",demoS:"खरी रोग · AI",
+mr:{tag:"मोफत शेती सल्लागार",free:"कायमचे मोफत",freeD:"सदस्यता नाही · कोणत्याही फोनवर",pick:"साधन निवडा",tip:"💡 आजची टिप",tipT:"PM-KISAN + शेत तळे = ₹81,000+ मदत!",pickT:"भाषा निवडा",pickS:"FarmSeva आपल्या भाषेत",t1:"निदान",t2:"80+ पिके",selSt:"🗺️ राज्य निवडा",cTab:"🇮🇳 केंद्रीय",sTab:"🏛️ राज्य",elig:"✅ पात्रता",docs:"📄 कागद",apply:"📝 अर्ज",askAI:"🤖 AI विचारा",runDiag:"🔬 AI निदान",analyzing:"विश्लेषण...",demoT:"नमुना भात फोटो",demoS:"खरी रोग · AI",
   tools:{"crop-doctor":{n:"पीक डॉक्टर",d:"80+ पिक फोटो निदान",h:"Crop Doctor",b:"📷 फोटो"},"pest-alert":{n:"कीड सतर्कता",d:"कीड सेंद्रिय उपाय",h:"Pest Alert",b:""},planner:{n:"पीक नियोजन",d:"जमिनीसाठी पिके",h:"Crop Planner",b:""},mandi:{n:"बाजार मार्ग",d:"योग्य भाव टिप्स",h:"Mandi Guide",b:""},schemes:{n:"सरकारी योजना",d:"केंद्र + राज्य लाभ",h:"Gov Schemes",b:"S+C"},soil:{n:"माती आरोग्य",d:"माती सुधारणा खत",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"लक्षणे... फोटो","pest-alert":"कीड वर्णन...","planner":"जमीन [राज्य]...","mandi":"[पीक] विकायचे...","schemes":"[राज्य] शेतकरी...","soil":"माती [रंग]..."},
   st:{"crop-doctor":["भात पिवळे","टमाटो धब्बे","मिर्ची पांढरी","कापूस"],"pest-alert":["कापूस","मिर्ची","उस","मोहरी"],"planner":["खरीप महा","रबी पंजाब","वर्षभर"],"mandi":["नागपूर","नाशिक","विदर्भ"],"schemes":["महा शेतकरी","UP","राज"],"soil":["काळी","लाल","गाळ"]},
 },
-bn:{tag:"বিনামূল্যে কৃষি পরামর্শ",free:"সবসময় বিনামূল্যে",freeD:"কোনো সাবস্ক্রিপশন নেই · যেকোনো ফোনে",pick:"টুল বেছে নিন",tip:"💡 আজকের টিপ",tipT:"PM-KISAN + কৃষক বন্ধু = ₹16,000/বছর!",pickT:"ভাষা বেছে নিন",pickS:"AnnaDaata আপনার ভাষায়",t1:"রোগ নির্ণয়",t2:"80+ ফসল",selSt:"🗺️ রাজ্য বেছে নিন",cTab:"🇮🇳 কেন্দ্রীয়",sTab:"🏛️ রাজ্য",elig:"✅ যোগ্যতা",docs:"📄 নথি",apply:"📝 আবেদন",askAI:"🤖 AI জিজ্ঞাসা",runDiag:"🔬 AI নির্ণয়",analyzing:"বিশ্লেষণ...",demoT:"নমুনা ধান ফটো",demoS:"AI নির্ণয়",
+bn:{tag:"বিনামূল্যে কৃষি পরামর্শ",free:"সবসময় বিনামূল্যে",freeD:"কোনো সাবস্ক্রিপশন নেই · যেকোনো ফোনে",pick:"টুল বেছে নিন",tip:"💡 আজকের টিপ",tipT:"PM-KISAN + কৃষক বন্ধু = ₹16,000/বছর!",pickT:"ভাষা বেছে নিন",pickS:"FarmSeva আপনার ভাষায়",t1:"রোগ নির্ণয়",t2:"80+ ফসল",selSt:"🗺️ রাজ্য বেছে নিন",cTab:"🇮🇳 কেন্দ্রীয়",sTab:"🏛️ রাজ্য",elig:"✅ যোগ্যতা",docs:"📄 নথি",apply:"📝 আবেদন",askAI:"🤖 AI জিজ্ঞাসা",runDiag:"🔬 AI নির্ণয়",analyzing:"বিশ্লেষণ...",demoT:"নমুনা ধান ফটো",demoS:"AI নির্ণয়",
   tools:{"crop-doctor":{n:"ফসল ডাক্তার",d:"80+ ফটো রোগ নির্ণয়",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"কীটপতঙ্গ",d:"কীট শনাক্ত জৈব",h:"Pest Alert",b:""},planner:{n:"ফসল পরিকল্পনা",d:"সেরা ফসল",h:"Crop Planner",b:""},mandi:{n:"বাজার গাইড",d:"ন্যায্য মূল্য",h:"Mandi Guide",b:""},schemes:{n:"সরকারি প্রকল্প",d:"কেন্দ্র + রাজ্য",h:"Gov Schemes",b:"S+C"},soil:{n:"মাটির স্বাস্থ্য",d:"মাটি উন্নয়ন",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ফসলের লক্ষণ... ফটো","pest-alert":"কীট বর্ণনা...","planner":"জমি [রাজ্য]...","mandi":"[ফসল] বিক্রি...","schemes":"[রাজ্য] কৃষক...","soil":"মাটি [রঙ]..."},
   st:{"crop-doctor":["ধান হলুদ","টমেটো দাগ","মরিচ গুঁড়া","তুলা"],"pest-alert":["তুলা","মরিচ","আখ","সরিষা"],"planner":["খরিফ WB","রবি পাঞ্জাব","সারা বছর"],"mandi":["নাগপুর","নাসিক","বিদর্ভ"],"schemes":["WB কৃষক","UP","ঝাড়খণ্ড"],"soil":["লাল","কালো","পলি"]},
 },
-gu:{tag:"મફત ખેતી સલાહ",free:"હંમેશ મફત",freeD:"ખર્ચ નહીં · ફોન પર",pick:"સાધન પસંદ",tip:"💡 ટિપ",tipT:"PM-KISAN + CM Sahay = ₹26,000. તપાસો!",pickT:"ભાષા પસંદ",pickS:"AnnaDaata ભાષામાં",t1:"નિ.",t2:"80+",selSt:"🗺️ રાજ્ય",cTab:"🇮🇳 કેન્દ્ર",sTab:"🏛️ રાજ્ય",elig:"✅ પાત્ર",docs:"📄 ઈ.",apply:"📝 અ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"...",demoT:"ડાંગર",demoS:"AI",
+gu:{tag:"મફત ખેતી સલાહ",free:"હંમેશ મફત",freeD:"ખર્ચ નહીં · ફોન પર",pick:"સાધન પસંદ",tip:"💡 ટિપ",tipT:"PM-KISAN + CM Sahay = ₹26,000. તપાસો!",pickT:"ભાષા પસંદ",pickS:"FarmSeva ભાષામાં",t1:"નિ.",t2:"80+",selSt:"🗺️ રાજ્ય",cTab:"🇮🇳 કેન્દ્ર",sTab:"🏛️ રાજ્ય",elig:"✅ પાત્ર",docs:"📄 ઈ.",apply:"📝 અ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"...",demoT:"ડાંગર",demoS:"AI",
   tools:{"crop-doctor":{n:"પાક ડૉ.",d:"ફ. ર. ન.",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"જ. ચ.",d:"ઉ.",h:"Pest Alert",b:""},planner:{n:"પ. આ.",d:"ભ.",h:"Crop Planner",b:""},mandi:{n:"મ.",d:"ભ.",h:"Mandi Guide",b:""},schemes:{n:"સ. યો.",d:"ક+ર.",h:"Gov Schemes",b:"S+C"},soil:{n:"જ.",d:"જ.",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ઈ.","pest-alert":"ઈ.","planner":"ઈ.","mandi":"ઈ.","schemes":"ઈ.","soil":"ઈ."},
   st:{"crop-doctor":["ડ.","ટ.","મ.","ક."],"pest-alert":["ક."],"planner":["ખ."],"mandi":["ગ."],"schemes":["ગ."],"soil":["ગ."]},
 },
-pa:{tag:"ਮੁਫ਼ਤ ਖੇਤੀ ਸਲਾਹਕਾਰ",free:"ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ",freeD:"ਸਦੱਸਤਾ ਨਹੀਂ · ਕਿਸੇ ਵੀ ਫੋਨ",pick:"ਸੰਦ ਚੁਣੋ",tip:"💡 ਅੱਜ ਦੀ ਸਲਾਹ",tipT:"PM-KISAN + ਪੰਜਾਬ = ₹7,000/ਸਾਲ!",pickT:"ਭਾਸ਼ਾ ਚੁਣੋ",pickS:"AnnaDaata ਤੁਹਾਡੀ ਭਾਸ਼ਾ",t1:"ਨਿਦਾਨ",t2:"80+ ਫ਼ਸਲ",selSt:"🗺️ ਰਾਜ ਚੁਣੋ",cTab:"🇮🇳 ਕੇਂਦਰੀ",sTab:"🏛️ ਰਾਜ",elig:"✅ ਯੋਗ",docs:"📄 ਦ.",apply:"📝 ਅ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"ਵਿਸ਼ਲੇਸ਼ਣ...",demoT:"ਝੋਨਾ ਫੋਟੋ",demoS:"AI",
+pa:{tag:"ਮੁਫ਼ਤ ਖੇਤੀ ਸਲਾਹਕਾਰ",free:"ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ",freeD:"ਸਦੱਸਤਾ ਨਹੀਂ · ਕਿਸੇ ਵੀ ਫੋਨ",pick:"ਸੰਦ ਚੁਣੋ",tip:"💡 ਅੱਜ ਦੀ ਸਲਾਹ",tipT:"PM-KISAN + ਪੰਜਾਬ = ₹7,000/ਸਾਲ!",pickT:"ਭਾਸ਼ਾ ਚੁਣੋ",pickS:"FarmSeva ਤੁਹਾਡੀ ਭਾਸ਼ਾ",t1:"ਨਿਦਾਨ",t2:"80+ ਫ਼ਸਲ",selSt:"🗺️ ਰਾਜ ਚੁਣੋ",cTab:"🇮🇳 ਕੇਂਦਰੀ",sTab:"🏛️ ਰਾਜ",elig:"✅ ਯੋਗ",docs:"📄 ਦ.",apply:"📝 ਅ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"ਵਿਸ਼ਲੇਸ਼ਣ...",demoT:"ਝੋਨਾ ਫੋਟੋ",demoS:"AI",
   tools:{"crop-doctor":{n:"ਫ਼ਸਲ ਡਾਕਟਰ",d:"80+ ਫੋਟੋ ਨਿਦਾਨ",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"ਕੀਟ ਚੇ.",d:"ਜੈਵਿਕ",h:"Pest Alert",b:""},planner:{n:"ਫ਼ਸਲ ਯੋ.",d:"ਜ਼ਮੀਨ",h:"Crop Planner",b:""},mandi:{n:"ਮੰਡੀ",d:"ਭਾਅ",h:"Mandi Guide",b:""},schemes:{n:"ਸ. ਸ.",d:"ਕੇ+ਰਾ",h:"Gov Schemes",b:"S+C"},soil:{n:"ਮਿੱਟੀ",d:"ਖਾਦ",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ਲੱਛਣ... ਫੋਟੋ","pest-alert":"ਕੀੜੇ...","planner":"[ਰਾਜ]...","mandi":"[ਫ਼ਸਲ]...","schemes":"[ਰਾਜ]...","soil":"ਮਿੱਟੀ..."},
   st:{"crop-doctor":["ਝੋਨਾ ਪੀਲਾ","ਟਮਾਟਰ","ਮਿਰਚ","ਕਪਾਹ"],"pest-alert":["ਕਪਾਹ","ਮਿਰਚ","ਗੰਨਾ","ਸਰ੍ਹੋਂ"],"planner":["ਖਰੀਫ਼ ਪੰਜਾਬ","ਰਬੀ","ਹਰਿਆਣਾ"],"mandi":["ਮੱਕੀ","ਪਿਆਜ਼","ਕਪਾਹ"],"schemes":["ਪੰਜਾਬ","UP","ਰਾਜ"],"soil":["ਕਾਲੀ","ਲਾਲ","ਜਲੋਢ਼"]},
 },
-or:{tag:"ବିନାମୂଲ୍ୟ କୃଷି ପରାମର୍ଶ",free:"ସବୁଦିନ ବିନାମୂଲ୍ୟ",freeD:"ଯେ ଫୋନ୍‌ ଚଳେ",pick:"ଉପକ. ବାଛ",tip:"💡 ଟିପ୍",tipT:"PM-KISAN + KALIA = ₹16,000!",pickT:"ଭାଷା ବାଛ",pickS:"AnnaDaata ଭାଷା",t1:"ନ.",t2:"80+",selSt:"🗺️ ରା.",cTab:"🇮🇳 କେ.",sTab:"🏛️ ରା.",elig:"✅ ଯ.",docs:"📄 ଦ.",apply:"📝 ଆ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"...",demoT:"ଧାନ",demoS:"AI",
+or:{tag:"ବିନାମୂଲ୍ୟ କୃଷି ପରାମର୍ଶ",free:"ସବୁଦିନ ବିନାମୂଲ୍ୟ",freeD:"ଯେ ଫୋନ୍‌ ଚଳେ",pick:"ଉପକ. ବାଛ",tip:"💡 ଟିପ୍",tipT:"PM-KISAN + KALIA = ₹16,000!",pickT:"ଭାଷା ବାଛ",pickS:"FarmSeva ଭାଷା",t1:"ନ.",t2:"80+",selSt:"🗺️ ରା.",cTab:"🇮🇳 କେ.",sTab:"🏛️ ରା.",elig:"✅ ଯ.",docs:"📄 ଦ.",apply:"📝 ଆ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"...",demoT:"ଧାନ",demoS:"AI",
   tools:{"crop-doctor":{n:"ଫ. ଡ.",d:"80+",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"କ. ସ.",d:"ଜ.",h:"Pest Alert",b:""},planner:{n:"ଫ. ଯ.",d:"ଭ.",h:"Crop Planner",b:""},mandi:{n:"ମ.",d:"ଦ.",h:"Mandi Guide",b:""},schemes:{n:"ସ. ଯ.",d:"ର.",h:"Gov Schemes",b:"S+C"},soil:{n:"ମ.",d:"ସ.",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ଫ.","pest-alert":"କ.","planner":"ର.","mandi":"ଫ.","schemes":"ର.","soil":"ମ."},
   st:{"crop-doctor":["ଧ.","ଟ.","ଲ.","କ."],"pest-alert":["କ."],"planner":["ଖ."],"mandi":["ସ."],"schemes":["ଓ."],"soil":["ଓ."]},
@@ -162,27 +162,212 @@ const CROPS=[
 
 // ── SCHEMES DATA ──────────────────────────────────────────────────────
 const CENTRAL=[
-  {id:"pk",name:"PM-KISAN",full:"Pradhan Mantri Kisan Samman Nidhi",benefit:"₹6,000/year direct",icon:"💰",color:"#f5a623",helpline:"155261",website:"pmkisan.gov.in",eligibility:["Small & marginal farmers","Own agricultural land","Not govt employee / IT payer"],documents:["Aadhaar Card","Bank Account (Aadhaar-linked)","Land records (Khasra/Khatauni)"],howToApply:["Visit pmkisan.gov.in or nearest CSC","Click 'New Farmer Registration'","Enter Aadhaar + state","Fill land & bank details","Submit — verified by state officers"]},
-  {id:"pb",name:"PMFBY",full:"PM Fasal Bima Yojana",benefit:"Crop insurance 2% Kharif, 1.5% Rabi",icon:"🛡️",color:"#26a69a",helpline:"1800-180-1551",website:"pmfby.gov.in",eligibility:["All farmers growing notified crops","Sharecroppers / tenant farmers eligible"],documents:["Aadhaar","Bank passbook","Land record / lease deed","Sowing certificate"],howToApply:["Visit bank / CSC or pmfby.gov.in","Fill crop, land, bank details","Pay subsidised premium","Deadline: 31 July (Kharif), 31 Dec (Rabi)"]},
-  {id:"kc",name:"Kisan Credit Card",full:"KCC Scheme",benefit:"Credit ₹3 lakh @ 4% interest",icon:"💳",color:"#ab47bc",helpline:"1800-425-1422",website:"nabard.org",eligibility:["All farmers incl. tenant / sharecroppers","Allied: dairy, fishery, poultry"],documents:["Aadhaar + PAN","Land records","Passport photo"],howToApply:["Visit nationalized / co-op bank","Request KCC form","Submit documents","Disbursed within 14 days"]},
-  {id:"sh",name:"Soil Health Card",full:"Soil Health Card Scheme",benefit:"Free soil testing + fertilizer advice",icon:"🪴",color:"#8d6e63",helpline:"1800-180-1551",website:"soilhealth.dac.gov.in",eligibility:["All farmers — no restriction"],documents:["Aadhaar (optional)"],howToApply:["Contact local KVK or Agriculture Dept","Soil sample collected free","Card issued within 3 months"]},
-  {id:"ps",name:"PM Sinchai Yojana",full:"PM Krishi Sinchayee Yojana",benefit:"45–55% subsidy on drip / sprinkler",icon:"💧",color:"#29b6f6",helpline:"1800-180-1551",website:"pmksy.gov.in",eligibility:["All farmers with own / leased land"],documents:["Aadhaar","Land records","Dealer quotation"],howToApply:["Apply at state agri portal or pmksy.gov.in","Submit quotation + docs","Subsidy after installation verified"]},
+  {id:"pk",name:"PM-KISAN",full:"Pradhan Mantri Kisan Samman Nidhi",benefit:"₹6,000/year (₹2,000 × 3 installments)",icon:"💰",color:"#f5a623",helpline:"155261 / 011-23381092",website:"pmkisan.gov.in",
+   eligibility:["Small & marginal farmers with cultivable land","Indian citizen with valid Aadhaar","Not an income tax payer / govt employee / elected official"],
+   documents:["Aadhaar Card","Bank account linked to Aadhaar","Land records (Khasra-Khatauni / RTC / Patta)","Mobile number"],
+   howToApply:["Visit pmkisan.gov.in or nearest Jan Seva Kendra (CSC)","Click 'New Farmer Registration'","Enter Aadhaar + state + land details","Bank account details (must be Aadhaar-linked)","Submit — verification by Patwari / Revenue Officer","Money credited directly in 3 installments (Apr, Aug, Dec)"]},
+
+  {id:"pb",name:"PMFBY",full:"PM Fasal Bima Yojana",benefit:"Full crop value insured at 2% premium (Kharif), 1.5% (Rabi)",icon:"🛡️",color:"#26a69a",helpline:"1800-180-1551",website:"pmfby.gov.in",
+   eligibility:["All farmers growing notified crops in notified areas","Loanee farmers: compulsory via bank","Non-loanee farmers: voluntary","Sharecroppers & tenant farmers eligible"],
+   documents:["Aadhaar Card","Bank passbook","Land record / lease agreement","Sowing declaration / certificate","Crop & area details"],
+   howToApply:["Loanee farmers: auto-enrolled by bank — verify with branch","Non-loanee: visit nearest bank / CSC / insurance company office","Or apply at pmfby.gov.in","Last date: 31 July (Kharif) · 31 Dec (Rabi) · 31 Mar (Commercial)","Claim: inform bank/company within 72 hrs of crop damage"]},
+
+  {id:"kc",name:"Kisan Credit Card",full:"KCC Scheme — PM Kisan Credit Card",benefit:"Crop loans up to ₹3 lakh at just 4% interest (7% - 3% Govt subsidy)",icon:"💳",color:"#ab47bc",helpline:"1800-425-1422 (NABARD)",website:"nabard.org",
+   eligibility:["All farmers — individual, joint, tenant, sharecropper","Self Help Groups (SHGs) with farming activity","Allied activities: dairy, fishery, poultry, bee-keeping"],
+   documents:["Aadhaar + PAN Card","Land records / lease deed","Passport-size photograph","Latest bank statement"],
+   howToApply:["Visit any nationalized bank, RRB or cooperative bank","Fill KCC application form (Form A)","Submit land records + documents","Bank visits field and disburses within 14 working days","Card valid 5 years; renew annually with crop details"]},
+
+  {id:"pmmy",name:"PM Kisan Maandhan",full:"PM Kisan Maandhan Yojana — Farmer Pension",benefit:"₹3,000/month pension after age 60 (lifetime)",icon:"🧓",color:"#ef5350",helpline:"1800-267-6888",website:"pmkmy.gov.in",
+   eligibility:["Small & marginal farmers aged 18–40 years","Land holding ≤ 2 hectares","Not covered under any other pension scheme"],
+   documents:["Aadhaar Card","Bank account passbook","Land records"],
+   howToApply:["Visit nearest CSC (Common Service Centre)","Enrol at pmkmy.gov.in","Pay monthly premium: ₹55 (age 18) to ₹200 (age 40)","Govt matches your premium equally","Pension starts automatically after age 60"]},
+
+  {id:"sh",name:"Soil Health Card",full:"Soil Health Card Scheme",benefit:"Free soil testing + personalised fertilizer advice every 2 years",icon:"🪴",color:"#8d6e63",helpline:"1800-180-1551",website:"soilhealth.dac.gov.in",
+   eligibility:["All farmers — no land size or income restriction"],
+   documents:["Aadhaar Card (optional for tracking)"],
+   howToApply:["Contact your nearest Krishi Vigyan Kendra (KVK) or Agriculture Dept office","Soil sample collected from your field free of cost","Analysis done at govt lab — report in 3 months","Check card status at soilhealth.dac.gov.in with your mobile number","Renewed every 2 years automatically"]},
+
+  {id:"ps",name:"PM KUSUM",full:"PM Kisan Urja Suraksha evam Utthaan Mahabhiyan",benefit:"90% subsidy on solar pumps (2–10 HP) — pay only 10%",icon:"☀️",color:"#ffa000",helpline:"1800-180-3333",website:"mnre.gov.in",
+   eligibility:["All farmers — priority to diesel pump users","Applicable for irrigated land","State-specific quotas apply"],
+   documents:["Aadhaar Card","Land records","Existing pump details (if any)","Bank account"],
+   howToApply:["Apply through State Agriculture or Energy Department portal","Or via nearest Agriculture office","Submit land + pump details","After approval, pay 10% cost (remaining 90% by Central + State Govt)","Installation by empanelled vendors within 3 months"]},
+
+  {id:"psy",name:"PM Sinchai Yojana",full:"PM Krishi Sinchayee Yojana — Har Khet Ko Pani",benefit:"55% subsidy on drip irrigation, 45% on sprinkler systems",icon:"💧",color:"#29b6f6",helpline:"1800-180-1551",website:"pmksy.gov.in",
+   eligibility:["All farmers with own or leased land","Small & marginal farmers get higher subsidy","State-wise area eligibility applies"],
+   documents:["Aadhaar Card","Land ownership / lease document","Bank account","Quotation from registered equipment dealer"],
+   howToApply:["Register at pmksy.gov.in or state agriculture department portal","Select your district + crop + land area","Get approval letter (within 30–60 days)","Purchase equipment from registered dealer","Subsidy credited after installation verification by Agri officer"]},
 ];
 const STATES={
-  "Telangana":[{name:"Rythu Bandhu",benefit:"₹10,000/acre/season",icon:"🌾",helpline:"1100",website:"rythu.telangana.gov.in",eligibility:["Land-owning farmers","Min 1 acre","Registered in records"],documents:["Pattadar Passbook","Aadhaar","Bank account"],howToApply:["Auto for registered pattadars","Check rythu.telangana.gov.in","Visit MRO / VRO office"]},{name:"Rythu Bima",benefit:"₹5 lakh life insurance FREE",icon:"🛡️",helpline:"1100",website:"rythu.telangana.gov.in",eligibility:["Farmers 18–59 yrs","TG land-owning"],documents:["Pattadar Passbook","Aadhaar","Nominee details"],howToApply:["Auto-enrolled with Rythu Bandhu","Claim: visit MRO with death certificate"]}],
-  "Andhra Pradesh":[{name:"YSR Rythu Bharosa",benefit:"₹13,500/year (incl. PM-KISAN)",icon:"💰",helpline:"1902",website:"apagrisnet.gov.in",eligibility:["Small & marginal farmers","Tenant farmers included"],documents:["Aadhaar","Land records / lease deed","Bank account"],howToApply:["Register at apagrisnet.gov.in","Visit village secretariat","3 installments per year"]}],
-  "Maharashtra":[{name:"Magel Tyala Shet Tali",benefit:"₹50,000–75,000 farm pond subsidy",icon:"💧",helpline:"020-26056000",website:"mahadbt.maharashtra.gov.in",eligibility:["Min 0.60 ha land","Drought-prone district priority"],documents:["7/12 extract","Aadhaar","Pond work quotation"],howToApply:["Apply at mahadbt.maharashtra.gov.in","Construct pond → claim subsidy"]}],
-  "Odisha":[{name:"KALIA Scheme",benefit:"₹10,000/year direct support",icon:"💰",helpline:"1800-572-1122",website:"kalia.odisha.gov.in",eligibility:["Small & marginal","Landless labourers too"],documents:["Aadhaar","Bank account"],howToApply:["Visit kalia.odisha.gov.in","Or gram panchayat office"]}],
-  "West Bengal":[{name:"Krishak Bandhu",benefit:"₹10,000/year + ₹2L death benefit",icon:"💰",helpline:"1800-103-0001",website:"krishakbandhu.net",eligibility:["Min 1 bigha land","WB residents"],documents:["Aadhaar","Land records","Khatian no."],howToApply:["Visit krishakbandhu.net","Or Duare Sarkar camps"]}],
-  "Karnataka":[{name:"Raitha Siri",benefit:"₹5,000/year + seed subsidy + insurance",icon:"🌱",helpline:"080-22212439",website:"raitamitra.kar.nic.in",eligibility:["Small & marginal, up to 2 ha"],documents:["RTC","Aadhaar","Bank account"],howToApply:["Visit raitamitra.kar.nic.in","Or Raitha Samparka Kendra"]}],
-  "Gujarat":[{name:"CM Kisan Sahay Yojana",benefit:"₹20,000/ha crop loss — zero premium",icon:"🛡️",helpline:"1800-233-0230",website:"ikhedut.gujarat.gov.in",eligibility:["All Gujarat farmers","Loss: drought / rain"],documents:["Aadhaar","7/12 Utara","Bank account"],howToApply:["Apply at ikhedut.gujarat.gov.in","Within 30 days of damage"]}],
-  "Bihar":[{name:"Krishi Input Anudan",benefit:"₹13,500/ha crop damage",icon:"💰",helpline:"0612-2233555",website:"dbtagriculture.bihar.gov.in",eligibility:["Bihar farmers with crop loss"],documents:["Aadhaar","Land records","Damage certificate"],howToApply:["Apply at dbtagriculture.bihar.gov.in","Or Vasudha Kendra"]}],
-  "Madhya Pradesh":[{name:"CM Kisan Kalyan Yojana",benefit:"₹4,000/year extra above PM-KISAN",icon:"💰",helpline:"181",website:"mpkrishi.mp.gov.in",eligibility:["All PM-KISAN beneficiaries in MP"],documents:["PM-KISAN registration","Aadhaar"],howToApply:["Auto-credited for PM-KISAN holders","Check mpkrishi.mp.gov.in"]}],
-  "Rajasthan":[{name:"Mukhyamantri Krishak Sathi",benefit:"₹5 lakh accident insurance",icon:"🛡️",helpline:"0141-2927047",website:"agriculture.rajasthan.gov.in",eligibility:["Rajasthan farmers 5–70 yrs"],documents:["Aadhaar","Jamabandi","Bank account"],howToApply:["Visit jansoochna.rajasthan.gov.in","Or district agriculture office"]}],
-  "Tamil Nadu":[{name:"CM Farmer Safety & Insurance",benefit:"₹3L accident + ₹1.5L disability",icon:"🛡️",helpline:"044-25384578",website:"tnagrisnet.tn.gov.in",eligibility:["All registered TN farmers"],documents:["Aadhaar","Patta","Bank passbook"],howToApply:["Visit nearest AEC or tnagrisnet.tn.gov.in"]}],
-  "Uttar Pradesh":[{name:"CM Kisan & Sarvahit Bima",benefit:"₹5L accident + ₹2.5L hospitalisation",icon:"🛡️",helpline:"1800-180-5500",website:"agriup.gov.in",eligibility:["UP farmers 18–70 yrs","Income < ₹75,000"],documents:["Aadhaar","Land records","Income certificate"],howToApply:["Visit agriup.gov.in","Or district agriculture office"]}],
-  "Punjab":[{name:"Punjab Khet Meri Scheme",benefit:"₹1,000/acre stubble management",icon:"🌾",helpline:"0172-2970101",website:"agripb.gov.in",eligibility:["Punjab farmers avoiding stubble burning"],documents:["Aadhaar","Jamabandi","Bank account"],howToApply:["Register at agripb.gov.in","Officer verifies field"]}],
+  "Telangana":[
+    {name:"Rythu Bharosa",benefit:"₹12,000/year (₹6,000 × 2 seasons — Kharif & Rabi)",icon:"🌾",helpline:"1100 / 040-23450892",website:"farmersportal.telangana.gov.in",
+     eligibility:["All Pattadar (land-owning) farmers in Telangana","Both wet & dry land farmers","Registered in Dharani portal land records"],
+     documents:["Pattadar Passbook (issued by Dharani portal)","Aadhaar Card","Bank account linked to Aadhaar","Mobile number registered in Dharani"],
+     howToApply:["Auto-credited for farmers registered in Dharani portal","Check status at farmersportal.telangana.gov.in","Or visit your MRO / Village Revenue Officer","Amount credited before each agricultural season"]},
+    {name:"Rythu Bima",benefit:"₹5 lakh life insurance + ₹2,500 funeral assistance — FREE",icon:"🛡️",helpline:"1100",website:"farmersportal.telangana.gov.in",
+     eligibility:["All Pattadar farmers aged 18–59 years","Enrolled in Telangana farmer records"],
+     documents:["Pattadar Passbook","Aadhaar Card","Nominee's Aadhaar & bank details"],
+     howToApply:["Auto-enrolled for Rhythu Bharosa beneficiaries — no separate application","For claims: nominee visits nearest MRO with death certificate + Aadhaar","LIC settles claim within 30 working days"]},
+    {name:"Free Crop Insurance (PMFBY — Zero Premium)",benefit:"Full crop insurance — premium 100% paid by Telangana Govt",icon:"🌧️",helpline:"1100",website:"farmersportal.telangana.gov.in",
+     eligibility:["All Telangana farmers growing notified crops","Both loanee & non-loanee farmers"],
+     documents:["Pattadar Passbook","Aadhaar","Sowing certificate / Bank loan document"],
+     howToApply:["Apply at any bank or CSC — Govt pays your premium","Or visit nearest Agriculture Extension Centre","Deadline: 31 July (Kharif), 31 Dec (Rabi)"]}
+  ],
+  "Andhra Pradesh":[
+    {name:"Annadata Sukhibhava",full:"Renamed from YSR Rythu Bharosa — June 2024 (TDP Govt)",benefit:"₹20,000/year (PM-KISAN ₹6,000 + State ₹14,000) in 3 installments",icon:"💰",helpline:"1902 / 0863-2340525",website:"annadatasukhibhava.ap.gov.in",
+     eligibility:["Land-owning farmers of AP — one member per family","Tenant farmers with valid Crop Cultivator Rights Card (CCRC)","AP resident with Aadhaar-linked bank account","Not a govt employee, income-tax payer or pensioner above ₹10,000/month","SC/ST/BC/minority tenant farmers also eligible"],
+     documents:["Aadhaar Card","Land ownership documents (Pattadar Passbook / ROR)","Tenant farmers: CCRC (Crop Cultivator Rights Card) or lease agreement","Bank account passbook (Aadhaar-linked)","Caste certificate (SC/ST/BC — for tenant farmers)","Mobile number linked to Aadhaar"],
+     howToApply:["Visit annadatasukhibhava.ap.gov.in or nearest Village Secretariat (Grama Sachivalayam)","Existing YSR Rythu Bharosa beneficiaries are auto-enrolled — no new application needed","New farmers: fill form at Village Secretariat or Mee Seva Centre","Check payment status at: gramawardsachivalayam.ap.gov.in","Helpline for issues: 1902 (toll-free)","Amount credited in 3 installments: Kharif, Rabi & pre-Kharif seasons"]},
+    {name:"AP PM Fasal Bima Yojana (PMFBY)",full:"Note: AP discontinued free crop insurance from 2024-25 Kharif",benefit:"Crop insurance at subsidised premium: 2% (Kharif), 1.5% (Rabi) — farmers must now pay own premium",icon:"⚠️",helpline:"1902",website:"pmfby.gov.in",
+     eligibility:["All AP farmers growing notified crops","Both loanee (bank loan takers) and non-loanee farmers","Tenant farmers with CCRC document"],
+     documents:["Aadhaar Card","Land records / CCRC for tenant","Bank account","Sowing certificate from Village Agriculture Assistant"],
+     howToApply:["Important: AP Govt stopped paying 100% premium from Kharif 2024 onwards","Farmers now pay: 2% premium for Kharif crops, 1.5% for Rabi","Apply at any bank branch, CSC or Village Secretariat","Deadline: 31 July (Kharif) · 31 Dec (Rabi)","Claim crop damage: report to bank / insurer within 72 hours"]},
+    {name:"AP Raithu Runa Mafi (Crop Loan Waiver)",benefit:"Loan waiver up to ₹2 lakh for small & marginal farmers",icon:"🏦",helpline:"1902",website:"apagrisnet.gov.in",
+     eligibility:["AP farmers with outstanding crop loans from cooperative / nationalised banks","Small & marginal farmers prioritised","Subject to state govt approval cycle"],
+     documents:["Aadhaar Card","Loan passbook / Kisan Credit Card","Land records (Pattadar Passbook)","Bank account"],
+     howToApply:["Check eligible list at your village cooperative or bank","Visit District Cooperative Central Bank (DCCB) with documents","State Agriculture Department issues approval orders periodically"]}
+  ],
+  "Maharashtra":[
+    {name:"Namo Shetkari Mahasanman Nidhi",benefit:"₹6,000/year state support (total ₹12,000 with PM-KISAN)",icon:"💰",helpline:"020-26056000",website:"mahadbt.maharashtra.gov.in",
+     eligibility:["All PM-KISAN beneficiaries in Maharashtra","Farmers with 7/12 land records"],
+     documents:["PM-KISAN registration number","7/12 extract (Satbara Utara)","Aadhaar Card","Bank account (Aadhaar-linked)"],
+     howToApply:["Auto-credited for existing PM-KISAN beneficiaries","New farmers: register at mahadbt.maharashtra.gov.in","Or visit Taluka Agriculture Officer"]},
+    {name:"Magel Tyala Shetat Tali",benefit:"Subsidy ₹50,000–75,000 for farm pond construction",icon:"💧",helpline:"020-26056000",website:"mahadbt.maharashtra.gov.in",
+     eligibility:["Farmers with minimum 0.40 hectare land","Priority: drought-prone Vidarbha & Marathwada districts","First-come-first-served basis"],
+     documents:["7/12 extract","Aadhaar Card","Quotation from licensed contractor","Bank account"],
+     howToApply:["Apply at mahadbt.maharashtra.gov.in","Or visit Krishi Sevak / Mandal Agriculture Officer","After approval: construct pond, get officer verification","Subsidy credited post-verification — usually within 60 days"]},
+    {name:"Shetkari Sanman Yojana (Loan Waiver)",benefit:"Crop loan waiver up to ₹2 lakh for eligible farmers",icon:"🏦",helpline:"020-26056000",website:"mahadbt.maharashtra.gov.in",
+     eligibility:["Farmers with overdue crop loans as of cut-off date","Small & marginal farmers prioritised"],
+     documents:["Loan account details","7/12 extract","Aadhaar Card","Bank passbook"],
+     howToApply:["Check eligibility at mahadbt.maharashtra.gov.in","Visit your bank branch with documents","District level scrutiny and approval"]}
+  ],
+  "Karnataka":[
+    {name:"Raitha Siri",benefit:"₹5,000/year per farmer + certified seed subsidy + free accident insurance",icon:"🌱",helpline:"080-22212439 / 1800-425-1422",website:"raitamitra.kar.nic.in",
+     eligibility:["Small & marginal farmers with up to 2 hectares land","Karnataka resident","Registered in Bhoomi portal"],
+     documents:["RTC (Record of Rights, Tenancy & Cultivation) from Bhoomi portal","Aadhaar Card","Bank account","Caste certificate (for SC/ST additional benefits)"],
+     howToApply:["Visit nearest Raitha Samparka Kendra or Hobli Agriculture Officer","Or register at raitamitra.kar.nic.in","Amount credited annually before Kharif season"]},
+    {name:"PM Kisan Samman — Karnataka Top-up",benefit:"₹4,000/year state top-up (total ₹10,000 with PM-KISAN)",icon:"💰",helpline:"080-22212439",website:"raitamitra.kar.nic.in",
+     eligibility:["All PM-KISAN beneficiaries in Karnataka"],
+     documents:["PM-KISAN registration","RTC","Aadhaar-linked bank account"],
+     howToApply:["Auto-credited for PM-KISAN farmers in Karnataka","Check at raitamitra.kar.nic.in"]}
+  ],
+  "Odisha":[
+    {name:"KALIA Scheme",benefit:"₹10,000/year (₹5,000 × 2 seasons) for farming support",icon:"💰",helpline:"1800-572-1122",website:"kalia.odisha.gov.in",
+     eligibility:["Small & marginal land-owning farmers","Landless agricultural labourers (₹12,500/year)","Sharecroppers & tenant farmers","Vulnerable landless households"],
+     documents:["Aadhaar Card","Bank account passbook","Land record (for landowners)","Caste certificate (SC/ST — for additional benefits)"],
+     howToApply:["Visit kalia.odisha.gov.in or nearest gram panchayat","Or Common Service Centre (CSC)","Beneficiary list verified by Revenue Inspector"]},
+    {name:"Biju Krushak Kalyan Yojana",benefit:"Free crop insurance — state pays 100% premium for farmers",icon:"🛡️",helpline:"1800-572-1122",website:"agriodisha.nic.in",
+     eligibility:["All Odisha farmers growing notified crops"],
+     documents:["Aadhaar","Land records","Bank passbook"],
+     howToApply:["Apply at nearest agriculture office or CSC","Govt pays premium — no cost to farmer"]}
+  ],
+  "West Bengal":[
+    {name:"Krishak Bandhu (New)",benefit:"₹10,000/year (₹5,000 × 2 seasons) + ₹2 lakh death benefit",icon:"💰",helpline:"1800-103-0001",website:"krishakbandhu.net",
+     eligibility:["All land-owning farmers (min 1 decimal land) in West Bengal","Sharecroppers registered under Bargadari Act also eligible"],
+     documents:["Aadhaar Card","Land records (Khatian + Plot number)","Bank account passbook","Voter ID (optional for verification)"],
+     howToApply:["Visit krishakbandhu.net or nearest Krishak Bandhu Help Centre","Or Duare Sarkar camps (held periodically across WB)","Death benefit: nominee contacts District Agriculture Office with death certificate"]},
+    {name:"WB Crop Insurance (Bangla Shasya Bima)",benefit:"Subsidised crop insurance — premium shared by state & farmer",icon:"🛡️",helpline:"1800-103-0001",website:"krishakbandhu.net",
+     eligibility:["All WB farmers growing paddy, potato, jute, maize"],
+     documents:["Land records","Aadhaar","Bank passbook","Sowing certificate"],
+     howToApply:["Apply at Block Agriculture Office or nearest cooperative"]}
+  ],
+  "Gujarat":[
+    {name:"Mukhyamantri Kisan Sahay Yojana",benefit:"₹20,000/ha (max 4 ha) for crop loss — zero premium",icon:"🛡️",helpline:"1800-233-0230",website:"ikhedut.gujarat.gov.in",
+     eligibility:["All Gujarat farmers with 8-A / 7-12 land records","Loss due to: drought, unseasonal rain, flood, excess rain"],
+     documents:["Aadhaar Card","8-A / 7-12 Utara (land records)","Bank account (nationalized bank preferred)"],
+     howToApply:["Apply at ikhedut.gujarat.gov.in within 30 days of crop damage","Or visit village Talati / Mamlatdar office","Survey by Patwari to verify crop loss"]},
+    {name:"i-Khedut Portal Schemes",benefit:"50+ agri schemes — seeds, equipment, irrigation, storage subsidies",icon:"🌱",helpline:"1800-233-0230",website:"ikhedut.gujarat.gov.in",
+     eligibility:["All Gujarat farmers with 8-A records","Specific eligibility per scheme"],
+     documents:["Aadhaar","8-A / 7-12 Utara","Bank account","Quotation (for equipment schemes)"],
+     howToApply:["All Gujarat schemes apply through ikhedut.gujarat.gov.in","Select scheme → fill form → submit → track online"]}
+  ],
+  "Bihar":[
+    {name:"Krishi Input Anudan Yojana",benefit:"₹13,500/ha (irrigated) / ₹6,800/ha (non-irrigated) for crop damage",icon:"💰",helpline:"0612-2233555 / 18003456214",website:"dbtagriculture.bihar.gov.in",
+     eligibility:["Bihar farmers with crop loss due to drought, flood or hailstorm","Damage verified by district authorities"],
+     documents:["Aadhaar Card","Land records (registered)","Bank account","Damage certificate from Patwari / Circle Officer"],
+     howToApply:["Apply at dbtagriculture.bihar.gov.in","Or nearest Vasudha Kendra","Apply within 30 days of crop damage notification"]},
+    {name:"Bihar Rajya Fasal Sahayata Yojana",benefit:"₹7,500/ha for up to 20% damage; ₹10,000/ha for >20% loss",icon:"🛡️",helpline:"18003456214",website:"pacsonline.bih.nic.in",
+     eligibility:["Registered farmers in Bihar via cooperative societies","Rabi crops: wheat, maize, gram, lentil, mustard"],
+     documents:["Aadhaar","Land records","Cooperative society membership"],
+     howToApply:["Register at pacsonline.bih.nic.in","Verify through village cooperative — free insurance"]}
+  ],
+  "Madhya Pradesh":[
+    {name:"Mukhyamantri Kisan Kalyan Yojana",benefit:"₹6,000/year state support (total ₹12,000 with PM-KISAN)",icon:"💰",helpline:"181 / 07552559604",website:"mpkrishi.mp.gov.in",
+     eligibility:["All PM-KISAN beneficiaries in Madhya Pradesh","Registered in MP Kisan portal"],
+     documents:["PM-KISAN registration","Aadhaar","Bank account passbook"],
+     howToApply:["Auto-credited for PM-KISAN farmers in MP","Check at mpkrishi.mp.gov.in or call 181","2 installments of ₹3,000 per year"]},
+    {name:"MP Bhavantar Bhugtan Yojana",benefit:"Price support — Govt pays difference if mandi price falls below MSP",icon:"💰",helpline:"181",website:"mpkrishi.mp.gov.in",
+     eligibility:["MP farmers selling at registered mandis","Registered at mpkrishi.mp.gov.in before selling"],
+     documents:["Aadhaar","Land records","Bank account","Mandi receipt (after sale)"],
+     howToApply:["Pre-register at mpkrishi.mp.gov.in before selling","Sell at registered mandi, get receipt","Payment automatically calculated and credited"]}
+  ],
+  "Rajasthan":[
+    {name:"Mukhyamantri Krishak Sathi Yojana",benefit:"₹5 lakh accident insurance + ₹50,000 permanent disability support",icon:"🛡️",helpline:"0141-2927047",website:"agriculture.rajasthan.gov.in",
+     eligibility:["All registered farmers in Rajasthan aged 5–70 years","Includes farm labourers working on agricultural land"],
+     documents:["Aadhaar Card","Jamabandi (land record)","Bank account","Girdawari (crop cultivation record)"],
+     howToApply:["Visit agriculture.rajasthan.gov.in or Jan Soochna portal","Or district agriculture / revenue office","Accident claim: submit police FIR + hospital report"]},
+    {name:"Rajasthan Fasal Bima — Free for Small Farmers",benefit:"Free crop insurance for small & marginal farmers (Govt pays premium)",icon:"🌾",helpline:"0141-2927047",website:"agriculture.rajasthan.gov.in",
+     eligibility:["Small & marginal farmers (< 2 ha land)","Must have Jamabandi & Girdawari records"],
+     documents:["Aadhaar","Jamabandi","Bank passbook","Sowing certificate"],
+     howToApply:["Apply at nearest e-Mitra kiosk or agriculture office","Deadline: 31 July Kharif · 31 Dec Rabi"]}
+  ],
+  "Tamil Nadu":[
+    {name:"Uzhavar Urimai Thogai (Farmer Rights Amount)",benefit:"₹1,000/month (₹12,000/year) for eligible farming families",icon:"💰",helpline:"044-25665015",website:"tnagrisnet.tn.gov.in",
+     eligibility:["TN farmer families with annual income < ₹2.5 lakh","Owns or cultivates agricultural land","Family head must be enrolled"],
+     documents:["Aadhaar Card","Patta (land record)","Income certificate","Ration card","Bank account"],
+     howToApply:["Visit nearest Village Administrative Officer (VAO)","Or tnagrisnet.tn.gov.in","Annual verification required"]},
+    {name:"CM Farmer Safety & Insurance",benefit:"₹3 lakh accident insurance + ₹1.5 lakh permanent disability",icon:"🛡️",helpline:"044-25384578",website:"tnagrisnet.tn.gov.in",
+     eligibility:["All registered farmers & agricultural workers in TN","Age 15–70 years"],
+     documents:["Aadhaar Card","Patta (land document)","Bank passbook"],
+     howToApply:["Visit nearest Agricultural Extension Centre (AEC)","Or tnagrisnet.tn.gov.in","Claim: submit accident report + hospital records"]}
+  ],
+  "Uttar Pradesh":[
+    {name:"UP Mukhyamantri Kisan & Sarvahit Bima Yojana",benefit:"₹5 lakh accident insurance + ₹2.5 lakh hospitalisation coverage",icon:"🛡️",helpline:"1800-180-5500",website:"agriup.gov.in",
+     eligibility:["UP farmers & farm workers aged 18–70 years","Annual household income < ₹75,000","Must be registered in UP revenue records"],
+     documents:["Aadhaar Card","Land records / kisan bahi","Income certificate","Bank account"],
+     howToApply:["Visit agriup.gov.in or district agriculture office","Register at Jansunwai portal for faster processing","Claim: FIR + medical certificate within 45 days of accident"]},
+    {name:"UP Kisan Karj Rahat (Loan Waiver)",benefit:"Crop loan waiver up to ₹1 lakh for small & marginal farmers",icon:"🏦",helpline:"1800-180-5500",website:"upkisankarjrahat.upsdc.gov.in",
+     eligibility:["Small & marginal UP farmers with overdue crop loans","Loans taken from nationalised / cooperative banks"],
+     documents:["Aadhaar Card","Kisan credit card / loan account details","Land records"],
+     howToApply:["Check eligibility at upkisankarjrahat.upsdc.gov.in","Visit your bank branch with Aadhaar + land papers"]}
+  ],
+  "Punjab":[
+    {name:"Punjab Ghar Ghar Rozgar — Kisan Component",benefit:"₹500–1,000/day wage support for farm distress periods",icon:"💼",helpline:"0172-2970101",website:"agripb.gov.in",
+     eligibility:["Marginal farmers and landless farm labour in Punjab","Annual income < ₹1.5 lakh"],
+     documents:["Aadhaar","Bank account","Income certificate"],
+     howToApply:["Register at sewayojan.up.nic.in or Punjab agriculture office","Or nearest Rozgar Sahayak"]},
+    {name:"Punjab Paani Bachao Paisa Kamao",benefit:"₹8,000–10,000/year for farmers switching from paddy to less water-intensive crops",icon:"💧",helpline:"0172-2970101",website:"agripb.gov.in",
+     eligibility:["Punjab farmers who shift from paddy to maize, cotton, vegetables, pulses","Registered with Punjab Agriculture Department"],
+     documents:["Aadhaar Card","Jamabandi (land records)","Bank account","Crop change declaration"],
+     howToApply:["Register at agripb.gov.in before sowing season","Agriculture officer verifies crop change after harvest"]},
+    {name:"Punjab Stubble Management Scheme",benefit:"₹2,500/acre for not burning paddy stubble + free equipment support",icon:"🌾",helpline:"0172-2970101",website:"agripb.gov.in",
+     eligibility:["Punjab paddy farmers who avoid stubble burning","Must adopt in-situ management or alternative crops"],
+     documents:["Aadhaar","Jamabandi","Bank account","Girdawari (crop record)"],
+     howToApply:["Register at agripb.gov.in before paddy harvest","Officer verifies field — amount credited directly"]}
+  ],
+  "Haryana":[
+    {name:"Haryana Bhavantar Bharpai Yojana",benefit:"Price support — Govt pays shortfall if mandi price < MSP",icon:"💰",helpline:"1800-180-2117",website:"agriharyana.gov.in",
+     eligibility:["Haryana farmers registered at Meri Fasal Mera Byora portal","Selling vegetables, fruits and specified crops at registered mandis"],
+     documents:["Aadhaar Card","Land records (Jamabandi)","Bank account","Meri Fasal Mera Byora registration"],
+     howToApply:["Register at fasal.haryana.gov.in before sowing","Sell at authorised purchase centres","Difference credited within 30 days of sale"]},
+    {name:"Meri Fasal Mera Byora",benefit:"Access to all state schemes + MSP benefits + free accident insurance ₹2 lakh",icon:"📋",helpline:"1800-180-2117",website:"fasal.haryana.gov.in",
+     eligibility:["All Haryana farmers who register — mandatory for govt scheme benefits"],
+     documents:["Aadhaar Card","Land records","Bank account","Mobile number"],
+     howToApply:["Register at fasal.haryana.gov.in — takes 10 minutes","Or nearest CSC / Agriculture office","Registration is free and unlocks all state benefits"]}
+  ],
+  "Chhattisgarh":[
+    {name:"Rajiv Gandhi Kisan Nyay Yojana",benefit:"₹9,000–10,000/acre for paddy farmers (input support)",icon:"💰",helpline:"0771-2234947",website:"rgkny.cg.gov.in",
+     eligibility:["CG farmers growing paddy, sugarcane, maize, soybean","Registered in revenue records","Landless labourers get ₹7,000/year flat"],
+     documents:["Aadhaar Card","B1 (land records)","Bank account passbook","Girdawari / crop certificate"],
+     howToApply:["Auto-enrolled for registered paddy farmers","New registration: visit patwari / tehsil office","Amount credited in 4 installments per year"]}
+  ],
+  "Jharkhand":[
+    {name:"Mukhyamantri Krishi Ashirwad Yojana",benefit:"₹5,000/acre (up to 5 acres) per Kharif season for small farmers",icon:"💰",helpline:"0651-2490024",website:"mmkay.jharkhand.gov.in",
+     eligibility:["Small & marginal Jharkhand farmers (< 5 acres agricultural land)","Registered in revenue / land records"],
+     documents:["Aadhaar Card","Land records (khatiyan)","Bank account","Mobile number"],
+     howToApply:["Register at mmkay.jharkhand.gov.in","Or Pragya Kendra / CSC / Agriculture office","Beneficiary verified by Circle Officer"]}
+  ],
 };
+
 const ALL_STATES=Object.keys(STATES).sort();
 const TOOLS=[
   {id:"crop-doctor",icon:"🌿",color:"#4caf50"},
@@ -206,8 +391,8 @@ const RICE_URL="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Rice_b
 
 // ── API KEY MANAGEMENT ────────────────────────────────────────────────
 // Store key in sessionStorage (cleared when tab closes — never persisted)
-const getKey=()=>sessionStorage.getItem("ad_key")||"";
-const saveKey=k=>sessionStorage.setItem("ad_key",k.trim());
+const getKey=()=>sessionStorage.getItem("fs_key")||"";
+const saveKey=k=>sessionStorage.setItem("fs_key",k.trim());
 
 // ── API ────────────────────────────────────────────────────────────────
 async function callClaude(messages, system, role="general"){
@@ -247,8 +432,8 @@ async function callClaude(messages, system, role="general"){
 // Compressed prompts save ~30-45% tokens vs verbose prompts
 const SYS_DOCTOR_FULL = `You are an expert plant pathologist for Indian crops. For each diagnosis:\n🔍 WHAT I SEE (visual symptoms)\n🦠 DISEASE NAME (scientific name)\n⚙️ CAUSE (Fungal/Bacterial/Viral/Nutrient)\n⚠️ SEVERITY + % yield loss\n🌿 ORGANIC TREATMENT (neem oil, cow urine, Trichoderma — exact dosage)\n💊 CHEMICAL TREATMENT (Indian brand names, dosage per acre)\n🛡️ PREVENTION next season\n💰 COST per acre in ₹\n💡 PRO TIP`;
 const SYS_DOCTOR_OPT  = `Expert plant pathologist, Indian crops. Diagnose concisely:\n🔍Visual symptoms 🦠Disease+scientific name ⚙️Cause ⚠️Severity+yield% 🌿Organic Rx(dosage) 💊Chemical Rx(Indian brands,dose/acre) 🛡️Prevention 💰₹cost/acre 💡Tip`;
-const SYS_GEN_FULL    = `You are AnnaDaata AI — expert agricultural advisor for Indian rural farmers. Practical low-cost advice. Indian context (₹, states, seasons, local names). Organic first. 250 words max. End with Pro Tip 💡.`;
-const SYS_GEN_OPT     = `AnnaDaata AI: expert Indian farm advisor. Low-cost practical advice. Use ₹, local names, organic first. ≤200 words. End: Pro Tip 💡.`;
+const SYS_GEN_FULL    = `You are FarmSeva AI — expert agricultural advisor for Indian rural farmers. Practical low-cost advice. Indian context (₹, states, seasons, local names). Organic first. 250 words max. End with Pro Tip 💡.`;
+const SYS_GEN_OPT     = `FarmSeva AI: expert Indian farm advisor. Low-cost practical advice. Use ₹, local names, organic first. ≤200 words. End: Pro Tip 💡.`;
 
 const estimateTok = str => Math.ceil((str||"").length / 3.8);
 const BASE_MAX_TOK   = 1000;  // old fixed value
@@ -256,10 +441,10 @@ const OPT_MAX_TOK    = { doctor:750, general:550 }; // smart limits
 
 // Session token tracking
 const TOK = {
-  get saved(){ return parseInt(sessionStorage.getItem("ad_tok_saved")||0); },
-  get calls(){ return parseInt(sessionStorage.getItem("ad_tok_calls")||0); },
-  add(s){ sessionStorage.setItem("ad_tok_saved", this.saved+s); sessionStorage.setItem("ad_tok_calls", this.calls+1); window.dispatchEvent(new CustomEvent("tok",{detail:{saved:s}})); },
-  reset(){ sessionStorage.removeItem("ad_tok_saved"); sessionStorage.removeItem("ad_tok_calls"); },
+  get saved(){ return parseInt(sessionStorage.getItem("fs_tok_saved")||0); },
+  get calls(){ return parseInt(sessionStorage.getItem("fs_tok_calls")||0); },
+  add(s){ sessionStorage.setItem("fs_tok_saved", this.saved+s); sessionStorage.setItem("fs_tok_calls", this.calls+1); window.dispatchEvent(new CustomEvent("tok",{detail:{saved:s}})); },
+  reset(){ sessionStorage.removeItem("fs_tok_saved"); sessionStorage.removeItem("fs_tok_calls"); },
 };
 
 function getOptimizedSys(lc, role){
@@ -328,7 +513,7 @@ function ApiKeySetup({onDone}){
       <div style=${{width:"100%",maxWidth:420}}>
         <div style=${{textAlign:"center",marginBottom:28}}>
           <div style=${{fontSize:52,marginBottom:10}}>🌾</div>
-          <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:24}}>AnnaDaata AI</div>
+          <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:24}}>FarmSeva AI</div>
           <div style=${{color:"#f5a623",fontSize:11,letterSpacing:2,marginTop:3}}>అన్నదాత — FREE FARM ADVISOR</div>
         </div>
 
@@ -727,6 +912,71 @@ Spray in early morning (6–9 AM) or late evening. Avoid spraying before rain. A
 }
 
 // ── SCHEMES ────────────────────────────────────────────────────────────
+
+// ── STATE PICKER (bottom-sheet, works on all iOS/Android) ─────────────
+function StatePicker({states, selected, onSelect, onClose, t, L}){
+  const [search, setSearch] = useState("");
+  const filtered = states.filter(s => s.toLowerCase().includes(search.toLowerCase()));
+  return html`
+    <div onClick=${onClose} style=${{
+      position:"fixed",inset:0,background:"rgba(0,0,0,.85)",zIndex:300,
+      display:"flex",flexDirection:"column",justifyContent:"flex-end"
+    }}>
+      <div onClick=${e=>e.stopPropagation()} style=${{
+        background:"#14100a",borderRadius:"20px 20px 0 0",
+        maxHeight:"75vh",display:"flex",flexDirection:"column",
+        overflow:"hidden"
+      }}>
+        <!-- Handle bar -->
+        <div style=${{display:"flex",justifyContent:"center",padding:"10px 0 0"}}>
+          <div style=${{width:36,height:4,borderRadius:2,background:"#3d2b0f"}}/>
+        </div>
+        <!-- Header -->
+        <div style=${{padding:"10px 16px 8px",display:"flex",alignItems:"center",gap:10,flexShrink:0}}>
+          <div style=${{flex:1,color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:16}}>
+            🗺️ ${t.selSt||"Select your State"}
+          </div>
+          <button onClick=${onClose} style=${{background:"#2d1f0a",border:"none",color:"#9e8a70",borderRadius:20,padding:"5px 12px",fontSize:13,cursor:"pointer"}}>✕</button>
+        </div>
+        <!-- Search box -->
+        <div style=${{padding:"0 14px 8px",flexShrink:0}}>
+          <input type="text" value=${search} onInput=${e=>setSearch(e.target.value)}
+            placeholder="Search state..."
+            style=${{width:"100%",background:"#0f0a04",border:"1px solid #3d2b0f",borderRadius:10,
+              color:"#f5e6c8",padding:"9px 13px",fontSize:14,outline:"none",
+              fontFamily:"'Nunito Sans',sans-serif"}}/>
+        </div>
+        <!-- State list -->
+        <div style=${{overflowY:"auto",padding:"0 14px 24px",flex:1}}>
+          <!-- Clear selection option -->
+          ${selected && html`
+            <button onClick=${()=>{onSelect("");onClose();}}
+              style=${{width:"100%",background:"#2d1f0a",border:"1px solid #3d2b0f",borderRadius:10,
+                color:"#9e8a70",padding:"11px 14px",marginBottom:8,
+                textAlign:"left",fontSize:13,cursor:"pointer",fontFamily:L.font}}>
+              ✕ Clear selection
+            </button>`}
+          ${filtered.length===0 && html`
+            <div style=${{color:"#5a4a35",fontSize:13,textAlign:"center",padding:"20px 0"}}>No states found</div>`}
+          ${filtered.map(s=>html`
+            <button key=${s} onClick=${()=>{onSelect(s);onClose();}}
+              style=${{
+                width:"100%",background:selected===s?"#2a1a2e":"#1a1208",
+                border:`1px solid ${selected===s?"#ab47bc55":"#2d1f0a"}`,
+                borderRadius:10,color:selected===s?"#ce93d8":"#f5e6c8",
+                padding:"12px 14px",marginBottom:6,
+                textAlign:"left",fontSize:14,cursor:"pointer",
+                fontFamily:"'Nunito Sans',sans-serif",
+                display:"flex",alignItems:"center",justifyContent:"space-between"
+              }}>
+              <span>${s}</span>
+              ${selected===s && html`<span style=${{color:"#ab47bc",fontSize:16}}>✓</span>`}
+            </button>`)}
+        </div>
+      </div>
+    </div>`;
+}
+
 function SchemesScreen({lc,onBack,hasKey,openSetup}){
   const [tab,setTab]=useState("central");
   const [state,setState]=useState("");
@@ -735,6 +985,7 @@ function SchemesScreen({lc,onBack,hasKey,openSetup}){
   const [msgs,setMsgs]=useState([]);
   const [inp,setInp]=useState("");
   const [load,setLoad]=useState(false);
+  const [showPicker,setShowPicker]=useState(false);
   const cr=useRef();
   const t=T[lc]||T.en;const L=GL(lc);const C="#ab47bc";
 
@@ -825,33 +1076,56 @@ function SchemesScreen({lc,onBack,hasKey,openSetup}){
             style=${{background:C,border:"none",borderRadius:10,color:"#fff",padding:"0 13px",fontSize:18,cursor:"pointer"}}>→</button>
         </div>`
       :html`
+        <!-- StatePicker overlay -->
+        ${showPicker&&html`<${StatePicker}
+          states=${ALL_STATES}
+          selected=${state}
+          onSelect=${s=>{setState(s);setTab("state");setExp(null);}}
+          onClose=${()=>setShowPicker(false)}
+          t=${t} L=${L}
+        />`}
         <div style=${{padding:"11px 13px 0",flexShrink:0}}>
-          <select value=${state} onChange=${e=>{setState(e.target.value);setTab("state");setExp(null);}}
-            style=${{width:"100%",background:"#1a1208",border:"1px solid #3d2b0f",borderRadius:9,color:"#f5e6c8",padding:"9px 13px",fontSize:13,outline:"none"}}>
-            <option value="">${t.selSt||"🗺️ Select your State"}</option>
-            ${ALL_STATES.map(s=>html`<option key=${s} value=${s}>${s}</option>`)}
-          </select>
+          <button onClick=${()=>setShowPicker(true)}
+            style=${{
+              width:"100%",background:"#1a1208",border:"1px solid #3d2b0f",
+              borderRadius:9,color:state?"#f5e6c8":"#7a6a55",
+              padding:"11px 14px",fontSize:13,cursor:"pointer",
+              display:"flex",alignItems:"center",justifyContent:"space-between",
+              fontFamily:L.font,textAlign:"left"
+            }}>
+            <span>${state || (t.selSt||"🗺️ Select your State")}</span>
+            <span style=${{color:"#ab47bc",fontSize:14}}>▼</span>
+          </button>
         </div>
         <div style=${{display:"flex",margin:"9px 13px 0",background:"#1a1208",borderRadius:20,overflow:"hidden",flexShrink:0}}>
           ${["central","state"].map(tb=>html`
             <button key=${tb} onClick=${()=>setTab(tb)}
               style=${{flex:1,padding:"7px 0",border:"none",cursor:"pointer",fontSize:11,fontWeight:700,background:tab===tb?C:"transparent",color:tab===tb?"#0a0a0a":C}}>
-              ${tb==="central"?(t.cTab||"🇮🇳 Central"):`${t.sTab||"🏛️ State"}${state?` (${(STATES[state]||[]).length})`:""}`}
+              ${tb==="central"?(t.cTab||"🇮🇳 Central"):state?`🏛️ ${state} (${(STATES[state]||[]).length})`:t.sTab||"🏛️ State Schemes"}
             </button>`)}
         </div>
         <div style=${{flex:1,overflowY:"auto",padding:"11px 13px 20px"}}>
           ${tab==="central"&&CENTRAL.map(s=>html`<${Card} key=${s.id} s=${s} color=${s.color}/>`)}
           ${tab==="state"&&!state&&html`
-            <div style=${{textAlign:"center",padding:"36px 0",color:"#7a6a55"}}>
-              <div style=${{fontSize:36,marginBottom:10}}>🗺️</div>
-              <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontSize:14,marginBottom:6}}>${t.selSt}</div>
-              <div style=${{fontSize:11,lineHeight:1.8}}>${ALL_STATES.join(" · ")}</div>
+            <div style=${{textAlign:"center",padding:"28px 16px",color:"#7a6a55"}}>
+              <div style=${{fontSize:40,marginBottom:10}}>🗺️</div>
+              <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontSize:15,marginBottom:6}}>${t.selSt||"Select your State"}</div>
+              <div style=${{color:"#5a4a35",fontSize:11,lineHeight:1.7,marginBottom:18}}>${ALL_STATES.join(" · ")}</div>
+              <button onClick=${()=>setShowPicker(true)}
+                style=${{background:"linear-gradient(135deg,#4a0e6b,#ab47bc)",border:"none",
+                  borderRadius:12,padding:"12px 28px",color:"#fff",fontSize:14,
+                  fontWeight:700,cursor:"pointer",boxShadow:"0 4px 16px rgba(171,71,188,.3)"}}>
+                🗺️ ${t.selSt||"Tap to Select State"} →
+              </button>
             </div>`}
           ${tab==="state"&&state&&(STATES[state]||[]).map(s=>html`<${Card} key=${s.name} s=${s} color=${C}/>`)}
           ${tab==="state"&&state&&!(STATES[state]?.length)&&html`
-            <div style=${{textAlign:"center",padding:"28px 0"}}>
+            <div style=${{textAlign:"center",padding:"28px 16px"}}>
+              <div style=${{fontSize:32,marginBottom:8}}>📋</div>
+              <div style=${{color:"#f5e6c8",fontSize:13,marginBottom:4,fontFamily:"'Bitter',serif"}}>${state}</div>
+              <div style=${{color:"#5a4a35",fontSize:12,marginBottom:14,lineHeight:1.5}}>State-specific scheme data not yet loaded.<br/>Ask our AI for the latest schemes.</div>
               <button onClick=${()=>setAiOpen(true)}
-                style=${{background:`${C}22`,border:`1px solid ${C}44`,color:C,borderRadius:20,padding:"9px 18px",fontSize:12,cursor:"pointer"}}>${t.askAI} for ${state} schemes</button>
+                style=${{background:`${C}22`,border:`1px solid ${C}44`,color:C,borderRadius:20,padding:"10px 20px",fontSize:13,fontWeight:700,cursor:"pointer"}}>${t.askAI||"🤖 Ask AI"} for ${state} →</button>
             </div>`}
         </div>`}
     </div>`;
@@ -982,7 +1256,7 @@ function App(){
         <div style=${{display:"flex",alignItems:"center",gap:11,marginBottom:15}}>
           <div style=${{width:48,height:48,borderRadius:13,background:"linear-gradient(135deg,#1e3a1a,#2d4a0a)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:24,flexShrink:0}}>🌾</div>
           <div style=${{flex:1}}>
-            <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:23,letterSpacing:"-.5px"}}>AnnaDaata AI</div>
+            <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:23,letterSpacing:"-.5px"}}>FarmSeva AI</div>
             <div style=${{color:"#4caf50",fontSize:10,letterSpacing:2,fontWeight:700,fontFamily:"'Nunito Sans',sans-serif"}}>${t.tag}</div>
           </div>
           <div style=${{display:"flex",gap:6}}>
@@ -1003,7 +1277,7 @@ function App(){
           </div>
         </div>
         <div style=${{display:"grid",gridTemplateColumns:"repeat(4,1fr)",borderRadius:9,overflow:"hidden",border:"1px solid #2d1f0a"}}>
-          ${[["80+","Crops"],["13+","Schemes"],["₹0","Cost"],["24/7","AI"]].map(([v,l],i)=>html`
+          ${[["80+","Crops"],["16","States"],["₹0","Cost"],["📵","Offline"]].map(([v,l],i)=>html`
             <div key=${i} style=${{background:"#1a1208",padding:"8px 2px",textAlign:"center",borderRight:"1px solid #2d1f0a"}}>
               <div style=${{color:"#f5a623",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:17}}>${v}</div>
               <div style=${{color:"#5a4a35",fontSize:9,marginTop:1}}>${l}</div>
@@ -1070,7 +1344,7 @@ function genIcon(sz){
   x.font=`${sz*.44}px serif`;x.textAlign="center";x.textBaseline="middle";
   x.fillText("🌾",sz/2,sz/2+sz*.02);
   x.fillStyle="#f5a623";x.font=`bold ${sz*.095}px 'Nunito Sans',sans-serif`;
-  x.fillText("AnnaDaata",sz/2,sz*.88);
+  x.fillText("FarmSeva",sz/2,sz*.88);
   return c.toDataURL("image/png");
 }
 
@@ -1080,7 +1354,7 @@ try{document.getElementById("ai").href=ic192;}catch(e){}
 
 if(!inIframe){
   try{
-    const mf={name:"AnnaDaata AI — Free Farm Advisor",short_name:"AnnaDaata",
+    const mf={name:"FarmSeva AI — Free Farm Advisor",short_name:"FarmSeva",
       description:"Free AI-powered farm advisor for Indian farmers in 11 languages",
       start_url:"./",display:"standalone",background_color:"#0f0a04",theme_color:"#f5a623",
       orientation:"portrait-primary",categories:["agriculture","productivity"],
@@ -1096,7 +1370,7 @@ const canSW=!inIframe&&"serviceWorker" in navigator
 
 if(canSW){
   try{
-    const SW=`const CV="annadata-v1";
+    const SW=`const CV="farmseva-v1";
 const PRE=["./",
   "https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js",
   "https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js",
@@ -1108,11 +1382,11 @@ self.addEventListener("fetch",e=>{
   e.respondWith(caches.match(e.request).then(hit=>{
     if(hit)return hit;
     return fetch(e.request).then(r=>{if(r.ok&&r.type!=="opaque"){const cl=r.clone();caches.open(CV).then(c=>c.put(e.request,cl));}return r;})
-      .catch(()=>hit||new Response('<html><body style="background:#0f0a04;color:#f5a623;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:12px;text-align:center"><div style="font-size:52px">🌾</div><div style="font-size:20px;font-weight:700">AnnaDaata AI</div><div style="color:#7a6a55;font-size:13px;max-width:280px">Offline — AI features need internet. UI + scheme info works offline.</div></body></html>',{headers:{"Content-Type":"text/html"}}));
+      .catch(()=>hit||new Response('<html><body style="background:#0f0a04;color:#f5a623;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:12px;text-align:center"><div style="font-size:52px">🌾</div><div style="font-size:20px;font-weight:700">FarmSeva AI</div><div style="color:#7a6a55;font-size:13px;max-width:280px">Offline — AI features need internet. UI + scheme info works offline.</div></body></html>',{headers:{"Content-Type":"text/html"}}));
   }));
 });`;
     navigator.serviceWorker.register(URL.createObjectURL(new Blob([SW],{type:"application/javascript"})))
-      .then(()=>console.info("✅ AnnaDaata SW v1 registered"))
+      .then(()=>console.info("✅ FarmSeva SW v1 registered"))
       .catch(e=>console.info("SW skip:",e.message));
   }catch(e){}
 }
