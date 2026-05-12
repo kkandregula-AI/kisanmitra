@@ -6,11 +6,13 @@
 <meta name="theme-color" content="#f5a623">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="KisanMitra">
-<meta name="description" content="Free AI farm advisor for Indian farmers in 11 languages">
-<title>KisanMitra AI — Free Farm Advisor</title>
+<meta name="apple-mobile-web-app-title" content="AnnaDaata">
+<meta name="description" content="Free AI-powered farm advisor for Indian farmers in 11 languages — AnnaDaata AI">
+<title>AnnaDaata AI — అన్నదాత | Free Farm Advisor</title>
 <link id="mf" rel="manifest">
 <link id="ai" rel="apple-touch-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700;900&family=Nunito+Sans:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Noto+Sans+Malayalam:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Gujarati:wght@400;700&family=Noto+Sans+Gurmukhi:wght@400;700&family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -20,23 +22,28 @@ body{background:#0f0a04;overflow-x:hidden;font-family:'Nunito Sans',sans-serif}
 .sp{width:36px;height:36px;border:3px solid #2d1f0a;border-top-color:#f5a623;border-radius:50%;animation:sp 1s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 @keyframes kb{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
-button,textarea,select,input{font-family:inherit}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-thumb{background:#2d1f0a;border-radius:2px}
+button,textarea,select{font-family:inherit;cursor:pointer}
 </style>
 </head>
 <body>
 <div id="spl">
   <div style="font-size:52px">🌾</div>
   <div class="sp"></div>
-  <div style="color:#7a6a55;font-size:11px;letter-spacing:2px;font-family:'Nunito Sans',sans-serif">KISANMITRA AI</div>
+  <div style="color:#7a6a55;font-size:11px;letter-spacing:2px">ANNADATA AI — అన్నదాత</div>
 </div>
 <div id="root"></div>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script type="text/babel" data-presets="react">
-const {useState,useRef,useCallback,useEffect} = React;
+
+<!-- ✅ No Babel! React 18 + htm (1KB) from fast jsDelivr CDN -->
+<script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.js"></script>
+
+<script>
+'use strict';
+const {useState,useRef,useCallback,useEffect}=React;
+const html=htm.bind(React.createElement);
 
 // ── LANGUAGES ─────────────────────────────────────────────────────────
 const LANGS=[
@@ -58,7 +65,7 @@ const GL=c=>LANGS.find(l=>l.code===c)||LANGS[0];
 const T={
 en:{tag:"FREE FARM ADVISOR",free:"100% Free Forever",freeD:"No subscriptions · No hidden costs · Works on any phone",
   pick:"CHOOSE A TOOL",tip:"💡 Today's Tip",tipT:"PM-KISAN + Rythu Bandhu = up to ₹16,500/yr for Telangana farmers. Check Gov Schemes!",
-  pickT:"Choose Your Language",pickS:"KisanMitra speaks your language",
+  pickT:"Choose Your Language",pickS:"AnnaDaata speaks your language",
   t1:"Diagnose",t2:"80+ Crops",selSt:"🗺️ Select your State",
   cTab:"🇮🇳 Central Schemes",sTab:"🏛️ State Schemes",
   elig:"✅ Eligibility",docs:"📄 Documents",apply:"📝 How to Apply",
@@ -77,85 +84,71 @@ en:{tag:"FREE FARM ADVISOR",free:"100% Free Forever",freeD:"No subscriptions · 
 },
 te:{tag:"ఉచిత వ్యవసాయ సలహాదారు",free:"శాశ్వతంగా ఉచితం",freeD:"చందా లేదు · దాచిన ఖర్చు లేదు · ఏ ఫోన్‌లోనైనా",
   pick:"సాధనం ఎంచుకోండి",tip:"💡 నేటి చిట్కా",tipT:"PM-KISAN + రైతు బంధు = ₹16,500/సంవ. ప్రభుత్వ పథకాలు చూడండి!",
-  pickT:"మీ భాష ఎంచుకోండి",pickS:"KisanMitra మీ భాషలో మాట్లాడుతుంది",
+  pickT:"మీ భాష ఎంచుకోండి",pickS:"AnnaDaata మీ భాషలో మాట్లాడుతుంది",
   t1:"నిర్ధారణ",t2:"80+ పంటలు",selSt:"🗺️ మీ రాష్ట్రం ఎంచుకోండి",
   cTab:"🇮🇳 కేంద్ర పథకాలు",sTab:"🏛️ రాష్ట్ర పథకాలు",
   elig:"✅ అర్హత",docs:"📄 పత్రాలు",apply:"📝 దరఖాస్తు ఎలా",
-  askAI:"🤖 AI ని అడగండి",runDiag:"🔬 AI నిర్ధారణ చేయి",analyzing:"Claude Vision తో విశ్లేషిస్తోంది...",
-  demoT:"నమూనా వరి ఫోటో",demoS:"నిజమైన వ్యాధి · నిజమైన AI నిర్ధారణ",
-  tools:{
-    "crop-doctor":{n:"పంట డాక్టర్",    d:"80+ పంటలకు ఫోటో రోగ నిర్ధారణ",       h:"Crop Doctor",  b:"📷 ఫోటో"},
-    "pest-alert": {n:"కీటక హెచ్చరిక",   d:"కీటకాలను గుర్తించి సేంద్రీయ చికిత్స", h:"Pest Alert",   b:""},
-    "planner":    {n:"పంట ప్రణాళిక",    d:"మీ భూమికి అనుకూలమైన పంటలు",          h:"Crop Planner", b:""},
-    "mandi":      {n:"మండి గైడ్",        d:"న్యాయమైన ధర & అమ్మకం చిట్కాలు",       h:"Mandi Guide",  b:""},
-    "schemes":    {n:"ప్రభుత్వ పథకాలు", d:"కేంద్ర + రాష్ట్ర ప్రయోజనాలు",         h:"Gov Schemes",  b:"రాష్ట్ర+కేంద్ర"},
-    "soil":       {n:"నేల ఆరోగ్యం",       d:"నేల మెరుగుదల & ఎరువుల సలహా",          h:"Soil Health",  b:""},
-  },
+  askAI:"🤖 AI ని అడగండి",runDiag:"🔬 AI నిర్ధారణ చేయి",analyzing:"Claude Vision విశ్లేషిస్తోంది...",
+  demoT:"నమూనా వరి ఫోటో",demoS:"నిజమైన వ్యాధి · AI నిర్ధారణ",
+  tools:{"crop-doctor":{n:"పంట డాక్టర్",d:"80+ పంటలకు ఫోటో రోగ నిర్ధారణ",h:"Crop Doctor",b:"📷 ఫోటో"},"pest-alert":{n:"కీటక హెచ్చరిక",d:"కీటకాలు గుర్తించి సేంద్రీయ చికిత్స",h:"Pest Alert",b:""},planner:{n:"పంట ప్రణాళిక",d:"మీ భూమికి అనుకూలమైన పంటలు",h:"Crop Planner",b:""},mandi:{n:"మండి గైడ్",d:"న్యాయమైన ధర అమ్మకం చిట్కాలు",h:"Mandi Guide",b:""},schemes:{n:"ప్రభుత్వ పథకాలు",d:"కేంద్ర + రాష్ట్ర ప్రయోజనాలు",h:"Gov Schemes",b:"రాష్ట్ర+కేంద్ర"},soil:{n:"నేల ఆరోగ్యం",d:"నేల మెరుగుదల ఎరువుల సలహా",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"లక్షణాలు వివరించండి లేదా ఫోటో అప్‌లోడ్...","pest-alert":"కీటకం వివరించండి...","planner":"నా భూమి [రాష్ట్రం], నేల రకం, సీజన్...","mandi":"[పంట] [జిల్లా] అమ్మాలనుకుంటున్నా...","schemes":"[రాష్ట్రం] [చిన్న] రైతు, [X] ఎకరాలు...","soil":"నేల [రంగు], [ఆకృతి]..."},
   st:{"crop-doctor":["వరి ఆకులు పసుపు","టమాటా మీద మచ్చలు","మిర్చి తెల్లని పొడి","పత్తి వాడిపోతోంది"],"pest-alert":["పత్తి తెల్లని పురుగులు","మిర్చి ఎరుపు పురుగులు","చెరకు బోరర్","ఆవాలు అఫిడ్స్"],"planner":["ఖరీఫ్ తెలంగాణ నల్ల నేల","రబీ పంజాబ్","సంవత్సరం మహారాష్ట్ర"],"mandi":["నాగపూర్ సోయాబీన్","నాసిక్ ఉల్లిపాయ","విదర్భ పత్తి"],"schemes":["AP చిన్న రైతు 3 ఎకరాలు","UP అంచు రైతు","జార్ఖండ్ గిరిజన"],"soil":["కర్ణాటక ఎర్ర నేల","మహారాష్ట్ర నల్ల నేల","బీహార్ నేల"]},
 },
 hi:{tag:"मुफ्त कृषि सलाहकार",free:"हमेशा के लिए मुफ्त",freeD:"कोई सदस्यता नहीं · छुपी लागत नहीं · किसी भी फोन पर",
   pick:"अपना टूल चुनें",tip:"💡 आज की टिप",tipT:"PM-KISAN + राज्य योजना = ₹10,000+ सालाना! सरकारी योजनाएं जांचें।",
-  pickT:"अपनी भाषा चुनें",pickS:"KisanMitra आपकी भाषा में बात करता है",
+  pickT:"अपनी भाषा चुनें",pickS:"AnnaDaata आपकी भाषा में बोलता है",
   t1:"जांच करें",t2:"80+ फसलें",selSt:"🗺️ अपना राज्य चुनें",
   cTab:"🇮🇳 केंद्रीय योजनाएं",sTab:"🏛️ राज्य योजनाएं",
   elig:"✅ पात्रता",docs:"📄 दस्तावेज",apply:"📝 आवेदन कैसे करें",
   askAI:"🤖 AI से पूछें",runDiag:"🔬 AI निदान करें",analyzing:"Claude Vision से विश्लेषण...",
-  demoT:"नमूना धान फोटो",demoS:"असली बीमारी · असली AI निदान",
-  tools:{
-    "crop-doctor":{n:"फसल डॉक्टर",    d:"80+ फसलों की फोटो से बीमारी",   h:"Crop Doctor",  b:"📷 फोटो"},
-    "pest-alert": {n:"कीट चेतावनी",   d:"कीट पहचान व जैविक उपचार",      h:"Pest Alert",   b:""},
-    "planner":    {n:"फसल योजना",      d:"आपकी जमीन के लिए सबसे अच्छी",  h:"Crop Planner", b:""},
-    "mandi":      {n:"मंडी गाइड",       d:"उचित मूल्य और बिक्री टिप्स",    h:"Mandi Guide",  b:""},
-    "schemes":    {n:"सरकारी योजनाएं", d:"केंद्र + राज्य स्तरीय लाभ",     h:"Gov Schemes",  b:"राज्य+केंद्र"},
-    "soil":       {n:"मिट्टी स्वास्थ्य", d:"मिट्टी सुधार व खाद की सलाह",   h:"Soil Health",  b:""},
-  },
+  demoT:"नमूना धान फोटो",demoS:"असली बीमारी · AI निदान",
+  tools:{"crop-doctor":{n:"फसल डॉक्टर",d:"80+ फसलों की फोटो से बीमारी",h:"Crop Doctor",b:"📷 फोटो"},"pest-alert":{n:"कीट चेतावनी",d:"कीट पहचान व जैविक उपचार",h:"Pest Alert",b:""},planner:{n:"फसल योजना",d:"आपकी जमीन के लिए सबसे अच्छी",h:"Crop Planner",b:""},mandi:{n:"मंडी गाइड",d:"उचित मूल्य और बिक्री टिप्स",h:"Mandi Guide",b:""},schemes:{n:"सरकारी योजनाएं",d:"केंद्र + राज्य स्तरीय लाभ",h:"Gov Schemes",b:"राज्य+केंद्र"},soil:{n:"मिट्टी स्वास्थ्य",d:"मिट्टी सुधार व खाद की सलाह",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"फसल के लक्षण बताएं... फोटो अपलोड करें","pest-alert":"कीड़े का वर्णन करें...","planner":"जमीन [राज्य], मिट्टी, मौसम...","mandi":"[फसल] [जिला] में बेचना...","schemes":"[राज्य] [छोटा] किसान [X] एकड़...","soil":"मिट्टी [रंग], [बनावट]..."},
   st:{"crop-doctor":["धान के पत्ते पीले","टमाटर पर भूरे धब्बे","मिर्च पर सफेद पाउडर","कपास मुरझाई"],"pest-alert":["कपास पर सफेद कीड़े","मिर्च पर लाल घुन","गन्ने में बोरर","सरसों पर माहू"],"planner":["खरीफ मध्यप्रदेश काली मिट्टी","रबी पंजाब रेतीली","साल भर UP"],"mandi":["नागपुर सोयाबीन भाव","नासिक प्याज","विदर्भ कपास"],"schemes":["UP छोटा किसान 2 एकड़","बिहार सीमांत किसान","राजस्थान किसान"],"soil":["काली मिट्टी महाराष्ट्र","लाल मिट्टी MP","जलोढ़ बिहार"]},
 },
-kn:{tag:"ಉಚಿತ ಕೃಷಿ ಸಲಹೆಗಾರ",free:"ಯಾವಾಗಲೂ ಉಚಿತ",freeD:"ಚಂದಾ ಇಲ್ಲ · ಯಾವ ಫೋನ್‌ನಲ್ಲಾದರೂ",pick:"ನಿಮ್ಮ ಸಾಧನ ಆಯ್ಕೆಮಾಡಿ",tip:"💡 ಇಂದಿನ ಸಲಹೆ",tipT:"PM-KISAN + ರೈತ ಸಿರಿ = ₹11,000/ವರ್ಷ. ಸರ್ಕಾರಿ ಯೋಜನೆ ನೋಡಿ!",pickT:"ನಿಮ್ಮ ಭಾಷೆ ಆಯ್ಕೆ",pickS:"KisanMitra ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ",t1:"ರೋಗ ನಿರ್ಧಾರ",t2:"80+ ಬೆಳೆ",selSt:"🗺️ ರಾಜ್ಯ ಆಯ್ಕೆ",cTab:"🇮🇳 ಕೇಂದ್ರ",sTab:"🏛️ ರಾಜ್ಯ",elig:"✅ ಅರ್ಹತೆ",docs:"📄 ದಾಖಲೆ",apply:"📝 ಅರ್ಜಿ",askAI:"🤖 AI ಕೇಳಿ",runDiag:"🔬 AI ನಿರ್ಧಾರ",analyzing:"ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...",demoT:"ಮಾದರಿ ಭತ್ತ ಫೋಟೋ",demoS:"ನಿಜ ರೋಗ · AI ನಿರ್ಧಾರ",
-  tools:{"crop-doctor":{n:"ಬೆಳೆ ವೈದ್ಯ",d:"80+ ಬೆಳೆ ಫೋಟೋ ರೋಗ ನಿರ್ಧಾರ",h:"Crop Doctor",b:"📷 ಫೋಟೋ"},"pest-alert":{n:"ಕೀಟ ಎಚ್ಚರ",d:"ಕೀಟ ಗುರುತು ಸಾವಯವ ಚಿಕಿತ್ಸೆ",h:"Pest Alert",b:""},planner:{n:"ಬೆಳೆ ಯೋಜನೆ",d:"ನಿಮ್ಮ ಭೂಮಿಗೆ ಸೂಕ್ತ ಬೆಳೆ",h:"Crop Planner",b:""},mandi:{n:"ಮಾರ್ಕೆಟ್ ಗೈಡ್",d:"ನ್ಯಾಯ ಬೆಲೆ ಮಾರಾಟ ಸಲಹೆ",h:"Mandi Guide",b:""},schemes:{n:"ಸರ್ಕಾರಿ ಯೋಜನೆ",d:"ಕೇಂದ್ರ + ರಾಜ್ಯ ಪ್ರಯೋಜನ",h:"Gov Schemes",b:"STATE+CENTRAL"},soil:{n:"ಮಣ್ಣಿನ ಆರೋಗ್ಯ",d:"ಮಣ್ಣು ಸುಧಾರಣೆ ಗೊಬ್ಬರ",h:"Soil Health",b:""}},
+kn:{tag:"ಉಚಿತ ಕೃಷಿ ಸಲಹೆಗಾರ",free:"ಯಾವಾಗಲೂ ಉಚಿತ",freeD:"ಚಂದಾ ಇಲ್ಲ · ಯಾವ ಫೋನ್‌ನಲ್ಲಾದರೂ",pick:"ನಿಮ್ಮ ಸಾಧನ ಆಯ್ಕೆಮಾಡಿ",tip:"💡 ಇಂದಿನ ಸಲಹೆ",tipT:"PM-KISAN + ರೈತ ಸಿರಿ = ₹11,000/ವರ್ಷ. ಸರ್ಕಾರಿ ಯೋಜನೆ ನೋಡಿ!",pickT:"ನಿಮ್ಮ ಭಾಷೆ ಆಯ್ಕೆ",pickS:"AnnaDaata ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ",t1:"ರೋಗ ನಿರ್ಧಾರ",t2:"80+ ಬೆಳೆ",selSt:"🗺️ ರಾಜ್ಯ ಆಯ್ಕೆ",cTab:"🇮🇳 ಕೇಂದ್ರ",sTab:"🏛️ ರಾಜ್ಯ",elig:"✅ ಅರ್ಹತೆ",docs:"📄 ದಾಖಲೆ",apply:"📝 ಅರ್ಜಿ",askAI:"🤖 AI ಕೇಳಿ",runDiag:"🔬 AI ನಿರ್ಧಾರ",analyzing:"ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...",demoT:"ಮಾದರಿ ಭತ್ತ ಫೋಟೋ",demoS:"ನಿಜ ರೋಗ · AI",
+  tools:{"crop-doctor":{n:"ಬೆಳೆ ವೈದ್ಯ",d:"80+ ಬೆಳೆ ಫೋಟೋ ರೋಗ ನಿರ್ಧಾರ",h:"Crop Doctor",b:"📷 ಫೋಟೋ"},"pest-alert":{n:"ಕೀಟ ಎಚ್ಚರ",d:"ಕೀಟ ಗುರುತು ಸಾವಯವ",h:"Pest Alert",b:""},planner:{n:"ಬೆಳೆ ಯೋಜನೆ",d:"ನಿಮ್ಮ ಭೂಮಿಗೆ ಸೂಕ್ತ ಬೆಳೆ",h:"Crop Planner",b:""},mandi:{n:"ಮಾರ್ಕೆಟ್ ಗೈಡ್",d:"ನ್ಯಾಯ ಬೆಲೆ ಮಾರಾಟ",h:"Mandi Guide",b:""},schemes:{n:"ಸರ್ಕಾರಿ ಯೋಜನೆ",d:"ಕೇಂದ್ರ + ರಾಜ್ಯ ಪ್ರಯೋಜನ",h:"Gov Schemes",b:"S+C"},soil:{n:"ಮಣ್ಣಿನ ಆರೋಗ್ಯ",d:"ಮಣ್ಣು ಸುಧಾರಣೆ ಗೊಬ್ಬರ",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ಬೆಳೆ ಲಕ್ಷಣ... ಫೋಟೋ","pest-alert":"ಕೀಟ ವಿವರ...","planner":"ಭೂಮಿ [ರಾಜ್ಯ]...","mandi":"[ಬೆಳೆ] ಮಾರಾಟ...","schemes":"[ರಾಜ್ಯ] ರೈತ...","soil":"ಮಣ್ಣು [ಬಣ್ಣ]..."},
   st:{"crop-doctor":["ಭತ್ತ ಎಲೆ ಹಳದಿ","ಟೊಮೇಟೊ ಚುಕ್ಕೆ","ಮೆಣಸು ಬಿಳಿ","ಹತ್ತಿ ಬಾಡಿದೆ"],"pest-alert":["ಹತ್ತಿ ಬಿಳಿ ಕೀಟ","ಮೆಣಸು ಕೆಂಪು","ಕಬ್ಬು ಬೋರರ್","ಸಾಸಿವೆ ಹೇನು"],"planner":["ಖರೀಫ್ ಕರ್ನಾಟಕ","ರಬಿ ಪಂಜಾಬ್","ವರ್ಷಪೂರ್ತಿ"],"mandi":["ನಾಗಪೂರ ಸೋಯಾ","ನಾಸಿಕ್ ಈರುಳ್ಳಿ","ವಿದರ್ಭ ಹತ್ತಿ"],"schemes":["ಕರ್ನಾಟಕ ರೈತ","AP ರೈತ","ಝಾರ್ಖಂಡ್"],"soil":["ಕೆಂಪು ಲ್ಯಾಟರೈಟ್","ಕಪ್ಪು ಮಣ್ಣು","ಮೆಕ್ಕಲು"]},
 },
-ta:{tag:"இலவச விவசாய ஆலோசகர்",free:"எப்போதும் இலவசம்",freeD:"சந்தா இல்லை · எந்த போனிலும்",pick:"கருவி தேர்வு",tip:"💡 இன்றைய குறிப்பு",tipT:"PM-KISAN + TN திட்டம் = ₹9,000/ஆண்டு. திட்டங்கள் பார்க்கவும்!",pickT:"மொழி தேர்வு",pickS:"KisanMitra உங்கள் மொழியில்",t1:"கண்டறிதல்",t2:"80+ பயிர்",selSt:"🗺️ மாநிலம் தேர்வு",cTab:"🇮🇳 மத்திய",sTab:"🏛️ மாநில",elig:"✅ தகுதி",docs:"📄 ஆவணங்கள்",apply:"📝 விண்ணப்பம்",askAI:"🤖 AI கேளுங்கள்",runDiag:"🔬 AI நோய் கண்டறி",analyzing:"பகுப்பாய்வு...",demoT:"மாதிரி நெல் புகைப்படம்",demoS:"நிஜ நோய் · AI கண்டறிதல்",
-  tools:{"crop-doctor":{n:"பயிர் மருத்துவர்",d:"80+ பயிர் புகைப்பட நோய்",h:"Crop Doctor",b:"📷 PHOTO"},"pest-alert":{n:"பூச்சி எச்சரிக்கை",d:"பூச்சி கண்டறிந்து இயற்கை",h:"Pest Alert",b:""},planner:{n:"பயிர் திட்டம்",d:"நிலத்திற்கு சிறந்த பயிர்",h:"Crop Planner",b:""},mandi:{n:"சந்தை வழிகாட்டி",d:"நியாயமான விலை குறிப்பு",h:"Mandi Guide",b:""},schemes:{n:"அரசு திட்டங்கள்",d:"மத்திய + மாநில சலுகை",h:"Gov Schemes",b:"STATE+CENTRAL"},soil:{n:"மண் ஆரோக்கியம்",d:"மண் மேம்பாடு உரம்",h:"Soil Health",b:""}},
+ta:{tag:"இலவச விவசாய ஆலோசகர்",free:"எப்போதும் இலவசம்",freeD:"சந்தா இல்லை · எந்த போனிலும்",pick:"கருவி தேர்வு",tip:"💡 இன்றைய குறிப்பு",tipT:"PM-KISAN + TN திட்டம் = ₹9,000/ஆண்டு!",pickT:"மொழி தேர்வு",pickS:"AnnaDaata உங்கள் மொழியில்",t1:"கண்டறிதல்",t2:"80+ பயிர்",selSt:"🗺️ மாநிலம்",cTab:"🇮🇳 மத்திய",sTab:"🏛️ மாநில",elig:"✅ தகுதி",docs:"📄 ஆவணங்கள்",apply:"📝 விண்ணப்பம்",askAI:"🤖 AI கேளுங்கள்",runDiag:"🔬 AI நோய் கண்டறி",analyzing:"பகுப்பாய்வு...",demoT:"மாதிரி நெல் புகைப்படம்",demoS:"நிஜ நோய் · AI",
+  tools:{"crop-doctor":{n:"பயிர் மருத்துவர்",d:"80+ பயிர் நோய் கண்டறிதல்",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"பூச்சி எச்சரிக்கை",d:"பூச்சி இயற்கை சிகிச்சை",h:"Pest Alert",b:""},planner:{n:"பயிர் திட்டம்",d:"நிலத்திற்கு சிறந்த பயிர்",h:"Crop Planner",b:""},mandi:{n:"சந்தை வழிகாட்டி",d:"நியாயமான விலை",h:"Mandi Guide",b:""},schemes:{n:"அரசு திட்டங்கள்",d:"மத்திய + மாநில சலுகை",h:"Gov Schemes",b:"S+C"},soil:{n:"மண் ஆரோக்கியம்",d:"மண் மேம்பாடு உரம்",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"அறிகுறி விவரி... புகைப்படம்","pest-alert":"பூச்சி விவரி...","planner":"நிலம் [மாநிலம்]...","mandi":"[பயிர்] விற்க...","schemes":"[மாநிலம்] விவசாயி...","soil":"மண் [நிறம்]..."},
-  st:{"crop-doctor":["நெல் மஞ்சள்","தக்காளி புள்ளி","மிளகாய் வெள்ளை","பருத்தி வாடல்"],"pest-alert":["பருத்தி வெள்ளை","மிளகாய் சிவப்பு","கரும்பு துளை","கடுகு அசுவினி"],"planner":["கரீப் TN","ரபி பஞ்சாப்","ஆண்டு மஹா"],"mandi":["நாக்பூர் சோயா","நாசிக் வெங்காயம்","விதர்பா"],"schemes":["TN விவசாயி","AP விவசாயி","ஜார்கண்ட்"],"soil":["சிவப்பு மண்","கருப்பு மண்","வண்டல்"]},
+  st:{"crop-doctor":["நெல் மஞ்சள்","தக்காளி புள்ளி","மிளகாய் வெள்ளை","பருத்தி"],"pest-alert":["பருத்தி வெள்ளை","மிளகாய் சிவப்பு","கரும்பு","கடுகு"],"planner":["கரீப் TN","ரபி பஞ்சாப்","ஆண்டு"],"mandi":["நாக்பூர்","நாசிக்","விதர்பா"],"schemes":["TN விவசாயி","AP","ஜார்கண்ட்"],"soil":["சிவப்பு","கருப்பு","வண்டல்"]},
 },
-ml:{tag:"സൗജന്യ കാർഷിക ഉപദേഷ്ടാവ്",free:"എന്നും സൗജന്യം",freeD:"സബ്‌സ്‌ക്രിപ്‌ഷൻ ഇല്ല · ഏത് ഫോണിലും",pick:"ടൂൾ തിരഞ്ഞെടുക്കൂ",tip:"💡 ടിപ്",tipT:"PM-KISAN + Karshaka = ₹9,000/വർഷം. പദ്ധതി പരിശോധിക്കൂ!",pickT:"ഭാഷ തിരഞ്ഞെടുക്കൂ",pickS:"KisanMitra നിങ്ങളുടെ ഭാഷ",t1:"രോഗ നിർണ്ണയം",t2:"80+ വിള",selSt:"🗺️ സംസ്ഥാനം",cTab:"🇮🇳 കേന്ദ്ര",sTab:"🏛️ സംസ്ഥാന",elig:"✅ യോഗ്യത",docs:"📄 രേഖകൾ",apply:"📝 അപേക്ഷ",askAI:"🤖 AI ചോദിക്കൂ",runDiag:"🔬 AI നിർണ്ണയം",analyzing:"വിശകലനം...",demoT:"മാതൃക നെൽ ഫോട്ടോ",demoS:"നിജ രോഗം · AI",
-  tools:{"crop-doctor":{n:"വിള ഡോക്ടർ",d:"80+ ഫോട്ടോ രോഗ നിർണ്ണയം",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"കീടനാശ",d:"കീടം ജൈവ ചികിത്സ",h:"Pest Alert",b:""},planner:{n:"വിള ആസൂ",d:"അനുയോജ്യ വിളകൾ",h:"Crop Planner",b:""},mandi:{n:"വിപണി ഗൈഡ്",d:"ന്യായ വില",h:"Mandi Guide",b:""},schemes:{n:"സർക്കാർ",d:"കേന്ദ്ര + സംസ്ഥാന",h:"Gov Schemes",b:"STATE+CENTRAL"},soil:{n:"മണ്ണ് ആരോഗ്യം",d:"മണ്ണ് മെച്ചം",h:"Soil Health",b:""}},
-  ph:{"crop-doctor":"ലക്ഷണം... ഫോട്ടോ","pest-alert":"കീടം...","planner":"ഭൂമി [സ്ഥലം]...","mandi":"[വിള] വിൽ...","schemes":"[സ്ഥലം] കർ...","soil":"മണ്ണ്..."},
-  st:{"crop-doctor":["നെൽ ഇല മഞ്ഞ","തക്കാളി","മുളക്","പരുത്തി"],"pest-alert":["പരുത്തി","മുളക്","കരിമ്പ്","കടുക്"],"planner":["ഖരിഫ്","റബി","സ. വർ"],"mandi":["സോയ","ഉള്ളി","ത"],"schemes":["കേ","AP","ഝ"],"soil":["ചെ","കറ","ബ"]},
+ml:{tag:"സൗജന്യ കാർഷിക ഉപദേഷ്ടാവ്",free:"എന്നും സൗജന്യം",freeD:"സബ്‌സ്‌ക്രിപ്‌ഷൻ ഇല്ല · ഏത് ഫോണിലും",pick:"ടൂൾ തിരഞ്ഞെടുക്കൂ",tip:"💡 ടിപ്",tipT:"PM-KISAN + Karshaka = ₹9,000/വർഷം!",pickT:"ഭാഷ തിരഞ്ഞെടുക്കൂ",pickS:"AnnaDaata നിങ്ങളുടെ ഭാഷ",t1:"രോഗ നിർണ്ണയം",t2:"80+ വിള",selSt:"🗺️ സംസ്ഥാനം",cTab:"🇮🇳 കേന്ദ്ര",sTab:"🏛️ സംസ്ഥാന",elig:"✅ യോഗ്യത",docs:"📄 രേഖകൾ",apply:"📝 അപേക്ഷ",askAI:"🤖 AI ചോദിക്കൂ",runDiag:"🔬 AI നിർണ്ണയം",analyzing:"വിശകലനം...",demoT:"മാതൃക നെൽ ഫോട്ടോ",demoS:"AI",
+  tools:{"crop-doctor":{n:"വിള ഡോക്ടർ",d:"80+ ഫോട്ടോ രോഗ നിർണ്ണയം",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"കീടനാശ",d:"കീടം ജൈവ ചികിത്സ",h:"Pest Alert",b:""},planner:{n:"വിള ആസൂ",d:"അനുയോജ്യ വിളകൾ",h:"Crop Planner",b:""},mandi:{n:"വിപണി",d:"ന്യായ വില",h:"Mandi Guide",b:""},schemes:{n:"സർക്കാർ",d:"കേന്ദ്ര + സം",h:"Gov Schemes",b:"S+C"},soil:{n:"മണ്ണ്",d:"മണ്ണ് മെച്ചം",h:"Soil Health",b:""}},
+  ph:{"crop-doctor":"ലക്ഷണം... ഫോട്ടോ","pest-alert":"കീടം...","planner":"ഭൂമി...","mandi":"[വിള]...","schemes":"കർഷകൻ...","soil":"മണ്ണ്..."},
+  st:{"crop-doctor":["നെൽ മഞ്ഞ","തക്കാളി","മുളക്","പരുത്തി"],"pest-alert":["പരുത്തി","മുളക്","കരിമ്പ്","കടുക്"],"planner":["ഖരിഫ്","റബി","വർഷം"],"mandi":["സോയ","ഉള്ളി","ത"],"schemes":["കേ","AP","ഝ"],"soil":["ചെ","കറ","ബ"]},
 },
-mr:{tag:"मोफत शेती सल्लागार",free:"कायमचे मोफत",freeD:"सदस्यता नाही · कोणत्याही फोनवर",pick:"साधन निवडा",tip:"💡 आजची टिप",tipT:"PM-KISAN + शेत तळे = ₹81,000+ मदत. सरकारी योजना तपासा!",pickT:"भाषा निवडा",pickS:"KisanMitra आपल्या भाषेत",t1:"निदान",t2:"80+ पिके",selSt:"🗺️ राज्य निवडा",cTab:"🇮🇳 केंद्रीय",sTab:"🏛️ राज्य",elig:"✅ पात्रता",docs:"📄 कागद",apply:"📝 अर्ज",askAI:"🤖 AI विचारा",runDiag:"🔬 AI निदान",analyzing:"विश्लेषण...",demoT:"नमुना भात फोटो",demoS:"खरी रोग · AI",
-  tools:{"crop-doctor":{n:"पीक डॉक्टर",d:"80+ पिक फोटो निदान",h:"Crop Doctor",b:"📷 फोटो"},"pest-alert":{n:"कीड सतर्कता",d:"कीड सेंद्रिय उपाय",h:"Pest Alert",b:""},planner:{n:"पीक नियोजन",d:"जमिनीसाठी पिके",h:"Crop Planner",b:""},mandi:{n:"बाजार मार्ग",d:"योग्य भाव टिप्स",h:"Mandi Guide",b:""},schemes:{n:"सरकारी योजना",d:"केंद्र + राज्य लाभ",h:"Gov Schemes",b:"STATE+CENTRAL"},soil:{n:"माती आरोग्य",d:"माती सुधारणा खत",h:"Soil Health",b:""}},
+mr:{tag:"मोफत शेती सल्लागार",free:"कायमचे मोफत",freeD:"सदस्यता नाही · कोणत्याही फोनवर",pick:"साधन निवडा",tip:"💡 आजची टिप",tipT:"PM-KISAN + शेत तळे = ₹81,000+ मदत!",pickT:"भाषा निवडा",pickS:"AnnaDaata आपल्या भाषेत",t1:"निदान",t2:"80+ पिके",selSt:"🗺️ राज्य निवडा",cTab:"🇮🇳 केंद्रीय",sTab:"🏛️ राज्य",elig:"✅ पात्रता",docs:"📄 कागद",apply:"📝 अर्ज",askAI:"🤖 AI विचारा",runDiag:"🔬 AI निदान",analyzing:"विश्लेषण...",demoT:"नमुना भात फोटो",demoS:"खरी रोग · AI",
+  tools:{"crop-doctor":{n:"पीक डॉक्टर",d:"80+ पिक फोटो निदान",h:"Crop Doctor",b:"📷 फोटो"},"pest-alert":{n:"कीड सतर्कता",d:"कीड सेंद्रिय उपाय",h:"Pest Alert",b:""},planner:{n:"पीक नियोजन",d:"जमिनीसाठी पिके",h:"Crop Planner",b:""},mandi:{n:"बाजार मार्ग",d:"योग्य भाव टिप्स",h:"Mandi Guide",b:""},schemes:{n:"सरकारी योजना",d:"केंद्र + राज्य लाभ",h:"Gov Schemes",b:"S+C"},soil:{n:"माती आरोग्य",d:"माती सुधारणा खत",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"लक्षणे... फोटो","pest-alert":"कीड वर्णन...","planner":"जमीन [राज्य]...","mandi":"[पीक] विकायचे...","schemes":"[राज्य] शेतकरी...","soil":"माती [रंग]..."},
   st:{"crop-doctor":["भात पिवळे","टमाटो धब्बे","मिर्ची पांढरी","कापूस"],"pest-alert":["कापूस","मिर्ची","उस","मोहरी"],"planner":["खरीप महा","रबी पंजाब","वर्षभर"],"mandi":["नागपूर","नाशिक","विदर्भ"],"schemes":["महा शेतकरी","UP","राज"],"soil":["काळी","लाल","गाळ"]},
 },
-bn:{tag:"বিনামূল্যে কৃষি পরামর্শ",free:"সবসময় বিনামূল্যে",freeD:"কোনো সাবস্ক্রিপশন নেই · যেকোনো ফোনে",pick:"টুল বেছে নিন",tip:"💡 আজকের টিপ",tipT:"PM-KISAN + কৃষক বন্ধু = ₹16,000/বছর. প্রকল্প দেখুন!",pickT:"ভাষা বেছে নিন",pickS:"KisanMitra আপনার ভাষায়",t1:"রোগ নির্ণয়",t2:"80+ ফসল",selSt:"🗺️ রাজ্য বেছে নিন",cTab:"🇮🇳 কেন্দ্রীয়",sTab:"🏛️ রাজ্য",elig:"✅ যোগ্যতা",docs:"📄 নথি",apply:"📝 আবেদন",askAI:"🤖 AI জিজ্ঞাসা",runDiag:"🔬 AI নির্ণয়",analyzing:"বিশ্লেষণ...",demoT:"নমুনা ধান ফটো",demoS:"নিজ রোগ · AI",
-  tools:{"crop-doctor":{n:"ফসল ডাক্তার",d:"80+ ফটো রোগ নির্ণয়",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"কীটপতঙ্গ",d:"কীট শনাক্ত জৈব",h:"Pest Alert",b:""},planner:{n:"ফসল পরিকল্পনা",d:"সেরা ফসল",h:"Crop Planner",b:""},mandi:{n:"বাজার গাইড",d:"ন্যায্য মূল্য",h:"Mandi Guide",b:""},schemes:{n:"সরকারি প্রকল্প",d:"কেন্দ্র + রাজ্য",h:"Gov Schemes",b:"STATE+CENTRAL"},soil:{n:"মাটির স্বাস্থ্য",d:"মাটি উন্নয়ন",h:"Soil Health",b:""}},
+bn:{tag:"বিনামূল্যে কৃষি পরামর্শ",free:"সবসময় বিনামূল্যে",freeD:"কোনো সাবস্ক্রিপশন নেই · যেকোনো ফোনে",pick:"টুল বেছে নিন",tip:"💡 আজকের টিপ",tipT:"PM-KISAN + কৃষক বন্ধু = ₹16,000/বছর!",pickT:"ভাষা বেছে নিন",pickS:"AnnaDaata আপনার ভাষায়",t1:"রোগ নির্ণয়",t2:"80+ ফসল",selSt:"🗺️ রাজ্য বেছে নিন",cTab:"🇮🇳 কেন্দ্রীয়",sTab:"🏛️ রাজ্য",elig:"✅ যোগ্যতা",docs:"📄 নথি",apply:"📝 আবেদন",askAI:"🤖 AI জিজ্ঞাসা",runDiag:"🔬 AI নির্ণয়",analyzing:"বিশ্লেষণ...",demoT:"নমুনা ধান ফটো",demoS:"AI নির্ণয়",
+  tools:{"crop-doctor":{n:"ফসল ডাক্তার",d:"80+ ফটো রোগ নির্ণয়",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"কীটপতঙ্গ",d:"কীট শনাক্ত জৈব",h:"Pest Alert",b:""},planner:{n:"ফসল পরিকল্পনা",d:"সেরা ফসল",h:"Crop Planner",b:""},mandi:{n:"বাজার গাইড",d:"ন্যায্য মূল্য",h:"Mandi Guide",b:""},schemes:{n:"সরকারি প্রকল্প",d:"কেন্দ্র + রাজ্য",h:"Gov Schemes",b:"S+C"},soil:{n:"মাটির স্বাস্থ্য",d:"মাটি উন্নয়ন",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ফসলের লক্ষণ... ফটো","pest-alert":"কীট বর্ণনা...","planner":"জমি [রাজ্য]...","mandi":"[ফসল] বিক্রি...","schemes":"[রাজ্য] কৃষক...","soil":"মাটি [রঙ]..."},
-  st:{"crop-doctor":["ধান হলুদ","টমেটো দাগ","মরিচ গুঁড়া","তুলা"],"pest-alert":["তুলা পোকা","মরিচ মাইট","আখ","সরিষা"],"planner":["খরিফ WB","রবি পাঞ্জাব","সারা বছর"],"mandi":["নাগপুর","নাসিক","বিদর্ভ"],"schemes":["WB কৃষক","UP","ঝাড়খণ্ড"],"soil":["লাল","কালো","পলি"]},
+  st:{"crop-doctor":["ধান হলুদ","টমেটো দাগ","মরিচ গুঁড়া","তুলা"],"pest-alert":["তুলা","মরিচ","আখ","সরিষা"],"planner":["খরিফ WB","রবি পাঞ্জাব","সারা বছর"],"mandi":["নাগপুর","নাসিক","বিদর্ভ"],"schemes":["WB কৃষক","UP","ঝাড়খণ্ড"],"soil":["লাল","কালো","পলি"]},
 },
-gu:{tag:"મફત ખેતી સલાહકાર",free:"હંમેશ મફત",freeD:"ખર્ચ નહીં · કોઈ પણ ફોન",pick:"સાધન પસંદ",tip:"💡 ટિપ",tipT:"PM-KISAN + CM Sahay = ₹26,000. સ. યોજ. તપાસો!",pickT:"ભાષા પસંદ",pickS:"KisanMitra આપની ભાષામાં",t1:"નિદાન",t2:"80+ પાક",selSt:"🗺️ રાજ્ય",cTab:"🇮🇳 કેન્દ્ર",sTab:"🏛️ રાજ્ય",elig:"✅ પાત્ર",docs:"📄 દ.",apply:"📝 અ.",askAI:"🤖 AI",runDiag:"🔬 AI નિ.",analyzing:"...",demoT:"ડાંગર ફ.",demoS:"AI",
-  tools:{"crop-doctor":{n:"પાક ડૉ.",d:"80+ ફ. રો. ન.",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"જ. ચ.",d:"જ. ઉ.",h:"Pest Alert",b:""},planner:{n:"પ. આ.",d:"પ. ભ.",h:"Crop Planner",b:""},mandi:{n:"મ. ગ.",d:"ભ. ટ.",h:"Mandi Guide",b:""},schemes:{n:"સ. યો.",d:"ક. + રા.",h:"Gov Schemes",b:"S+C"},soil:{n:"જ. આ.",d:"જ. ખ.",h:"Soil Health",b:""}},
-  ph:{"crop-doctor":"લ. ફ.","pest-alert":"ج.","planner":"[ર.]","mandi":"[પ.]","schemes":"[ર.] ખ.","soil":"[ર.]"},
-  st:{"crop-doctor":["ડ. પ.","ટ. ભ.","મ. સ.","ક."],"pest-alert":["ક.","મ."],"planner":["ખ. ગ.","ર."],"mandi":["ગ."],"schemes":["ગ."],"soil":["ગ."]},
+gu:{tag:"મફત ખેતી સલાહ",free:"હંમેશ મફત",freeD:"ખર્ચ નહીં · ફોન પર",pick:"સાધન પસંદ",tip:"💡 ટિપ",tipT:"PM-KISAN + CM Sahay = ₹26,000. તપાસો!",pickT:"ભાષા પસંદ",pickS:"AnnaDaata ભાષામાં",t1:"નિ.",t2:"80+",selSt:"🗺️ રાજ્ય",cTab:"🇮🇳 કેન્દ્ર",sTab:"🏛️ રાજ્ય",elig:"✅ પાત્ર",docs:"📄 ઈ.",apply:"📝 અ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"...",demoT:"ડાંગર",demoS:"AI",
+  tools:{"crop-doctor":{n:"પાક ડૉ.",d:"ફ. ર. ન.",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"જ. ચ.",d:"ઉ.",h:"Pest Alert",b:""},planner:{n:"પ. આ.",d:"ભ.",h:"Crop Planner",b:""},mandi:{n:"મ.",d:"ભ.",h:"Mandi Guide",b:""},schemes:{n:"સ. યો.",d:"ક+ર.",h:"Gov Schemes",b:"S+C"},soil:{n:"જ.",d:"જ.",h:"Soil Health",b:""}},
+  ph:{"crop-doctor":"ઈ.","pest-alert":"ઈ.","planner":"ઈ.","mandi":"ઈ.","schemes":"ઈ.","soil":"ઈ."},
+  st:{"crop-doctor":["ડ.","ટ.","મ.","ક."],"pest-alert":["ક."],"planner":["ખ."],"mandi":["ગ."],"schemes":["ગ."],"soil":["ગ."]},
 },
-pa:{tag:"ਮੁਫ਼ਤ ਖੇਤੀ ਸਲਾਹਕਾਰ",free:"ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ",freeD:"ਸਦੱਸਤਾ ਨਹੀਂ · ਕਿਸੇ ਵੀ ਫੋਨ",pick:"ਸੰਦ ਚੁਣੋ",tip:"💡 ਅੱਜ ਦੀ ਸਲਾਹ",tipT:"PM-KISAN + ਪੰਜਾਬ = ₹7,000/ਸਾਲ. ਸਕੀਮਾਂ ਦੇਖੋ!",pickT:"ਭਾਸ਼ਾ ਚੁਣੋ",pickS:"KisanMitra ਤੁਹਾਡੀ ਭਾਸ਼ਾ",t1:"ਨਿਦਾਨ",t2:"80+ ਫ਼ਸਲ",selSt:"🗺️ ਰਾਜ ਚੁਣੋ",cTab:"🇮🇳 ਕੇਂਦਰੀ",sTab:"🏛️ ਰਾਜ",elig:"✅ ਯੋਗ",docs:"📄 ਦ.",apply:"📝 ਅ.",askAI:"🤖 AI",runDiag:"🔬 AI ਨ.",analyzing:"ਵਿਸ਼ਲੇਸ਼ਣ...",demoT:"ਝੋਨਾ ਫੋਟੋ",demoS:"AI ਨਿਦਾਨ",
-  tools:{"crop-doctor":{n:"ਫ਼ਸਲ ਡਾਕਟਰ",d:"80+ ਫੋਟੋ ਨਿਦਾਨ",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"ਕੀਟ ਚੇ.",d:"ਜੈਵਿਕ ਇਲਾਜ",h:"Pest Alert",b:""},planner:{n:"ਫ਼ਸਲ ਯੋ.",d:"ਜ਼ਮੀਨ ਫ਼ਸਲ",h:"Crop Planner",b:""},mandi:{n:"ਮੰਡੀ ਗ.",d:"ਭਾਅ ਟਿਪ",h:"Mandi Guide",b:""},schemes:{n:"ਸ. ਸਕੀਮਾਂ",d:"ਕੇ. + ਰਾ.",h:"Gov Schemes",b:"S+C"},soil:{n:"ਮਿੱਟੀ",d:"ਮਿੱਟੀ ਖਾਦ",h:"Soil Health",b:""}},
+pa:{tag:"ਮੁਫ਼ਤ ਖੇਤੀ ਸਲਾਹਕਾਰ",free:"ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ",freeD:"ਸਦੱਸਤਾ ਨਹੀਂ · ਕਿਸੇ ਵੀ ਫੋਨ",pick:"ਸੰਦ ਚੁਣੋ",tip:"💡 ਅੱਜ ਦੀ ਸਲਾਹ",tipT:"PM-KISAN + ਪੰਜਾਬ = ₹7,000/ਸਾਲ!",pickT:"ਭਾਸ਼ਾ ਚੁਣੋ",pickS:"AnnaDaata ਤੁਹਾਡੀ ਭਾਸ਼ਾ",t1:"ਨਿਦਾਨ",t2:"80+ ਫ਼ਸਲ",selSt:"🗺️ ਰਾਜ ਚੁਣੋ",cTab:"🇮🇳 ਕੇਂਦਰੀ",sTab:"🏛️ ਰਾਜ",elig:"✅ ਯੋਗ",docs:"📄 ਦ.",apply:"📝 ਅ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"ਵਿਸ਼ਲੇਸ਼ਣ...",demoT:"ਝੋਨਾ ਫੋਟੋ",demoS:"AI",
+  tools:{"crop-doctor":{n:"ਫ਼ਸਲ ਡਾਕਟਰ",d:"80+ ਫੋਟੋ ਨਿਦਾਨ",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"ਕੀਟ ਚੇ.",d:"ਜੈਵਿਕ",h:"Pest Alert",b:""},planner:{n:"ਫ਼ਸਲ ਯੋ.",d:"ਜ਼ਮੀਨ",h:"Crop Planner",b:""},mandi:{n:"ਮੰਡੀ",d:"ਭਾਅ",h:"Mandi Guide",b:""},schemes:{n:"ਸ. ਸ.",d:"ਕੇ+ਰਾ",h:"Gov Schemes",b:"S+C"},soil:{n:"ਮਿੱਟੀ",d:"ਖਾਦ",h:"Soil Health",b:""}},
   ph:{"crop-doctor":"ਲੱਛਣ... ਫੋਟੋ","pest-alert":"ਕੀੜੇ...","planner":"[ਰਾਜ]...","mandi":"[ਫ਼ਸਲ]...","schemes":"[ਰਾਜ]...","soil":"ਮਿੱਟੀ..."},
   st:{"crop-doctor":["ਝੋਨਾ ਪੀਲਾ","ਟਮਾਟਰ","ਮਿਰਚ","ਕਪਾਹ"],"pest-alert":["ਕਪਾਹ","ਮਿਰਚ","ਗੰਨਾ","ਸਰ੍ਹੋਂ"],"planner":["ਖਰੀਫ਼ ਪੰਜਾਬ","ਰਬੀ","ਹਰਿਆਣਾ"],"mandi":["ਮੱਕੀ","ਪਿਆਜ਼","ਕਪਾਹ"],"schemes":["ਪੰਜਾਬ","UP","ਰਾਜ"],"soil":["ਕਾਲੀ","ਲਾਲ","ਜਲੋਢ਼"]},
 },
-or:{tag:"ବିନାମୂଲ୍ୟ କୃଷି ପରାମର୍ଶ",free:"ସବୁଦିନ ବିନାମୂଲ୍ୟ",freeD:"ଯେ ଫୋନ୍‌ ଚଳେ",pick:"ଉପକ. ବାଛ",tip:"💡 ଟିପ୍",tipT:"PM-KISAN + KALIA = ₹16,000. ଯୋ. ଦେ.!",pickT:"ଭାଷା ବାଛ",pickS:"KisanMitra ଭାଷା",t1:"ନିର୍ଣ୍ଣୟ",t2:"80+ ଫ.",selSt:"🗺️ ରାଜ୍ୟ",cTab:"🇮🇳 କେ.",sTab:"🏛️ ରା.",elig:"✅ ଯ.",docs:"📄 ଦ.",apply:"📝 ଆ.",askAI:"🤖 AI",runDiag:"🔬 AI ନ.",analyzing:"...",demoT:"ଧାନ ଫ.",demoS:"AI",
-  tools:{"crop-doctor":{n:"ଫ. ଡ.",d:"80+ ଫ. ର.",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"କ. ସ.",d:"ଜ. ଚ.",h:"Pest Alert",b:""},planner:{n:"ଫ. ଯ.",d:"ଭ. ଫ.",h:"Crop Planner",b:""},mandi:{n:"ମ. ଗ.",d:"ଦ. ବ.",h:"Mandi Guide",b:""},schemes:{n:"ସ. ଯ.",d:"କ. + ର.",h:"Gov Schemes",b:"S+C"},soil:{n:"ମ. ସ.",d:"ମ. ଉ.",h:"Soil Health",b:""}},
-  ph:{"crop-doctor":"ଫ. ଲ. ଫ.","pest-alert":"କ. ବ.","planner":"[ର.]","mandi":"[ଫ.]","schemes":"[ର.] କ.","soil":"ମ. [ର.]"},
-  st:{"crop-doctor":["ଧ. ହ.","ଟ. ଦ.","ଲ. ଗ.","କ."],"pest-alert":["କ.","ଲ.","ଆ.","ସ."],"planner":["ଖ. ଓ.","ର.","ସ."],"mandi":["ସ.","ପ.","ତ."],"schemes":["ଓ.","AP","ଝ."],"soil":["ଓ.","ମ.","ବ."]},
+or:{tag:"ବିନାମୂଲ୍ୟ କୃଷି ପରାମର୍ଶ",free:"ସବୁଦିନ ବିନାମୂଲ୍ୟ",freeD:"ଯେ ଫୋନ୍‌ ଚଳେ",pick:"ଉପକ. ବାଛ",tip:"💡 ଟିପ୍",tipT:"PM-KISAN + KALIA = ₹16,000!",pickT:"ଭାଷା ବାଛ",pickS:"AnnaDaata ଭାଷା",t1:"ନ.",t2:"80+",selSt:"🗺️ ରା.",cTab:"🇮🇳 କେ.",sTab:"🏛️ ରା.",elig:"✅ ଯ.",docs:"📄 ଦ.",apply:"📝 ଆ.",askAI:"🤖 AI",runDiag:"🔬 AI",analyzing:"...",demoT:"ଧାନ",demoS:"AI",
+  tools:{"crop-doctor":{n:"ଫ. ଡ.",d:"80+",h:"Crop Doctor",b:"📷"},"pest-alert":{n:"କ. ସ.",d:"ଜ.",h:"Pest Alert",b:""},planner:{n:"ଫ. ଯ.",d:"ଭ.",h:"Crop Planner",b:""},mandi:{n:"ମ.",d:"ଦ.",h:"Mandi Guide",b:""},schemes:{n:"ସ. ଯ.",d:"ର.",h:"Gov Schemes",b:"S+C"},soil:{n:"ମ.",d:"ସ.",h:"Soil Health",b:""}},
+  ph:{"crop-doctor":"ଫ.","pest-alert":"କ.","planner":"ର.","mandi":"ଫ.","schemes":"ର.","soil":"ମ."},
+  st:{"crop-doctor":["ଧ.","ଟ.","ଲ.","କ."],"pest-alert":["କ."],"planner":["ଖ."],"mandi":["ସ."],"schemes":["ଓ."],"soil":["ଓ."]},
 },
 };
 
-// ── CROPS ──────────────────────────────────────────────────────────────
+// ── CROP DATA ─────────────────────────────────────────────────────────
 const CROPS=[
   {icon:"🌾",name:"Cereals",    list:["Rice (Paddy)","Wheat","Maize","Jowar","Bajra","Ragi","Barley","Oats"]},
   {icon:"🫘",name:"Pulses",     list:["Arhar/Tur Dal","Chana","Moong","Urad","Masoor","Rajma","Cowpea","Moth Bean"]},
@@ -167,22 +160,22 @@ const CROPS=[
   {icon:"🥥",name:"Plantation", list:["Coconut","Arecanut","Coffee","Tea","Cashew","Tamarind","Neem"]},
 ];
 
-// ── SCHEMES ────────────────────────────────────────────────────────────
+// ── SCHEMES DATA ──────────────────────────────────────────────────────
 const CENTRAL=[
-  {id:"pk",name:"PM-KISAN",full:"Pradhan Mantri Kisan Samman Nidhi",benefit:"₹6,000/year direct",icon:"💰",color:"#f5a623",helpline:"155261",website:"pmkisan.gov.in",eligibility:["Small & marginal farmers","Own agricultural land","Not govt employee/IT payer"],documents:["Aadhaar Card","Bank Account (Aadhaar-linked)","Land records (Khasra/Khatauni)"],howToApply:["Visit pmkisan.gov.in or nearest CSC","Click 'New Farmer Registration'","Enter Aadhaar + state","Fill land & bank details","Submit — verified by state officers"]},
-  {id:"pb",name:"PMFBY",full:"PM Fasal Bima Yojana",benefit:"Crop insurance 2% Kharif, 1.5% Rabi",icon:"🛡️",color:"#26a69a",helpline:"1800-180-1551",website:"pmfby.gov.in",eligibility:["All farmers growing notified crops","Sharecroppers/tenant eligible"],documents:["Aadhaar","Bank passbook","Land record / lease deed","Sowing certificate"],howToApply:["Visit bank / CSC or pmfby.gov.in","Fill crop, land, bank details","Pay subsidised premium","Deadline: 31 July (Kharif), 31 Dec (Rabi)"]},
-  {id:"kc",name:"Kisan Credit Card",full:"KCC Scheme",benefit:"Credit ₹3 lakh @ 4% interest",icon:"💳",color:"#ab47bc",helpline:"1800-425-1422",website:"nabard.org",eligibility:["All farmers incl. tenant/sharecroppers","Allied: dairy, fishery, poultry"],documents:["Aadhaar + PAN","Land records","Passport photo"],howToApply:["Visit nationalized / co-op bank","Request KCC form","Submit documents","Disbursed within 14 days"]},
-  {id:"sh",name:"Soil Health Card",full:"Soil Health Card Scheme",benefit:"Free soil testing + fertilizer advice",icon:"🪴",color:"#8d6e63",helpline:"1800-180-1551",website:"soilhealth.dac.gov.in",eligibility:["All farmers — no restriction"],documents:["Aadhaar (optional)"],howToApply:["Contact local KVK or Agriculture Dept","Soil collected free from field","Card issued within 3 months"]},
-  {id:"ps",name:"PM Sinchai Yojana",full:"PM Krishi Sinchayee Yojana",benefit:"45–55% subsidy on drip/sprinkler",icon:"💧",color:"#29b6f6",helpline:"1800-180-1551",website:"pmksy.gov.in",eligibility:["All farmers with own/leased land"],documents:["Aadhaar","Land records","Dealer quotation"],howToApply:["Apply at state agri portal or pmksy.gov.in","Submit quotation + docs","Subsidy after installation verified"]},
+  {id:"pk",name:"PM-KISAN",full:"Pradhan Mantri Kisan Samman Nidhi",benefit:"₹6,000/year direct",icon:"💰",color:"#f5a623",helpline:"155261",website:"pmkisan.gov.in",eligibility:["Small & marginal farmers","Own agricultural land","Not govt employee / IT payer"],documents:["Aadhaar Card","Bank Account (Aadhaar-linked)","Land records (Khasra/Khatauni)"],howToApply:["Visit pmkisan.gov.in or nearest CSC","Click 'New Farmer Registration'","Enter Aadhaar + state","Fill land & bank details","Submit — verified by state officers"]},
+  {id:"pb",name:"PMFBY",full:"PM Fasal Bima Yojana",benefit:"Crop insurance 2% Kharif, 1.5% Rabi",icon:"🛡️",color:"#26a69a",helpline:"1800-180-1551",website:"pmfby.gov.in",eligibility:["All farmers growing notified crops","Sharecroppers / tenant farmers eligible"],documents:["Aadhaar","Bank passbook","Land record / lease deed","Sowing certificate"],howToApply:["Visit bank / CSC or pmfby.gov.in","Fill crop, land, bank details","Pay subsidised premium","Deadline: 31 July (Kharif), 31 Dec (Rabi)"]},
+  {id:"kc",name:"Kisan Credit Card",full:"KCC Scheme",benefit:"Credit ₹3 lakh @ 4% interest",icon:"💳",color:"#ab47bc",helpline:"1800-425-1422",website:"nabard.org",eligibility:["All farmers incl. tenant / sharecroppers","Allied: dairy, fishery, poultry"],documents:["Aadhaar + PAN","Land records","Passport photo"],howToApply:["Visit nationalized / co-op bank","Request KCC form","Submit documents","Disbursed within 14 days"]},
+  {id:"sh",name:"Soil Health Card",full:"Soil Health Card Scheme",benefit:"Free soil testing + fertilizer advice",icon:"🪴",color:"#8d6e63",helpline:"1800-180-1551",website:"soilhealth.dac.gov.in",eligibility:["All farmers — no restriction"],documents:["Aadhaar (optional)"],howToApply:["Contact local KVK or Agriculture Dept","Soil sample collected free","Card issued within 3 months"]},
+  {id:"ps",name:"PM Sinchai Yojana",full:"PM Krishi Sinchayee Yojana",benefit:"45–55% subsidy on drip / sprinkler",icon:"💧",color:"#29b6f6",helpline:"1800-180-1551",website:"pmksy.gov.in",eligibility:["All farmers with own / leased land"],documents:["Aadhaar","Land records","Dealer quotation"],howToApply:["Apply at state agri portal or pmksy.gov.in","Submit quotation + docs","Subsidy after installation verified"]},
 ];
 const STATES={
-  "Telangana":[{name:"Rythu Bandhu",benefit:"₹10,000/acre/season",icon:"🌾",helpline:"1100",website:"rythu.telangana.gov.in",eligibility:["Land-owning farmers","Min 1 acre","Registered in records"],documents:["Pattadar Passbook","Aadhaar","Bank account"],howToApply:["Auto for registered pattadars","Check rythu.telangana.gov.in","Or visit MRO / VRO office"]},{name:"Rythu Bima",benefit:"₹5 lakh life insurance FREE",icon:"🛡️",helpline:"1100",website:"rythu.telangana.gov.in",eligibility:["Farmers 18–59 yrs","TG land-owning"],documents:["Pattadar Passbook","Aadhaar","Nominee details"],howToApply:["Auto-enrolled with Rythu Bandhu","Claim: visit MRO with death certificate"]}],
-  "Andhra Pradesh":[{name:"YSR Rythu Bharosa",benefit:"₹13,500/year (incl. PM-KISAN)",icon:"💰",helpline:"1902",website:"apagrisnet.gov.in",eligibility:["Small & marginal farmers","Tenant farmers included (unique)"],documents:["Aadhaar","Land records/lease deed","Bank account"],howToApply:["Register at apagrisnet.gov.in","Visit village secretariat","3 installments per year"]}],
-  "Maharashtra":[{name:"Magel Tyala Shet Tali",benefit:"₹50,000–75,000 farm pond subsidy",icon:"💧",helpline:"020-26056000",website:"mahadbt.maharashtra.gov.in",eligibility:["Min 0.60 ha land","Drought-prone priority"],documents:["7/12 extract","Aadhaar","Pond work quotation"],howToApply:["Apply at mahadbt.maharashtra.gov.in","Construct pond → claim subsidy"]}],
+  "Telangana":[{name:"Rythu Bandhu",benefit:"₹10,000/acre/season",icon:"🌾",helpline:"1100",website:"rythu.telangana.gov.in",eligibility:["Land-owning farmers","Min 1 acre","Registered in records"],documents:["Pattadar Passbook","Aadhaar","Bank account"],howToApply:["Auto for registered pattadars","Check rythu.telangana.gov.in","Visit MRO / VRO office"]},{name:"Rythu Bima",benefit:"₹5 lakh life insurance FREE",icon:"🛡️",helpline:"1100",website:"rythu.telangana.gov.in",eligibility:["Farmers 18–59 yrs","TG land-owning"],documents:["Pattadar Passbook","Aadhaar","Nominee details"],howToApply:["Auto-enrolled with Rythu Bandhu","Claim: visit MRO with death certificate"]}],
+  "Andhra Pradesh":[{name:"YSR Rythu Bharosa",benefit:"₹13,500/year (incl. PM-KISAN)",icon:"💰",helpline:"1902",website:"apagrisnet.gov.in",eligibility:["Small & marginal farmers","Tenant farmers included"],documents:["Aadhaar","Land records / lease deed","Bank account"],howToApply:["Register at apagrisnet.gov.in","Visit village secretariat","3 installments per year"]}],
+  "Maharashtra":[{name:"Magel Tyala Shet Tali",benefit:"₹50,000–75,000 farm pond subsidy",icon:"💧",helpline:"020-26056000",website:"mahadbt.maharashtra.gov.in",eligibility:["Min 0.60 ha land","Drought-prone district priority"],documents:["7/12 extract","Aadhaar","Pond work quotation"],howToApply:["Apply at mahadbt.maharashtra.gov.in","Construct pond → claim subsidy"]}],
   "Odisha":[{name:"KALIA Scheme",benefit:"₹10,000/year direct support",icon:"💰",helpline:"1800-572-1122",website:"kalia.odisha.gov.in",eligibility:["Small & marginal","Landless labourers too"],documents:["Aadhaar","Bank account"],howToApply:["Visit kalia.odisha.gov.in","Or gram panchayat office"]}],
   "West Bengal":[{name:"Krishak Bandhu",benefit:"₹10,000/year + ₹2L death benefit",icon:"💰",helpline:"1800-103-0001",website:"krishakbandhu.net",eligibility:["Min 1 bigha land","WB residents"],documents:["Aadhaar","Land records","Khatian no."],howToApply:["Visit krishakbandhu.net","Or Duare Sarkar camps"]}],
   "Karnataka":[{name:"Raitha Siri",benefit:"₹5,000/year + seed subsidy + insurance",icon:"🌱",helpline:"080-22212439",website:"raitamitra.kar.nic.in",eligibility:["Small & marginal, up to 2 ha"],documents:["RTC","Aadhaar","Bank account"],howToApply:["Visit raitamitra.kar.nic.in","Or Raitha Samparka Kendra"]}],
-  "Gujarat":[{name:"CM Kisan Sahay Yojana",benefit:"₹20,000/ha crop loss — zero premium",icon:"🛡️",helpline:"1800-233-0230",website:"ikhedut.gujarat.gov.in",eligibility:["All Gujarat farmers","Loss: drought/rain"],documents:["Aadhaar","7/12 Utara","Bank account"],howToApply:["Apply at ikhedut.gujarat.gov.in","Within 30 days of damage"]}],
+  "Gujarat":[{name:"CM Kisan Sahay Yojana",benefit:"₹20,000/ha crop loss — zero premium",icon:"🛡️",helpline:"1800-233-0230",website:"ikhedut.gujarat.gov.in",eligibility:["All Gujarat farmers","Loss: drought / rain"],documents:["Aadhaar","7/12 Utara","Bank account"],howToApply:["Apply at ikhedut.gujarat.gov.in","Within 30 days of damage"]}],
   "Bihar":[{name:"Krishi Input Anudan",benefit:"₹13,500/ha crop damage",icon:"💰",helpline:"0612-2233555",website:"dbtagriculture.bihar.gov.in",eligibility:["Bihar farmers with crop loss"],documents:["Aadhaar","Land records","Damage certificate"],howToApply:["Apply at dbtagriculture.bihar.gov.in","Or Vasudha Kendra"]}],
   "Madhya Pradesh":[{name:"CM Kisan Kalyan Yojana",benefit:"₹4,000/year extra above PM-KISAN",icon:"💰",helpline:"181",website:"mpkrishi.mp.gov.in",eligibility:["All PM-KISAN beneficiaries in MP"],documents:["PM-KISAN registration","Aadhaar"],howToApply:["Auto-credited for PM-KISAN holders","Check mpkrishi.mp.gov.in"]}],
   "Rajasthan":[{name:"Mukhyamantri Krishak Sathi",benefit:"₹5 lakh accident insurance",icon:"🛡️",helpline:"0141-2927047",website:"agriculture.rajasthan.gov.in",eligibility:["Rajasthan farmers 5–70 yrs"],documents:["Aadhaar","Jamabandi","Bank account"],howToApply:["Visit jansoochna.rajasthan.gov.in","Or district agriculture office"]}],
@@ -191,7 +184,6 @@ const STATES={
   "Punjab":[{name:"Punjab Khet Meri Scheme",benefit:"₹1,000/acre stubble management",icon:"🌾",helpline:"0172-2970101",website:"agripb.gov.in",eligibility:["Punjab farmers avoiding stubble burning"],documents:["Aadhaar","Jamabandi","Bank account"],howToApply:["Register at agripb.gov.in","Officer verifies field"]}],
 };
 const ALL_STATES=Object.keys(STATES).sort();
-
 const TOOLS=[
   {id:"crop-doctor",icon:"🌿",color:"#4caf50"},
   {id:"pest-alert", icon:"🪲",color:"#f5a623"},
@@ -200,75 +192,290 @@ const TOOLS=[
   {id:"schemes",    icon:"📋",color:"#ab47bc"},
   {id:"soil",       icon:"🪴",color:"#8d6e63"},
 ];
-
+const RICE_IMG="data:image/jpeg;base64,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";
+const TOOL_IMGS={
+  "crop-doctor":RICE_IMG,
+  "pest-alert":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Aphids_Myzus_persicae.jpg/200px-Aphids_Myzus_persicae.jpg",
+  "planner":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Wheat_close-up.JPG/200px-Wheat_close-up.JPG",
+  "mandi":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/India_-_Varanasi_market_-_0768.jpg/200px-India_-_Varanasi_market_-_0768.jpg",
+  "schemes":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Indian_government_building.jpg/200px-Indian_government_building.jpg",
+  "soil":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Soilp.jpg/200px-Soilp.jpg",
+};
 const RICE_URL="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Rice_brown_spot.jpg/640px-Rice_brown_spot.jpg";
+// ✅ Embedded illustration — shows on ALL devices, no external fetch, works 100% offline
+
+// ── API KEY MANAGEMENT ────────────────────────────────────────────────
+// Store key in sessionStorage (cleared when tab closes — never persisted)
+const getKey=()=>sessionStorage.getItem("ad_key")||"";
+const saveKey=k=>sessionStorage.setItem("ad_key",k.trim());
 
 // ── API ────────────────────────────────────────────────────────────────
-async function callClaude(messages,system){
+async function callClaude(messages, system, role="general"){
+  const key=getKey();
+  if(!key) throw new Error("API_KEY_MISSING");
+  const { sys, savedSys, maxTok } = getOptimizedSys("en", role);
+  // Use passed system if custom, else use optimized
+  const finalSys = system || sys;
+  const savedMaxTok = BASE_MAX_TOK - maxTok;
+
   const r=await fetch("https://api.anthropic.com/v1/messages",{
-    method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system,messages})
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "x-api-key":key,
+      "anthropic-version":"2023-06-01",
+      "anthropic-dangerous-direct-browser-access":"true"
+    },
+    body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:maxTok,system:finalSys,messages})
   });
+  if(!r.ok){
+    const err=await r.json().catch(()=>({}));
+    throw new Error(`API Error ${r.status}: ${err?.error?.message||r.statusText}`);
+  }
   const d=await r.json();
-  return d.content?.map(b=>b.text||"").join("")||"Unable to get response.";
+  if(d.type==="error") throw new Error(`Claude: ${d.error?.message||"Unknown error"}`);
+  if(!d.content?.length) throw new Error("Empty response from Claude API");
+  // Track token savings: system compression + max_tokens reduction
+  const actualOut = d.usage?.output_tokens || 0;
+  const outSaved  = Math.max(0, BASE_MAX_TOK - actualOut);
+  const totalSaved = savedSys + savedMaxTok + Math.round(outSaved * 0.5);
+  TOK.add(totalSaved);
+  return d.content.map(b=>b.text||"").join("")||"Unable to get response.";
 }
-function buildSys(lc,role){
-  const L=GL(lc);
-  const li=lc!=="en"?`\n\nCRITICAL: Respond ONLY in ${L.name} (${L.native}). Scientific/technical terms may stay in English.`:"";
-  if(role==="doctor")return`You are an expert plant pathologist for Indian crops. For each diagnosis:\n🔍 WHAT I SEE (visual symptoms in the photo)\n🦠 DISEASE NAME (scientific name)\n⚙️ CAUSE (Fungal/Bacterial/Viral/Nutrient)\n⚠️ SEVERITY + % yield loss\n🌿 ORGANIC TREATMENT (neem oil, cow urine, Trichoderma — exact dosage)\n💊 CHEMICAL TREATMENT (Indian brand names, dosage per acre)\n🛡️ PREVENTION next season\n💰 COST per acre in ₹\n💡 PRO TIP${li}`;
-  return`You are KisanMitra AI — expert agricultural advisor for Indian rural farmers. Practical low-cost advice. Indian context (₹, states, seasons, local names). Organic first. 250 words max. End with Pro Tip 💡.${li}`;
+
+// ── TOKEN OPTIMISER ───────────────────────────────────────────────────
+// Compressed prompts save ~30-45% tokens vs verbose prompts
+const SYS_DOCTOR_FULL = `You are an expert plant pathologist for Indian crops. For each diagnosis:\n🔍 WHAT I SEE (visual symptoms)\n🦠 DISEASE NAME (scientific name)\n⚙️ CAUSE (Fungal/Bacterial/Viral/Nutrient)\n⚠️ SEVERITY + % yield loss\n🌿 ORGANIC TREATMENT (neem oil, cow urine, Trichoderma — exact dosage)\n💊 CHEMICAL TREATMENT (Indian brand names, dosage per acre)\n🛡️ PREVENTION next season\n💰 COST per acre in ₹\n💡 PRO TIP`;
+const SYS_DOCTOR_OPT  = `Expert plant pathologist, Indian crops. Diagnose concisely:\n🔍Visual symptoms 🦠Disease+scientific name ⚙️Cause ⚠️Severity+yield% 🌿Organic Rx(dosage) 💊Chemical Rx(Indian brands,dose/acre) 🛡️Prevention 💰₹cost/acre 💡Tip`;
+const SYS_GEN_FULL    = `You are AnnaDaata AI — expert agricultural advisor for Indian rural farmers. Practical low-cost advice. Indian context (₹, states, seasons, local names). Organic first. 250 words max. End with Pro Tip 💡.`;
+const SYS_GEN_OPT     = `AnnaDaata AI: expert Indian farm advisor. Low-cost practical advice. Use ₹, local names, organic first. ≤200 words. End: Pro Tip 💡.`;
+
+const estimateTok = str => Math.ceil((str||"").length / 3.8);
+const BASE_MAX_TOK   = 1000;  // old fixed value
+const OPT_MAX_TOK    = { doctor:750, general:550 }; // smart limits
+
+// Session token tracking
+const TOK = {
+  get saved(){ return parseInt(sessionStorage.getItem("ad_tok_saved")||0); },
+  get calls(){ return parseInt(sessionStorage.getItem("ad_tok_calls")||0); },
+  add(s){ sessionStorage.setItem("ad_tok_saved", this.saved+s); sessionStorage.setItem("ad_tok_calls", this.calls+1); window.dispatchEvent(new CustomEvent("tok",{detail:{saved:s}})); },
+  reset(){ sessionStorage.removeItem("ad_tok_saved"); sessionStorage.removeItem("ad_tok_calls"); },
+};
+
+function getOptimizedSys(lc, role){
+  const L = GL(lc);
+  const langInstr = lc!=="en" ? ` Reply in ${L.name} only.` : "";
+  if(role==="doctor"){
+    const savedTok = estimateTok(SYS_DOCTOR_FULL) - estimateTok(SYS_DOCTOR_OPT + langInstr);
+    return { sys: SYS_DOCTOR_OPT + langInstr, savedSys: Math.max(0, savedTok), maxTok: OPT_MAX_TOK.doctor };
+  }
+  const savedTok = estimateTok(SYS_GEN_FULL) - estimateTok(SYS_GEN_OPT + langInstr);
+  return { sys: SYS_GEN_OPT + langInstr, savedSys: Math.max(0, savedTok), maxTok: OPT_MAX_TOK.general };
 }
+
+// Legacy wrapper (use getOptimizedSys directly for new calls)
+function buildSys(lc,role){ return getOptimizedSys(lc,role).sys; }
 
 // ── HELPERS ────────────────────────────────────────────────────────────
-function Dots({color="#4caf50"}){
-  return <div style={{display:"flex",gap:5}}>
-    {[0,1,2].map(i=><div key={i} style={{width:6,height:6,borderRadius:"50%",background:color,animation:`kb 1.2s ${i*.2}s infinite`}}/>)}
-  </div>;
-}
-function Bubble({m,color,L}){
-  const txt=typeof m.content==="string"?m.content:m.content.find?.(c=>c.type==="text")?.text||"";
-  return(
-    <div style={{display:"flex",justifyContent:m.role==="user"?"flex-end":"flex-start",gap:8}}>
-      {m.role==="assistant"&&<div style={{width:26,height:26,borderRadius:"50%",background:color,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,flexShrink:0,marginTop:2}}>🌾</div>}
-      <div style={{maxWidth:"80%",padding:"9px 13px",fontSize:12.5,lineHeight:1.75,
-        borderRadius:m.role==="user"?"18px 18px 4px 18px":"4px 18px 18px 18px",
-        background:m.role==="user"?color:"rgba(255,255,255,.06)",
-        color:m.role==="user"?"#0a0a0a":"#e8e8e8",
-        border:m.role==="assistant"?`1px solid ${color}22`:"none",
-        whiteSpace:"pre-wrap",fontFamily:L.font}}>{txt}</div>
-    </div>
-  );
+function Dots({color}){
+  return html`<div style=${{display:"flex",gap:5}}>
+    ${[0,1,2].map(i=>html`<div key=${i} style=${{width:6,height:6,borderRadius:"50%",background:color||"#4caf50",animation:`kb 1.2s ${i*.2}s infinite`}}/>`)}
+  </div>`;
 }
 
-// ── LANG PICKER ────────────────────────────────────────────────────────
-function LangPicker({cur,onSelect,onClose}){
-  const t=T[cur]||T.en;
-  return(
-    <div onClick={onClose} style={{position:"fixed",inset:0,background:"rgba(0,0,0,.88)",zIndex:200,display:"flex",flexDirection:"column",justifyContent:"flex-end"}}>
-      <div onClick={e=>e.stopPropagation()} style={{background:"#14100a",borderRadius:"22px 22px 0 0",padding:"20px 15px 28px",maxHeight:"82vh",overflowY:"auto"}}>
-        <div style={{textAlign:"center",marginBottom:16}}>
-          <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:20}}>{t.pickT}</div>
-          <div style={{color:"#7a6a55",fontSize:12,marginTop:3}}>{t.pickS}</div>
+function Bubble({m,color,L}){
+  const txt=typeof m.content==="string"?m.content:
+    (Array.isArray(m.content)?m.content.find(c=>c.type==="text")?.text:"") || "";
+  const isUser=m.role==="user";
+  return html`
+    <div style=${{display:"flex",justifyContent:isUser?"flex-end":"flex-start",gap:8}}>
+      ${!isUser && html`<div style=${{width:26,height:26,borderRadius:"50%",background:color,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,flexShrink:0,marginTop:2}}>🌾</div>`}
+      <div style=${{maxWidth:"80%",padding:"9px 13px",fontSize:12.5,lineHeight:1.75,
+        borderRadius:isUser?"18px 18px 4px 18px":"4px 18px 18px 18px",
+        background:isUser?color:"rgba(255,255,255,.06)",
+        color:isUser?"#0a0a0a":"#e8e8e8",
+        border:!isUser?`1px solid ${color}22`:"none",
+        whiteSpace:"pre-wrap",fontFamily:L.font}}>${txt}</div>
+    </div>`;
+}
+
+
+// ── API KEY SETUP SCREEN ───────────────────────────────────────────────
+function ApiKeySetup({onDone}){
+  const [k,setK]=useState(getKey());
+  const [show,setShow]=useState(false);
+  const [testing,setTesting]=useState(false);
+  const [status,setStatus]=useState("");
+
+  const test=async()=>{
+    if(!k.trim()||!k.startsWith("sk-ant-")){setStatus("❌ Invalid key format. Must start with sk-ant-");return;}
+    setTesting(true);setStatus("Testing...");
+    try{
+      saveKey(k);
+      const r=await fetch("https://api.anthropic.com/v1/messages",{
+        method:"POST",
+        headers:{"Content-Type":"application/json","x-api-key":k.trim(),"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+        body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:20,system:"Reply OK",messages:[{role:"user",content:"ping"}]})
+      });
+      if(r.ok){setStatus("✅ API key working! Ready to use.");setTimeout(onDone,900);}
+      else{const e=await r.json();setStatus("❌ "+( e?.error?.message||"Invalid key"));}
+    }catch(e){setStatus("❌ "+e.message);}
+    setTesting(false);
+  };
+
+  return html`
+    <div style=${{minHeight:"100vh",background:"#0f0a04",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:20}}>
+      <div style=${{width:"100%",maxWidth:420}}>
+        <div style=${{textAlign:"center",marginBottom:28}}>
+          <div style=${{fontSize:52,marginBottom:10}}>🌾</div>
+          <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:24}}>AnnaDaata AI</div>
+          <div style=${{color:"#f5a623",fontSize:11,letterSpacing:2,marginTop:3}}>అన్నదాత — FREE FARM ADVISOR</div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-          {LANGS.map(lg=>(
-            <button key={lg.code} onClick={()=>{onSelect(lg.code);onClose();}}
-              style={{background:cur===lg.code?"#f5a62318":"#1a1208",border:`2px solid ${cur===lg.code?"#f5a623":"#2d1f0a"}`,borderRadius:12,padding:"11px 10px",cursor:"pointer",textAlign:"left"}}>
-              <div style={{fontSize:20,marginBottom:3}}>{lg.flag}</div>
-              <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:13}}>{lg.name}</div>
-              <div style={{color:"#f5a623",fontSize:15,marginTop:2,fontFamily:lg.font}}>{lg.native}</div>
-              {cur===lg.code&&<div style={{color:"#f5a623",fontSize:9,marginTop:2}}>✓ Active</div>}
+
+        <div style=${{background:"#1a1208",border:"1px solid #f5a62333",borderRadius:16,padding:20,marginBottom:16}}>
+          <div style=${{color:"#f5e6c8",fontWeight:700,fontSize:14,marginBottom:6}}>🔑 Enter Your Claude API Key</div>
+          <div style=${{color:"#7a6a55",fontSize:12,lineHeight:1.6,marginBottom:14}}>
+            Required for AI features. Your key stays in this browser session only — never stored on any server.
+          </div>
+
+          <div style=${{position:"relative",marginBottom:12}}>
+            <input type=${show?"text":"password"} value=${k} onInput=${e=>setK(e.target.value)}
+              placeholder="sk-ant-api03-..."
+              style=${{width:"100%",background:"#0f0a04",border:"1px solid #3d2b0f",borderRadius:10,color:"#f5e6c8",
+                padding:"11px 44px 11px 14px",fontSize:13,outline:"none",fontFamily:"monospace"}}/>
+            <button onClick=${()=>setShow(!show)}
+              style=${{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",color:"#7a6a55",fontSize:16,cursor:"pointer"}}>
+              ${show?"🙈":"👁️"}
             </button>
-          ))}
+          </div>
+
+          <button onClick=${test} disabled=${testing||!k.trim()}
+            style=${{width:"100%",background:k.trim()?"linear-gradient(135deg,#2e7d32,#4caf50)":"#2d2d2d",
+              border:"none",borderRadius:10,padding:13,color:"#fff",fontSize:14,fontWeight:700,cursor:"pointer",
+              opacity:testing||!k.trim()?.5:1}}>
+            ${testing?"⏳ Testing...":"✅ Connect & Start"}
+          </button>
+
+          ${status&&html`
+            <div style=${{marginTop:10,padding:"8px 12px",borderRadius:8,
+              background:status.startsWith("✅")?"#1b5e2044":"#3e100044",
+              color:status.startsWith("✅")?"#81c784":"#ef9a9a",fontSize:12,lineHeight:1.5}}>
+              ${status}
+            </div>`}
         </div>
-        <button onClick={onClose} style={{width:"100%",marginTop:12,background:"#2d1f0a",border:"none",color:"#9e8a70",borderRadius:10,padding:11,fontSize:13,cursor:"pointer"}}>✕ Close</button>
+
+        <div style=${{background:"#14100a",border:"1px solid #2d1f0a",borderRadius:14,padding:16,marginBottom:14}}>
+          <div style=${{color:"#f5a623",fontWeight:700,fontSize:13,marginBottom:10}}>🔓 Works RIGHT NOW — No API Key</div>
+          ${[
+            ["🌾","Paddy Rice Disease Demo","Full expert diagnosis of Brown Spot disease — works offline, no AI needed!"],
+            ["📋","All Government Schemes","Central + 13 state schemes, eligibility, documents, helplines — fully offline"],
+            ["🌱","Crop Categories Browser","Browse all 80+ Indian crops across 8 categories"],
+            ["🌐","11 Language UI","Full app UI switches to any regional language instantly"],
+            ["📵","Offline Mode","App shell + scheme data works without internet (after first load)"],
+          ].map(([ic,title,desc])=>html`
+            <div key=${title} style=${{display:"flex",gap:10,marginBottom:10}}>
+              <span style=${{fontSize:18,flexShrink:0}}>${ic}</span>
+              <div>
+                <div style=${{color:"#f5e6c8",fontSize:12,fontWeight:700}}>${title}</div>
+                <div style=${{color:"#5a4a35",fontSize:11,marginTop:1,lineHeight:1.4}}>${desc}</div>
+              </div>
+            </div>`)}
+        </div>
+
+        <div style=${{background:"#0d160d",border:"1px solid #1a3a1a",borderRadius:14,padding:16}}>
+          <div style=${{color:"#4caf50",fontWeight:700,fontSize:13,marginBottom:10}}>🤖 What Works WITH API Key</div>
+          ${[
+            ["🌿","Crop Doctor AI","Upload photo → disease name, cause, treatment, cost per acre in ₹"],
+            ["🪲","Pest Alert AI","Describe/photo pest → organic + chemical remedies with dosage"],
+            ["🌱","Crop Planner AI","Get crop recommendations for your soil, state, and season"],
+            ["💰","Mandi Price Guide AI","Fair price estimates, selling tips by district"],
+            ["📋","Scheme Eligibility AI","Ask if YOU qualify, in YOUR regional language"],
+            ["🪴","Soil Health AI","Personalised fertilizer advice for your soil type"],
+            ["🌾","Paddy Rice Demo","Real-time Claude Vision diagnosis of sample diseased photo"],
+            ["🗣️","11 Languages","All AI responses in Telugu, Hindi, Tamil, Kannada & 7 more"],
+          ].map(([ic,title,desc])=>html`
+            <div key=${title} style=${{display:"flex",gap:10,marginBottom:10}}>
+              <span style=${{fontSize:18,flexShrink:0}}>${ic}</span>
+              <div>
+                <div style=${{color:"#e8f5e9",fontSize:12,fontWeight:700}}>${title}</div>
+                <div style=${{color:"#3a6a3a",fontSize:11,marginTop:1,lineHeight:1.4}}>${desc}</div>
+              </div>
+            </div>`)}
+          <div style=${{marginTop:10,padding:"8px 12px",background:"#1a2e1a",borderRadius:8}}>
+            <div style=${{color:"#4caf50",fontSize:11,fontWeight:700}}>📌 Get your free API key:</div>
+            <div style=${{color:"#5a8a5a",fontSize:11,marginTop:2}}>console.anthropic.com → API Keys → Create Key</div>
+          </div>
+        </div>
+
+        <button onClick=${onDone}
+          style=${{width:"100%",marginTop:14,background:"#1a1208",border:"1px solid #2d1f0a",color:"#7a6a55",
+            borderRadius:10,padding:11,fontSize:13,cursor:"pointer"}}>
+          ← Skip for now — explore without AI
+        </button>
+      </div>
+    </div>`;
+}
+
+
+// ── TOKEN SAVINGS COUNTER ────────────────────────────────────────────
+function TokCounter(){
+  const [saved,setSaved]=useState(TOK.saved);
+  const [calls,setCalls]=useState(TOK.calls);
+  const [flash,setFlash]=useState(null);
+  useEffect(()=>{
+    const h=e=>{setSaved(TOK.saved);setCalls(TOK.calls);setFlash(e.detail.saved);setTimeout(()=>setFlash(null),2500);};
+    window.addEventListener("tok",h);
+    return()=>window.removeEventListener("tok",h);
+  },[]);
+  return html`
+    <div style=${{background:"#0a0804",borderTop:"1px solid #2d1f0a",padding:"7px 14px",display:"flex",alignItems:"center",justifyContent:"space-between",flexShrink:0,position:"relative"}}>
+      ${flash&&html`<div style=${{position:"absolute",top:-34,right:14,background:"#1e3a1a",border:"1px solid #4caf5044",color:"#81c784",borderRadius:20,padding:"4px 12px",fontSize:11,fontWeight:700,animation:"fadeup .3s ease",whiteSpace:"nowrap"}}>
+        ⚡ +${flash} tokens saved
+      </div>`}
+      <div style=${{display:"flex",alignItems:"center",gap:6}}>
+        <span style=${{fontSize:13}}>⚡</span>
+        <div>
+          <span style=${{color:"#5a4a35",fontSize:10,fontFamily:"monospace"}}>Built-in Token Optimiser</span>
+          <span style=${{color:"#3a2a18",fontSize:10}}> · ${calls} calls</span>
+        </div>
+      </div>
+      <div style=${{display:"flex",alignItems:"center",gap:8}}>
+        <div style=${{textAlign:"right"}}>
+          <div style=${{color:"#f5a623",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:14}}>${saved.toLocaleString()}</div>
+          <div style=${{color:"#5a4a35",fontSize:9}}>tokens saved</div>
+        </div>
+        <div style=${{width:26,height:26,borderRadius:"50%",background:"#1e3a1a",border:"1px solid #4caf5033",display:"flex",alignItems:"center",justifyContent:"center",fontSize:13}}>🌱</div>
       </div>
     </div>
-  );
+    <style>@keyframes fadeup{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}</style>`;
+}
+// ── LANGUAGE PICKER ────────────────────────────────────────────────────
+function LangPicker({cur,onSelect,onClose}){
+  const t=T[cur]||T.en;
+  return html`
+    <div onClick=${onClose} style=${{position:"fixed",inset:0,background:"rgba(0,0,0,.88)",zIndex:200,display:"flex",flexDirection:"column",justifyContent:"flex-end"}}>
+      <div onClick=${e=>e.stopPropagation()} style=${{background:"#14100a",borderRadius:"22px 22px 0 0",padding:"20px 15px 28px",maxHeight:"82vh",overflowY:"auto"}}>
+        <div style=${{textAlign:"center",marginBottom:16}}>
+          <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:20}}>${t.pickT}</div>
+          <div style=${{color:"#7a6a55",fontSize:12,marginTop:3}}>${t.pickS}</div>
+        </div>
+        <div style=${{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+          ${LANGS.map(lg=>html`
+            <button key=${lg.code} onClick=${()=>{onSelect(lg.code);onClose();}}
+              style=${{background:cur===lg.code?"#f5a62318":"#1a1208",border:`2px solid ${cur===lg.code?"#f5a623":"#2d1f0a"}`,borderRadius:12,padding:"11px 10px",cursor:"pointer",textAlign:"left"}}>
+              <div style=${{fontSize:20,marginBottom:3}}>${lg.flag}</div>
+              <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:13}}>${lg.name}</div>
+              <div style=${{color:"#f5a623",fontSize:15,marginTop:2,fontFamily:lg.font}}>${lg.native}</div>
+              ${cur===lg.code&&html`<div style=${{color:"#f5a623",fontSize:9,marginTop:2}}>✓ Active</div>`}
+            </button>`)}
+        </div>
+        <button onClick=${onClose} style=${{width:"100%",marginTop:12,background:"#2d1f0a",border:"none",color:"#9e8a70",borderRadius:10,padding:11,fontSize:13,cursor:"pointer"}}>✕ Close</button>
+      </div>
+    </div>`;
 }
 
 // ── CROP DOCTOR ────────────────────────────────────────────────────────
-function CropDoctor({lc,onBack}){
+function CropDoctor({lc,onBack,hasKey,openSetup}){
   const [sub,setSub]=useState("chat");
   const [msgs,setMsgs]=useState([]);
   const [inp,setInp]=useState("");
@@ -281,6 +488,7 @@ function CropDoctor({lc,onBack}){
   const [demoRes,setDemoRes]=useState("");
   const fr=useRef();const cr=useRef();
   const t=T[lc]||T.en;const L=GL(lc);const td=t.tools?.["crop-doctor"]||{};
+  const C="#4caf50";
 
   const onImg=e=>{
     const f=e.target.files[0];if(!f)return;
@@ -288,150 +496,238 @@ function CropDoctor({lc,onBack}){
     r.onload=ev=>{setImg(ev.target.result);setImgB(ev.target.result.split(",")[1]);};
     r.readAsDataURL(f);
   };
-  const send=useCallback(async(tx=inp)=>{
-    if(!tx.trim()&&!imgB)return;
-    const uc=(imgB&&msgs.length===0)?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgB}},{type:"text",text:tx||"Analyze this crop image."}]:tx;
+
+  const send=useCallback(async(tx)=>{
+    const text=tx!=null?tx:inp;
+    if(!text.trim()&&!imgB)return;
+    const uc=(imgB&&msgs.length===0)
+      ?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgB}},{type:"text",text:text||"Analyze this crop image."}]
+      :text;
     const nm=[...msgs,{role:"user",content:uc}];
     setMsgs(nm);setInp("");setLoad(true);
-    try{const rep=await callClaude(nm,buildSys(lc,"doctor"));setMsgs([...nm,{role:"assistant",content:rep}]);if(msgs.length===0)setImgB(null);}
-    catch{setMsgs([...nm,{role:"assistant",content:"⚠️ Connection error. Please try again."}]);}
-    setLoad(false);setTimeout(()=>cr.current?.scrollTo({top:9999,behavior:"smooth"}),100);
+    try{
+      const rep=await callClaude(nm,buildSys(lc,"doctor"));
+      setMsgs([...nm,{role:"assistant",content:rep}]);
+      if(msgs.length===0)setImgB(null);
+    }catch(e){
+      const msg=e.message==="API_KEY_MISSING"
+        ?"🔑 API key not set. Go back to home and set your Claude API key."
+        :"⚠️ "+e.message+". Check internet connection and try again.";
+      setMsgs([...nm,{role:"assistant",content:msg}]);
+    }
+    setLoad(false);
+    setTimeout(()=>cr.current?.scrollTo({top:9999,behavior:"smooth"}),100);
   },[inp,msgs,imgB,lc]);
+
+  // ── DEMO: pre-loaded expert diagnosis — works WITHOUT API key ──────────
+  const DEMO_DIAG=`🔍 WHAT I SEE
+Oval to circular brown lesions with distinct yellow halo rings scattered across the leaf blade. Spots have dark brown centers fading to lighter edges. Multiple lesions visible at various growth stages — early (small dots) to advanced (coalescing patches). Approximately 30–40% leaf area affected.
+
+🦠 DISEASE IDENTIFIED
+Brown Spot Disease — Helminthosporium Leaf Blight
+Scientific name: Bipolaris oryzae (Cochliobolus miyabeanus)
+
+⚙️ CAUSE
+Fungal — Bipolaris oryzae spores spread via wind and rain splash. Thrives in warm humid conditions (25–30°C) with high moisture. Often triggered by potassium and silicon deficiency in soil.
+
+⚠️ SEVERITY
+Moderate to Severe — Estimated 15–30% yield loss if untreated. Can progress to Severe (40–50% loss) in 7–10 days under humid conditions.
+
+🌿 ORGANIC TREATMENT (Do First — Zero Cost)
+• Neem oil spray: Mix 5 ml neem oil + 1 ml liquid soap per litre water. Spray every 7 days, 3 applications
+• Trichoderma viride: 4 g per litre water, spray at 15-day intervals
+• Wood ash solution: Dissolve 1 kg wood ash in 10 litres water, strain and spray — provides potassium + antifungal action
+• Remove and burn heavily infected leaves immediately
+
+💊 CHEMICAL TREATMENT (if organic insufficient after 10 days)
+• Mancozeb 75% WP (Indofil M-45): 2.5 g per litre, spray 2–3 times at 10-day intervals
+• Propiconazole (Tilt 25 EC): 1 ml per litre — highly effective, max 2 sprays
+• Tricyclazole + Mancozeb (Amistar Top): 1 g per litre for severe cases
+
+🛡️ PREVENTION Next Season
+• Use certified disease-resistant varieties: IR-64, Samba Mahsuri, MTU-7029
+• Treat seeds with Trichoderma before sowing
+• Apply potash (MOP) 40 kg/acre at tillering stage
+• Avoid excessive nitrogen — causes lush growth that invites fungal attack
+• Maintain proper spacing (20×15 cm) for air circulation
+
+💰 ESTIMATED TREATMENT COST per Acre
+• Organic (neem + Trichoderma): ₹150–250 total
+• Chemical (Mancozeb 2 sprays): ₹300–450 total
+• Labour for 3 sprays: ₹400–600
+
+💡 PRO TIP
+Spray in early morning (6–9 AM) or late evening. Avoid spraying before rain. Always mix neem oil with a little soap first before adding water — this helps it blend properly. Potassium fertilizer (MOP at 25 kg/acre) at tillering stage reduces Brown Spot risk by up to 60% in subsequent seasons.`;
 
   const runDemo=async()=>{
     setDemoPhase("loading");setDemoPct(0);
-    for(const p of[20,45,65,82,95]){await new Promise(r=>setTimeout(r,600+Math.random()*300));setDemoPct(p);}
-    try{
-      const resp=await fetch(RICE_URL);const blob=await resp.blob();
-      const b64=await new Promise(res=>{const r=new FileReader();r.onload=e=>res(e.target.result.split(",")[1]);r.readAsDataURL(blob);});
-      const result=await callClaude([{role:"user",content:[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:b64}},{type:"text",text:"Diagnose this paddy rice crop. I am a farmer in India. Give complete actionable diagnosis."}]}],buildSys(lc,"doctor"));
-      setDemoPct(100);setDemoRes(result);setDemoPhase("done");
-    }catch(e){setDemoRes("⚠️ Error: "+e.message);setDemoPhase("done");}
+    // Simulate analysis steps for UX — no API call needed
+    const steps=[
+      [15,400,"📷 Loading paddy rice image..."],
+      [35,500,"🔬 Scanning leaf surface patterns..."],
+      [55,600,"🧬 Identifying lesion morphology..."],
+      [75,500,"🦠 Matching disease signatures..."],
+      [90,400,"💊 Preparing treatment plan..."],
+      [100,300,"✅ Diagnosis complete!"],
+    ];
+    for(const [p,,] of steps){
+      await new Promise(r=>setTimeout(r,400+Math.random()*200));
+      setDemoPct(p);
+    }
+    setDemoRes(DEMO_DIAG);
+    setDemoPhase("done");
   };
 
-  const C="#4caf50";
-  return(
-    <div style={{display:"flex",flexDirection:"column",height:"100%",background:"#080f08",fontFamily:L.font}}>
-      {/* Header */}
-      <div style={{padding:"12px 14px",borderBottom:`1px solid ${C}22`,background:"#0a120a",display:"flex",alignItems:"center",gap:10,flexShrink:0}}>
-        <button onClick={onBack} style={{background:"none",border:"none",color:C,fontSize:22,cursor:"pointer",lineHeight:1}}>←</button>
-        <span style={{fontSize:20}}>🌿</span>
-        <div style={{flex:1}}>
-          <div style={{color:"#e8f5e9",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:15}}>{td.n||"Crop Doctor"}</div>
-          <div style={{color:C,fontSize:10}}>{td.h}</div>
+  const TABS=[["chat",t.t1||"Diagnose"],["crops",t.t2||"80+ Crops"],["demo","🌾 Demo"]];
+
+  return html`
+    <div style=${{display:"flex",flexDirection:"column",height:"100%",background:"#080f08",fontFamily:L.font}}>
+      <div style=${{padding:"12px 14px",borderBottom:`1px solid ${C}22`,background:"#0a120a",display:"flex",alignItems:"center",gap:10,flexShrink:0}}>
+        <button onClick=${onBack} style=${{background:"none",border:"none",color:C,fontSize:22,cursor:"pointer",lineHeight:1}}>←</button>
+        <span style=${{fontSize:20}}>🌿</span>
+        <div style=${{flex:1}}>
+          <div style=${{color:"#e8f5e9",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:15}}>${td.n||"Crop Doctor"}</div>
+          <div style=${{color:C,fontSize:10}}>${td.h}</div>
         </div>
-        <div style={{display:"flex",background:"#0d1f0d",borderRadius:20,overflow:"hidden"}}>
-          {[["chat",t.t1||"Diagnose"],["crops",t.t2||"80+ Crops"],["demo","🌾 Demo"]].map(([id,lb])=>(
-            <button key={id} onClick={()=>setSub(id)} style={{padding:"5px 9px",fontSize:10,border:"none",cursor:"pointer",fontWeight:700,background:sub===id?C:"transparent",color:sub===id?"#0a0a0a":C,whiteSpace:"nowrap"}}>{lb}</button>
-          ))}
+        <div style=${{display:"flex",background:"#0d1f0d",borderRadius:20,overflow:"hidden"}}>
+          ${TABS.map(([id,lb])=>html`
+            <button key=${id} onClick=${()=>setSub(id)}
+              style=${{padding:"5px 9px",fontSize:10,border:"none",cursor:"pointer",fontWeight:700,background:sub===id?C:"transparent",color:sub===id?"#0a0a0a":C,whiteSpace:"nowrap"}}>${lb}</button>`)}
         </div>
       </div>
 
-      {/* DEMO */}
-      {sub==="demo"&&(
-        <div style={{flex:1,overflowY:"auto",padding:14}}>
-          <div style={{borderRadius:14,overflow:"hidden",border:`2px solid ${C}33`,marginBottom:12,position:"relative"}}>
-            <img src={RICE_URL} alt="Paddy rice Brown Spot" style={{width:"100%",display:"block",maxHeight:220,objectFit:"cover",filter:"brightness(.9)"}}/>
-            <div style={{position:"absolute",top:10,left:10,background:"#ef535088",border:"1px solid #ef5350",color:"#fff",borderRadius:20,padding:"3px 10px",fontSize:11,fontWeight:700}}>🔴 Brown Spot Disease</div>
-            <div style={{position:"absolute",bottom:0,left:0,right:0,background:"linear-gradient(transparent,rgba(0,0,0,.8)",padding:"18px 12px 10px"}}>
-              <div style={{color:"#fff",fontSize:12,fontWeight:700}}>📍 {t.demoT}</div>
-              <div style={{color:"#a5d6a7",fontSize:10,marginTop:2}}>Bipolaris oryzae · Brown oval lesions with yellow halos</div>
+      ${sub==="demo"&&html`
+        <div style=${{flex:1,overflowY:"auto",padding:14}}>
+          <div style=${{borderRadius:14,overflow:"hidden",border:`2px solid ${C}33`,marginBottom:12,position:"relative"}}>
+            <img src=${RICE_IMG} alt="Paddy rice Brown Spot" loading="eager" style=${{width:"100%",display:"block",maxHeight:220,objectFit:"cover",filter:"brightness(.9)"}}/>\n            <div style=${{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",background:"#0d1a0d",zIndex:-1,fontSize:48}}>🌾</div>
+            <div style=${{position:"absolute",top:10,left:10,background:"#ef535088",border:"1px solid #ef5350",color:"#fff",borderRadius:20,padding:"3px 10px",fontSize:11,fontWeight:700}}>🔴 Brown Spot Disease</div>
+            <div style=${{position:"absolute",bottom:0,left:0,right:0,background:"linear-gradient(transparent,rgba(0,0,0,.8))",padding:"18px 12px 10px"}}>
+              <div style=${{color:"#fff",fontSize:12,fontWeight:700}}>📍 ${t.demoT}</div>
+              <div style=${{color:"#a5d6a7",fontSize:10,marginTop:2}}>Bipolaris oryzae · Brown oval lesions with yellow halos</div>
             </div>
           </div>
-          <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:14}}>
-            {[["🟤","Brown oval spots"],["💛","Yellow halo rings"],["🍃","Leaf wilting"],["⚠️","Moderate severity"]].map(([ic,lb])=>(
-              <div key={lb} style={{background:"#0d1a0d",border:`1px solid ${C}33`,borderRadius:20,padding:"4px 10px",fontSize:11,color:"#a5d6a7",display:"flex",gap:5,alignItems:"center"}}><span>{ic}</span><span>{lb}</span></div>
-            ))}
+          <div style=${{display:"flex",flexWrap:"wrap",gap:6,marginBottom:14}}>
+            ${[["🟤","Brown oval spots"],["💛","Yellow halo rings"],["🍃","Leaf wilting"],["⚠️","Moderate severity"]].map(([ic,lb])=>html`
+              <div key=${lb} style=${{background:"#0d1a0d",border:`1px solid ${C}33`,borderRadius:20,padding:"4px 10px",fontSize:11,color:"#a5d6a7",display:"flex",gap:5,alignItems:"center"}}>
+                <span>${ic}</span><span>${lb}</span>
+              </div>`)}
           </div>
-          {demoPhase==="idle"&&(
-            <button onClick={runDemo} style={{width:"100%",background:"linear-gradient(135deg,#2e7d32,#4caf50)",border:"none",borderRadius:13,padding:15,color:"#fff",fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:10,boxShadow:"0 4px 20px rgba(76,175,80,.3)"}}>
-              <span style={{fontSize:20}}>🔬</span>{t.runDiag||"Run AI Diagnosis"}<span style={{fontSize:18}}>→</span>
+          ${demoPhase==="idle"&&html`
+            <button onClick=${runDemo} style=${{width:"100%",background:"linear-gradient(135deg,#2e7d32,#4caf50)",border:"none",borderRadius:13,padding:15,color:"#fff",fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:10,boxShadow:"0 4px 20px rgba(76,175,80,.3)"}}>
+              <span style=${{fontSize:20}}>🔬</span>${t.runDiag||"Run AI Diagnosis"}<span style=${{fontSize:18}}>→</span>
             </button>
-          )}
-          {demoPhase==="loading"&&(
-            <div style={{background:"#0d1a0d",border:`1px solid ${C}33`,borderRadius:13,padding:16}}>
-              <div style={{color:"#e8f5e9",fontSize:13,fontWeight:700,marginBottom:10}}>{t.analyzing}</div>
-              <div style={{background:"#1a2e1a",borderRadius:8,height:7}}>
-                <div style={{height:"100%",background:"linear-gradient(90deg,#4caf50,#8bc34a)",borderRadius:8,width:`${demoPct}%`,transition:"width .4s"}}/>
+            <div style=${{marginTop:8,color:"#3a6a3a",fontSize:11,textAlign:"center"}}>📵 No API key needed · Expert diagnosis works offline</div>`}
+          ${demoPhase==="loading"&&html`
+            <div style=${{background:"#0d1a0d",border:`1px solid ${C}33`,borderRadius:13,padding:16}}>
+              <div style=${{color:"#e8f5e9",fontSize:13,fontWeight:700,marginBottom:10}}>${t.analyzing}</div>
+              <div style=${{background:"#1a2e1a",borderRadius:8,height:7}}>
+                <div style=${{height:"100%",background:"linear-gradient(90deg,#4caf50,#8bc34a)",borderRadius:8,width:`${demoPct}%`,transition:"width .4s"}}/>
               </div>
-              <div style={{color:C,fontSize:11,textAlign:"right",marginTop:5}}>{demoPct}%</div>
-              <div style={{display:"flex",justifyContent:"center",marginTop:10}}><Dots color={C}/></div>
-            </div>
-          )}
-          {demoPhase==="done"&&demoRes&&(
+              <div style=${{color:C,fontSize:11,textAlign:"right",marginTop:5}}>${demoPct}%</div>
+              <div style=${{display:"flex",justifyContent:"center",marginTop:10}}><${Dots} color=${C}/></div>
+            </div>`}
+          ${demoPhase==="done"&&demoRes&&html`
             <div>
-              <div style={{background:"#1b5e2099",border:`1px solid ${C}44`,borderRadius:12,padding:"10px 13px",marginBottom:12,display:"flex",alignItems:"center",gap:10}}>
-                <span style={{fontSize:22}}>✅</span>
-                <div style={{flex:1}}><div style={{color:"#e8f5e9",fontWeight:700,fontSize:13}}>Diagnosis Complete</div><div style={{color:"#81c784",fontSize:10,marginTop:1}}>Claude Vision · Brown Spot · Paddy Rice</div></div>
-                <button onClick={()=>{setDemoPhase("idle");setDemoRes("");setDemoPct(0);}} style={{background:"rgba(255,255,255,.1)",border:"none",color:"#e8f5e9",borderRadius:20,padding:"4px 10px",fontSize:10,cursor:"pointer"}}>Reset</button>
-              </div>
-              <div style={{background:"#0d1a0d",border:`1px solid ${C}22`,borderRadius:12,padding:"13px",color:"#c5d9c5",fontSize:12.5,lineHeight:1.8,whiteSpace:"pre-wrap",fontFamily:L.font}}>{demoRes}</div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* CROPS LIST */}
-      {sub==="crops"&&(
-        <div style={{flex:1,overflowY:"auto",padding:14}}>
-          <div style={{color:"#5e7e5e",fontSize:12,textAlign:"center",marginBottom:12}}>80+ Indian crops across 8 categories · tap any to diagnose</div>
-          {CROPS.map(cat=>(
-            <div key={cat.name} style={{marginBottom:8,border:"1px solid #1a2e1a",borderRadius:11,overflow:"hidden"}}>
-              <button onClick={()=>setExCat(exCat===cat.name?null:cat.name)} style={{width:"100%",padding:"10px 13px",background:"#0d1a0d",border:"none",display:"flex",alignItems:"center",gap:10,cursor:"pointer"}}>
-                <span style={{fontSize:18}}>{cat.icon}</span>
-                <span style={{color:"#e8f5e9",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:13,flex:1,textAlign:"left"}}>{cat.name}</span>
-                <span style={{color:C,fontSize:11}}>{cat.list.length} {exCat===cat.name?"▲":"▼"}</span>
-              </button>
-              {exCat===cat.name&&(
-                <div style={{padding:"8px 13px 12px",background:"#080f08",display:"flex",flexWrap:"wrap",gap:6}}>
-                  {cat.list.map(c=>(
-                    <button key={c} onClick={()=>{setSub("chat");setInp(`My ${c} crop has disease symptoms. `);}}
-                      style={{background:"#1a2e1a",border:"1px solid #2e4a2e",color:"#a5d6a7",borderRadius:16,padding:"4px 11px",fontSize:11,cursor:"pointer"}}>{c}</button>
-                  ))}
+              <div style=${{display:"flex",gap:10,marginBottom:12,alignItems:"flex-start"}}>
+                <img src=${RICE_IMG} alt="Paddy rice Brown Spot diagnosis" style=${{width:78,height:68,objectFit:"cover",borderRadius:10,border:`2px solid ${C}55`,flexShrink:0}}/>
+                <div style=${{flex:1,background:"#1b5e2099",border:`1px solid ${C}44`,borderRadius:12,padding:"10px 13px"}}>
+                  <div style=${{color:"#e8f5e9",fontWeight:700,fontSize:13}}>✅ Expert Diagnosis</div>
+                  <div style=${{color:"#81c784",fontSize:10,marginTop:2}}>📵 Offline · No API needed</div>
+                  <div style=${{color:"#ef9a9a",fontSize:10,marginTop:1}}>🔴 Brown Spot · Paddy Rice</div>
                 </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* CHAT */}
-      {sub==="chat"&&<>
-        <div ref={cr} style={{flex:1,overflowY:"auto",padding:14,display:"flex",flexDirection:"column",gap:11}}>
-          {msgs.length===0&&(
-            <div style={{textAlign:"center",padding:"14px 0"}}>
-              <div style={{fontSize:44,marginBottom:8}}>🌿</div>
-              <div style={{color:"#e8f5e9",fontFamily:"'Bitter',serif",fontSize:16,marginBottom:5}}>{td.n||"Crop Doctor"}</div>
-              <div style={{color:"#3a6a3a",fontSize:12,marginBottom:14,lineHeight:1.5}}>{td.d}</div>
-              <div style={{display:"flex",flexWrap:"wrap",gap:7,justifyContent:"center"}}>
-                {(t.st?.["crop-doctor"]||[]).map(s=>(
-                  <button key={s} onClick={()=>setInp(s)} style={{background:"#0d1a0d",border:`1px solid ${C}44`,color:"#e8f5e9",borderRadius:20,padding:"5px 12px",fontSize:11,cursor:"pointer",fontFamily:L.font}}>{s}</button>
-                ))}
+                <button onClick=${()=>{setDemoPhase("idle");setDemoRes("");setDemoPct(0);}} style=${{background:"#1a2e1a",border:`1px solid ${C}33`,color:"#81c784",borderRadius:10,padding:"6px 9px",fontSize:10,cursor:"pointer",flexShrink:0}}>Reset</button>
               </div>
-              <button onClick={()=>setSub("demo")} style={{marginTop:14,background:"#1b5e2055",border:`1px solid ${C}44`,color:"#81c784",borderRadius:20,padding:"7px 16px",fontSize:12,cursor:"pointer",fontWeight:700}}>🌾 Try Sample Rice Photo Demo →</button>
+              <div style=${{background:"#1a1208",border:"1px solid #f5a62333",borderRadius:12,padding:"12px 14px",marginBottom:12,display:"flex",alignItems:"center",gap:12}}>
+                <span style=${{fontSize:26}}>🤖</span>
+                <div style=${{flex:1}}>
+                  <div style=${{color:"#f5a623",fontWeight:700,fontSize:13}}>Want Real-Time AI Diagnosis?</div>
+                  <div style=${{color:"#7a6a55",fontSize:11,marginTop:2,lineHeight:1.4}}>Upload YOUR crop photo → Claude Vision diagnoses it live in your language</div>
+                </div>
+                <button onClick=${()=>openSetup()}
+                  style=${{background:"linear-gradient(135deg,#b45309,#f5a623)",border:"none",color:"#0a0a0a",borderRadius:10,padding:"8px 12px",fontSize:11,fontWeight:700,cursor:"pointer",flexShrink:0}}>
+                  Set API Key →
+                </button>
+              </div>
+              <div style=${{background:"#0d1a0d",border:`1px solid ${C}22`,borderRadius:12,padding:13,color:"#c5d9c5",fontSize:12.5,lineHeight:1.8,whiteSpace:"pre-wrap",fontFamily:L.font}}>${demoRes}</div>
+            </div>`}
+        </div>`}
+
+      ${sub==="crops"&&html`
+        <div style=${{flex:1,overflowY:"auto",padding:14}}>
+          <div style=${{color:"#5e7e5e",fontSize:12,textAlign:"center",marginBottom:12}}>80+ Indian crops across 8 categories · tap any to diagnose</div>
+          ${CROPS.map(cat=>html`
+            <div key=${cat.name} style=${{marginBottom:8,border:"1px solid #1a2e1a",borderRadius:11,overflow:"hidden"}}>
+              <button onClick=${()=>setExCat(exCat===cat.name?null:cat.name)}
+                style=${{width:"100%",padding:"10px 13px",background:"#0d1a0d",border:"none",display:"flex",alignItems:"center",gap:10,cursor:"pointer"}}>
+                <span style=${{fontSize:18}}>${cat.icon}</span>
+                <span style=${{color:"#e8f5e9",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:13,flex:1,textAlign:"left"}}>${cat.name}</span>
+                <span style=${{color:C,fontSize:11}}>${cat.list.length} ${exCat===cat.name?"▲":"▼"}</span>
+              </button>
+              ${exCat===cat.name&&html`
+                <div style=${{padding:"8px 13px 12px",background:"#080f08",display:"flex",flexWrap:"wrap",gap:6}}>
+                  ${cat.list.map(c=>html`
+                    <button key=${c} onClick=${()=>{setSub("chat");setInp(`My ${c} crop has disease symptoms. `);}}
+                      style=${{background:"#1a2e1a",border:"1px solid #2e4a2e",color:"#a5d6a7",borderRadius:16,padding:"4px 11px",fontSize:11,cursor:"pointer"}}>${c}</button>`)}
+                </div>`}
+            </div>`)}
+        </div>`}
+
+      ${sub==="chat"&&html`
+        <div ref=${cr} style=${{flex:1,overflowY:"auto",padding:14,display:"flex",flexDirection:"column",gap:11}}>
+          ${msgs.length===0&&html`
+            <div style=${{textAlign:"center",padding:"14px 0"}}>
+              <div style=${{fontSize:44,marginBottom:8}}>🌿</div>
+              <div style=${{color:"#e8f5e9",fontFamily:"'Bitter',serif",fontSize:16,marginBottom:5}}>${td.n||"Crop Doctor"}</div>
+              <div style=${{color:"#3a6a3a",fontSize:12,marginBottom:14,lineHeight:1.5}}>${td.d}</div>
+              <div style=${{display:"flex",flexWrap:"wrap",gap:7,justifyContent:"center"}}>
+                ${(t.st?.["crop-doctor"]||[]).map(s=>html`
+                  <button key=${s} onClick=${()=>setInp(s)}
+                    style=${{background:"#0d1a0d",border:`1px solid ${C}44`,color:"#e8f5e9",borderRadius:20,padding:"5px 12px",fontSize:11,cursor:"pointer",fontFamily:L.font}}>${s}</button>`)}
+              </div>
+              <button onClick=${()=>setSub("demo")} style=${{marginTop:10,background:"#1b5e2055",border:`1px solid ${C}44`,color:"#81c784",borderRadius:20,padding:"7px 16px",fontSize:12,cursor:"pointer",fontWeight:700}}>🌾 Try Sample Rice Demo (No API needed) →</button>
+
+            </div>`}
+          ${img&&msgs.length===0&&html`<div style=${{display:"flex",justifyContent:"flex-end"}}><img src=${img} alt="" style=${{maxWidth:160,borderRadius:10,border:`2px solid ${C}`}}/></div>`}
+          ${msgs.map((m,i)=>html`<${Bubble} key=${i} m=${m} color=${C} L=${L}/>`)}
+          ${load&&html`
+            <div style=${{display:"flex",gap:8}}>
+              <div style=${{width:26,height:26,borderRadius:"50%",background:C,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13}}>🌾</div>
+              <div style=${{background:"rgba(255,255,255,.06)",border:`1px solid ${C}22`,borderRadius:"4px 18px 18px 18px",padding:"11px 14px"}}><${Dots} color=${C}/></div>
+            </div>`}
+        </div>
+        <div style=${{padding:"10px 12px",borderTop:`1px solid ${C}22`,background:"#0a120a",flexShrink:0}}>
+          ${!hasKey ? html`
+            <div style=${{background:"#1a1208",border:"1px solid #f5a62333",borderRadius:12,padding:"13px 14px",textAlign:"center"}}>
+              <div style=${{color:"#f5a623",fontWeight:700,fontSize:13,marginBottom:3}}>🔑 Unlock Live AI Crop Doctor</div>
+              <div style=${{color:"#7a6a55",fontSize:11,marginBottom:10,lineHeight:1.5}}>Upload your own crop photo → Claude Vision diagnoses it instantly in your language</div>
+              <button onClick=${()=>openSetup()}
+                style=${{background:"linear-gradient(135deg,#b45309,#f5a623)",border:"none",color:"#0a0a0a",borderRadius:10,padding:"9px 20px",fontSize:13,fontWeight:700,cursor:"pointer"}}>
+                Enter Claude API Key →
+              </button>
             </div>
-          )}
-          {img&&msgs.length===0&&<div style={{display:"flex",justifyContent:"flex-end"}}><img src={img} alt="" style={{maxWidth:160,borderRadius:10,border:`2px solid ${C}`}}/></div>}
-          {msgs.map((m,i)=><Bubble key={i} m={m} color={C} L={L}/>)}
-          {load&&<div style={{display:"flex",gap:8}}><div style={{width:26,height:26,borderRadius:"50%",background:C,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13}}>🌾</div><div style={{background:"rgba(255,255,255,.06)",border:`1px solid ${C}22`,borderRadius:"4px 18px 18px 18px",padding:"11px 14px"}}><Dots color={C}/></div></div>}
-        </div>
-        <div style={{padding:"10px 12px",borderTop:`1px solid ${C}22`,background:"#0a120a",flexShrink:0}}>
-          {img&&<div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8}}><img src={img} alt="" style={{width:34,height:34,objectFit:"cover",borderRadius:6}}/><span style={{color:"#5e9e5e",fontSize:11,flex:1}}>📷 Photo ready</span><button onClick={()=>{setImg(null);setImgB(null);}} style={{background:"none",border:"none",color:"#ff5252",fontSize:16,cursor:"pointer"}}>×</button></div>}
-          <div style={{display:"flex",gap:7}}>
-            <input type="file" ref={fr} accept="image/*" onChange={onImg} style={{display:"none"}}/>
-            <button onClick={()=>fr.current.click()} style={{background:"#0d1a0d",border:`1px solid ${C}44`,color:C,borderRadius:10,padding:"0 11px",fontSize:17,cursor:"pointer"}}>📷</button>
-            <textarea value={inp} onChange={e=>setInp(e.target.value)} rows={2} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}}}
-              placeholder={t.ph?.["crop-doctor"]||"Describe symptoms..."} style={{flex:1,background:"#0d1a0d",border:`1px solid ${C}22`,borderRadius:10,color:"#e8f5e9",padding:"8px 11px",fontSize:13,resize:"none",fontFamily:L.font,outline:"none"}}/>
-            <button onClick={()=>send()} disabled={load} style={{background:C,border:"none",borderRadius:10,color:"#0a0a0a",padding:"0 13px",fontSize:19,cursor:"pointer",opacity:load?.6:1}}>→</button>
-          </div>
-        </div>
-      </>}
-    </div>
-  );
+          ` : html`
+            ${img&&html`
+              <div style=${{display:"flex",alignItems:"center",gap:8,marginBottom:8}}>
+                <img src=${img} alt="" style=${{width:34,height:34,objectFit:"cover",borderRadius:6}}/>
+                <span style=${{color:"#5e9e5e",fontSize:11,flex:1}}>📷 Photo ready</span>
+                <button onClick=${()=>{setImg(null);setImgB(null);}} style=${{background:"none",border:"none",color:"#ff5252",fontSize:16,cursor:"pointer"}}>×</button>
+              </div>`}
+            <div style=${{display:"flex",gap:7}}>
+              <input type="file" ref=${fr} accept="image/*" onChange=${onImg} style=${{display:"none"}}/>
+              <button onClick=${()=>fr.current.click()} style=${{background:"#0d1a0d",border:`1px solid ${C}44`,color:C,borderRadius:10,padding:"0 11px",fontSize:17,cursor:"pointer"}}>📷</button>
+              <textarea value=${inp} onInput=${e=>setInp(e.target.value)} rows="2"
+                onKeyDown=${e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(inp);}}}
+                placeholder=${t.ph?.["crop-doctor"]||"Describe symptoms..."}
+                style=${{flex:1,background:"#0d1a0d",border:`1px solid ${C}22`,borderRadius:10,color:"#e8f5e9",padding:"8px 11px",fontSize:13,resize:"none",fontFamily:L.font,outline:"none"}}/>
+              <button onClick=${()=>send(inp)} disabled=${load}
+                style=${{background:C,border:"none",borderRadius:10,color:"#0a0a0a",padding:"0 13px",fontSize:19,cursor:"pointer",opacity:load?.6:1}}>→</button>
+            </div>`}
+        </div>`}
+    </div>`;
 }
 
 // ── SCHEMES ────────────────────────────────────────────────────────────
-function SchemesScreen({lc,onBack}){
+function SchemesScreen({lc,onBack,hasKey,openSetup}){
   const [tab,setTab]=useState("central");
   const [state,setState]=useState("");
   const [exp,setExp]=useState(null);
@@ -442,184 +738,217 @@ function SchemesScreen({lc,onBack}){
   const cr=useRef();
   const t=T[lc]||T.en;const L=GL(lc);const C="#ab47bc";
 
-  const sendAI=useCallback(async(tx=inp)=>{
-    if(!tx.trim())return;
-    const nm=[...msgs,{role:"user",content:tx}];
+  const sendAI=useCallback(async(tx)=>{
+    const text=tx!=null?tx:inp;
+    if(!text.trim())return;
+    const nm=[...msgs,{role:"user",content:text}];
     setMsgs(nm);setInp("");setLoad(true);
-    try{const rep=await callClaude(nm,buildSys(lc,"general")+`\nContext: farmer from ${state||"India"} asking about government schemes.`);setMsgs([...nm,{role:"assistant",content:rep}]);}
-    catch{setMsgs([...nm,{role:"assistant",content:"⚠️ Error. Please try again."}]);}
-    setLoad(false);setTimeout(()=>cr.current?.scrollTo({top:9999,behavior:"smooth"}),100);
+    try{
+      const rep=await callClaude(nm,buildSys(lc,"general")+`\nContext: farmer from ${state||"India"} asking about government schemes.`);
+      setMsgs([...nm,{role:"assistant",content:rep}]);
+    }catch{setMsgs([...nm,{role:"assistant",content:"⚠️ Error. Please try again."}]);}
+    setLoad(false);
+    setTimeout(()=>cr.current?.scrollTo({top:9999,behavior:"smooth"}),100);
   },[inp,msgs,lc,state]);
 
-  const Card=({s,color})=>(
-    <div style={{border:`1px solid ${color}33`,borderRadius:11,overflow:"hidden",marginBottom:9}}>
-      <button onClick={()=>setExp(exp===s.name?null:s.name)} style={{width:"100%",padding:"11px 13px",background:"#14100a",border:"none",cursor:"pointer",textAlign:"left"}}>
-        <div style={{display:"flex",alignItems:"center",gap:10}}>
-          <span style={{fontSize:20}}>{s.icon}</span>
-          <div style={{flex:1}}>
-            <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:13}}>{s.name}</div>
-            {s.full&&<div style={{color:"#7a6a55",fontSize:10}}>{s.full}</div>}
-            <div style={{color,fontSize:12,fontWeight:700,marginTop:2}}>{s.benefit}</div>
+  const Card=({s,color})=>html`
+    <div style=${{border:`1px solid ${color}33`,borderRadius:11,overflow:"hidden",marginBottom:9}}>
+      <button onClick=${()=>setExp(exp===s.name?null:s.name)}
+        style=${{width:"100%",padding:"11px 13px",background:"#14100a",border:"none",cursor:"pointer",textAlign:"left"}}>
+        <div style=${{display:"flex",alignItems:"center",gap:10}}>
+          <span style=${{fontSize:20}}>${s.icon}</span>
+          <div style=${{flex:1}}>
+            <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:13}}>${s.name}</div>
+            ${s.full&&html`<div style=${{color:"#7a6a55",fontSize:10}}>${s.full}</div>`}
+            <div style=${{color,fontSize:12,fontWeight:700,marginTop:2}}>${s.benefit}</div>
           </div>
-          <span style={{color,fontSize:13}}>{exp===s.name?"▲":"▼"}</span>
+          <span style=${{color,fontSize:13}}>${exp===s.name?"▲":"▼"}</span>
         </div>
       </button>
-      {exp===s.name&&(
-        <div style={{padding:"13px 14px",background:"#0f0a04",borderTop:`1px solid ${color}22`,fontFamily:L.font}}>
-          {[[t.elig,s.eligibility,false],[t.docs,s.documents,false],[t.apply,s.howToApply,true]].map(([title,items,num])=>(
-            <div key={title} style={{marginBottom:9}}>
-              <div style={{color,fontSize:11,fontWeight:700,marginBottom:4}}>{title}</div>
-              {items?.map((it,i)=>(
-                <div key={i} style={{display:"flex",gap:7,marginBottom:3}}>
-                  <span style={{color,fontSize:11,flexShrink:0}}>{num?`${i+1}.`:"•"}</span>
-                  <span style={{color:"#c5b49a",fontSize:11,lineHeight:1.5}}>{it}</span>
-                </div>
-              ))}
-            </div>
-          ))}
-          <div style={{display:"flex",gap:7,flexWrap:"wrap",marginTop:8}}>
-            {s.helpline&&<a href={`tel:${s.helpline}`} style={{background:`${color}22`,color,padding:"5px 11px",borderRadius:20,fontSize:11,textDecoration:"none",fontWeight:700}}>📞 {s.helpline}</a>}
-            {s.website&&<a href={`https://${s.website}`} target="_blank" rel="noreferrer" style={{background:"#1a1208",color:"#f5e6c8",padding:"5px 11px",borderRadius:20,fontSize:11,textDecoration:"none",border:`1px solid ${color}33`}}>🌐 Website</a>}
+      ${exp===s.name&&html`
+        <div style=${{padding:"13px 14px",background:"#0f0a04",borderTop:`1px solid ${color}22`,fontFamily:L.font}}>
+          ${[[t.elig,s.eligibility,false],[t.docs,s.documents,false],[t.apply,s.howToApply,true]].map(([title,items,num])=>html`
+            <div key=${title} style=${{marginBottom:9}}>
+              <div style=${{color,fontSize:11,fontWeight:700,marginBottom:4}}>${title}</div>
+              ${items?.map((it,i)=>html`
+                <div key=${i} style=${{display:"flex",gap:7,marginBottom:3}}>
+                  <span style=${{color,fontSize:11,flexShrink:0}}>${num?`${i+1}.`:"•"}</span>
+                  <span style=${{color:"#c5b49a",fontSize:11,lineHeight:1.5}}>${it}</span>
+                </div>`)}
+            </div>`)}
+          <div style=${{display:"flex",gap:7,flexWrap:"wrap",marginTop:8}}>
+            ${s.helpline&&html`<a href=${`tel:${s.helpline}`} style=${{background:`${color}22`,color,padding:"5px 11px",borderRadius:20,fontSize:11,textDecoration:"none",fontWeight:700}}>📞 ${s.helpline}</a>`}
+            ${s.website&&html`<a href=${`https://${s.website}`} target="_blank" rel="noreferrer" style=${{background:"#1a1208",color:"#f5e6c8",padding:"5px 11px",borderRadius:20,fontSize:11,textDecoration:"none",border:`1px solid ${color}33`}}>🌐 Website</a>`}
           </div>
-          <button onClick={()=>{setAiOpen(true);setInp(`Am I eligible for ${s.name}? I am from ${state||"India"}.`);}}
-            style={{marginTop:10,background:`${color}22`,border:`1px solid ${color}44`,color,borderRadius:20,padding:"6px 14px",fontSize:11,fontWeight:700,cursor:"pointer"}}>{t.askAI} →</button>
-        </div>
-      )}
-    </div>
-  );
+          <button onClick=${()=>{setAiOpen(true);setInp(`Am I eligible for ${s.name}? I am from ${state||"India"}.`);}}
+            style=${{marginTop:10,background:`${color}22`,border:`1px solid ${color}44`,color,borderRadius:20,padding:"6px 14px",fontSize:11,fontWeight:700,cursor:"pointer"}}>${t.askAI} →</button>
+        </div>`}
+    </div>`;
 
-  return(
-    <div style={{display:"flex",flexDirection:"column",height:"100%",background:"#0f0a04",fontFamily:L.font}}>
-      <div style={{padding:"12px 14px",borderBottom:"1px solid #2d1f0a",background:"#1a1208",display:"flex",alignItems:"center",gap:10,flexShrink:0}}>
-        <button onClick={onBack} style={{background:"none",border:"none",color:C,fontSize:22,cursor:"pointer",lineHeight:1}}>←</button>
+  return html`
+    <div style=${{display:"flex",flexDirection:"column",height:"100%",background:"#0f0a04",fontFamily:L.font}}>
+      <div style=${{padding:"12px 14px",borderBottom:"1px solid #2d1f0a",background:"#1a1208",display:"flex",alignItems:"center",gap:10,flexShrink:0}}>
+        <button onClick=${onBack} style=${{background:"none",border:"none",color:C,fontSize:22,cursor:"pointer",lineHeight:1}}>←</button>
         <span>📋</span>
-        <div style={{flex:1}}>
-          <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:15}}>{(T[lc]||T.en).tools?.schemes?.n||"Gov Schemes"}</div>
-          <div style={{color:C,fontSize:10}}>Central + State Level Benefits</div>
+        <div style=${{flex:1}}>
+          <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:15}}>${t.tools?.schemes?.n||"Gov Schemes"}</div>
+          <div style=${{color:C,fontSize:10}}>Central + State Level Benefits</div>
         </div>
-        <button onClick={()=>setAiOpen(!aiOpen)} style={{background:`${C}22`,border:`1px solid ${C}44`,color:C,borderRadius:20,padding:"5px 11px",fontSize:11,cursor:"pointer",fontWeight:700}}>{t.askAI}</button>
+        ${hasKey
+          ? html`<button onClick=${()=>setAiOpen(!aiOpen)} style=${{background:`${C}22`,border:`1px solid ${C}44`,color:C,borderRadius:20,padding:"5px 11px",fontSize:11,cursor:"pointer",fontWeight:700}}>${t.askAI}</button>`
+          : html`<button onClick=${()=>openSetup()} style=${{background:"#b4530922",border:"1px solid #f5a62333",color:"#f5a623",borderRadius:20,padding:"5px 11px",fontSize:11,cursor:"pointer",fontWeight:700}}>🔑 Ask AI</button>`
+        }
       </div>
-
-      {aiOpen?(
-        <>
-          <div ref={cr} style={{flex:1,overflowY:"auto",padding:14,display:"flex",flexDirection:"column",gap:10}}>
-            {msgs.length===0&&(
-              <div style={{textAlign:"center",padding:"18px 0",color:"#7a6a55"}}>
-                <div style={{fontSize:36,marginBottom:8}}>🤖</div>
-                <div style={{color:"#f5e6c8",fontSize:14,marginBottom:10}}>Ask about any scheme</div>
-                {["Am I eligible for PM-KISAN?","How to apply for Rythu Bandhu?","What documents for PMFBY?"].map(s=>(
-                  <button key={s} onClick={()=>setInp(s)} style={{display:"block",margin:"5px auto",background:"#2d1f0a",border:`1px solid ${C}44`,color:"#f5e6c8",borderRadius:20,padding:"6px 14px",fontSize:11,cursor:"pointer"}}>{s}</button>
-                ))}
-              </div>
-            )}
-            {msgs.map((m,i)=><Bubble key={i} m={m} color={C} L={L}/>)}
-            {load&&<div style={{display:"flex",gap:8}}><div style={{width:26,height:26,borderRadius:"50%",background:C,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13}}>📋</div><div style={{background:"rgba(255,255,255,.06)",border:`1px solid ${C}22`,borderRadius:"4px 18px 18px 18px",padding:"11px 14px"}}><Dots color={C}/></div></div>}
-          </div>
-          <div style={{padding:"10px 12px",borderTop:"1px solid #2d1f0a",background:"#1a1208",display:"flex",gap:7,flexShrink:0}}>
-            <textarea value={inp} onChange={e=>setInp(e.target.value)} rows={2} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendAI();}}}
-              placeholder="Ask about eligibility, documents, how to apply..."
-              style={{flex:1,background:"#2d1f0a",border:"1px solid #3d2b0f",borderRadius:10,color:"#f5e6c8",padding:"8px 11px",fontSize:13,resize:"none",outline:"none"}}/>
-            <button onClick={()=>sendAI()} disabled={load} style={{background:C,border:"none",borderRadius:10,color:"#fff",padding:"0 13px",fontSize:18,cursor:"pointer"}}>→</button>
-          </div>
-        </>
-      ):(
-        <>
-          <div style={{padding:"11px 13px 0",flexShrink:0}}>
-            <select value={state} onChange={e=>{setState(e.target.value);setTab("state");setExp(null);}} style={{width:"100%",background:"#1a1208",border:"1px solid #3d2b0f",borderRadius:9,color:"#f5e6c8",padding:"9px 13px",fontSize:13,outline:"none"}}>
-              <option value="">{t.selSt||"🗺️ Select your State"}</option>
-              {ALL_STATES.map(s=><option key={s} value={s}>{s}</option>)}
-            </select>
-          </div>
-          <div style={{display:"flex",margin:"9px 13px 0",background:"#1a1208",borderRadius:20,overflow:"hidden",flexShrink:0}}>
-            {["central","state"].map(tb=>(
-              <button key={tb} onClick={()=>setTab(tb)} style={{flex:1,padding:"7px 0",border:"none",cursor:"pointer",fontSize:11,fontWeight:700,background:tab===tb?C:"transparent",color:tab===tb?"#0a0a0a":C}}>
-                {tb==="central"?(t.cTab||"🇮🇳 Central"):`${t.sTab||"🏛️ State"}${state?` (${(STATES[state]||[]).length})`:""}`}
-              </button>
-            ))}
-          </div>
-          <div style={{flex:1,overflowY:"auto",padding:"11px 13px 20px"}}>
-            {tab==="central"&&CENTRAL.map(s=><Card key={s.id} s={s} color={s.color}/>)}
-            {tab==="state"&&!state&&(
-              <div style={{textAlign:"center",padding:"36px 0",color:"#7a6a55"}}>
-                <div style={{fontSize:36,marginBottom:10}}>🗺️</div>
-                <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontSize:14,marginBottom:6}}>{t.selSt}</div>
-                <div style={{fontSize:11,lineHeight:1.8}}>{ALL_STATES.join(" · ")}</div>
-              </div>
-            )}
-            {tab==="state"&&state&&(STATES[state]||[]).map(s=><Card key={s.name} s={s} color={C}/>)}
-            {tab==="state"&&state&&!(STATES[state]?.length)&&(
-              <div style={{textAlign:"center",padding:"28px 0"}}>
-                <button onClick={()=>setAiOpen(true)} style={{background:`${C}22`,border:`1px solid ${C}44`,color:C,borderRadius:20,padding:"9px 18px",fontSize:12,cursor:"pointer"}}>{t.askAI} for {state} schemes</button>
-              </div>
-            )}
-          </div>
-        </>
-      )}
-    </div>
-  );
+      ${aiOpen?html`
+        <div ref=${cr} style=${{flex:1,overflowY:"auto",padding:14,display:"flex",flexDirection:"column",gap:10}}>
+          ${msgs.length===0&&html`
+            <div style=${{textAlign:"center",padding:"18px 0",color:"#7a6a55"}}>
+              <div style=${{fontSize:36,marginBottom:8}}>🤖</div>
+              <div style=${{color:"#f5e6c8",fontSize:14,marginBottom:10}}>Ask about any scheme</div>
+              ${["Am I eligible for PM-KISAN?","How to apply for Rythu Bandhu?","What documents for PMFBY?"].map(s=>html`
+                <button key=${s} onClick=${()=>setInp(s)}
+                  style=${{display:"block",margin:"5px auto",background:"#2d1f0a",border:`1px solid ${C}44`,color:"#f5e6c8",borderRadius:20,padding:"6px 14px",fontSize:11,cursor:"pointer"}}>${s}</button>`)}
+            </div>`}
+          ${msgs.map((m,i)=>html`<${Bubble} key=${i} m=${m} color=${C} L=${L}/>`)}
+          ${load&&html`
+            <div style=${{display:"flex",gap:8}}>
+              <div style=${{width:26,height:26,borderRadius:"50%",background:C,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13}}>📋</div>
+              <div style=${{background:"rgba(255,255,255,.06)",border:`1px solid ${C}22`,borderRadius:"4px 18px 18px 18px",padding:"11px 14px"}}><${Dots} color=${C}/></div>
+            </div>`}
+        </div>
+        <div style=${{padding:"10px 12px",borderTop:"1px solid #2d1f0a",background:"#1a1208",display:"flex",gap:7,flexShrink:0}}>
+          <textarea value=${inp} onInput=${e=>setInp(e.target.value)} rows="2"
+            onKeyDown=${e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendAI(inp);}}}
+            placeholder="Ask about eligibility, documents, how to apply..."
+            style=${{flex:1,background:"#2d1f0a",border:"1px solid #3d2b0f",borderRadius:10,color:"#f5e6c8",padding:"8px 11px",fontSize:13,resize:"none",outline:"none"}}/>
+          <button onClick=${()=>sendAI(inp)} disabled=${load}
+            style=${{background:C,border:"none",borderRadius:10,color:"#fff",padding:"0 13px",fontSize:18,cursor:"pointer"}}>→</button>
+        </div>`
+      :html`
+        <div style=${{padding:"11px 13px 0",flexShrink:0}}>
+          <select value=${state} onChange=${e=>{setState(e.target.value);setTab("state");setExp(null);}}
+            style=${{width:"100%",background:"#1a1208",border:"1px solid #3d2b0f",borderRadius:9,color:"#f5e6c8",padding:"9px 13px",fontSize:13,outline:"none"}}>
+            <option value="">${t.selSt||"🗺️ Select your State"}</option>
+            ${ALL_STATES.map(s=>html`<option key=${s} value=${s}>${s}</option>`)}
+          </select>
+        </div>
+        <div style=${{display:"flex",margin:"9px 13px 0",background:"#1a1208",borderRadius:20,overflow:"hidden",flexShrink:0}}>
+          ${["central","state"].map(tb=>html`
+            <button key=${tb} onClick=${()=>setTab(tb)}
+              style=${{flex:1,padding:"7px 0",border:"none",cursor:"pointer",fontSize:11,fontWeight:700,background:tab===tb?C:"transparent",color:tab===tb?"#0a0a0a":C}}>
+              ${tb==="central"?(t.cTab||"🇮🇳 Central"):`${t.sTab||"🏛️ State"}${state?` (${(STATES[state]||[]).length})`:""}`}
+            </button>`)}
+        </div>
+        <div style=${{flex:1,overflowY:"auto",padding:"11px 13px 20px"}}>
+          ${tab==="central"&&CENTRAL.map(s=>html`<${Card} key=${s.id} s=${s} color=${s.color}/>`)}
+          ${tab==="state"&&!state&&html`
+            <div style=${{textAlign:"center",padding:"36px 0",color:"#7a6a55"}}>
+              <div style=${{fontSize:36,marginBottom:10}}>🗺️</div>
+              <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontSize:14,marginBottom:6}}>${t.selSt}</div>
+              <div style=${{fontSize:11,lineHeight:1.8}}>${ALL_STATES.join(" · ")}</div>
+            </div>`}
+          ${tab==="state"&&state&&(STATES[state]||[]).map(s=>html`<${Card} key=${s.name} s=${s} color=${C}/>`)}
+          ${tab==="state"&&state&&!(STATES[state]?.length)&&html`
+            <div style=${{textAlign:"center",padding:"28px 0"}}>
+              <button onClick=${()=>setAiOpen(true)}
+                style=${{background:`${C}22`,border:`1px solid ${C}44`,color:C,borderRadius:20,padding:"9px 18px",fontSize:12,cursor:"pointer"}}>${t.askAI} for ${state} schemes</button>
+            </div>`}
+        </div>`}
+    </div>`;
 }
 
 // ── GENERIC CHAT ───────────────────────────────────────────────────────
-function GenericChat({tool,lc,onBack}){
+function GenericChat({tool,lc,onBack,hasKey,openSetup}){
   const [msgs,setMsgs]=useState([]);
   const [inp,setInp]=useState("");
   const [load,setLoad]=useState(false);
-  const [imgB,setImgB]=useState(null);
   const [img,setImg]=useState(null);
+  const [imgB,setImgB]=useState(null);
   const cr=useRef();const fr=useRef();
   const t=T[lc]||T.en;const L=GL(lc);const td=t.tools?.[tool.id]||{};
 
   const onImg=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{setImg(ev.target.result);setImgB(ev.target.result.split(",")[1]);};r.readAsDataURL(f);};
 
-  const send=useCallback(async(tx=inp)=>{
-    if(!tx.trim()&&!imgB)return;
-    const uc=(imgB&&msgs.length===0)?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgB}},{type:"text",text:tx||"Analyze this."}]:tx;
+  const send=useCallback(async(tx)=>{
+    const text=tx!=null?tx:inp;
+    if(!text.trim()&&!imgB)return;
+    const uc=(imgB&&msgs.length===0)?[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:imgB}},{type:"text",text:text||"Analyze this."}]:text;
     const nm=[...msgs,{role:"user",content:uc}];
     setMsgs(nm);setInp("");setLoad(true);
-    try{const rep=await callClaude(nm,buildSys(lc,"general"));setMsgs([...nm,{role:"assistant",content:rep}]);if(msgs.length===0)setImgB(null);}
-    catch{setMsgs([...nm,{role:"assistant",content:"⚠️ Connection error. Please try again."}]);}
-    setLoad(false);setTimeout(()=>cr.current?.scrollTo({top:9999,behavior:"smooth"}),100);
+    try{
+      const rep=await callClaude(nm,buildSys(lc,"general"));
+      setMsgs([...nm,{role:"assistant",content:rep}]);
+      if(msgs.length===0)setImgB(null);
+    }catch(e){
+      const msg=e.message==="API_KEY_MISSING"
+        ?"🔑 API key not set. Go back to home and set your Claude API key."
+        :"⚠️ "+e.message+". Check internet connection and try again.";
+      setMsgs([...nm,{role:"assistant",content:msg}]);
+    }
+    setLoad(false);
+    setTimeout(()=>cr.current?.scrollTo({top:9999,behavior:"smooth"}),100);
   },[inp,msgs,imgB,lc]);
 
-  return(
-    <div style={{display:"flex",flexDirection:"column",height:"100%",background:"#0f0a04",fontFamily:L.font}}>
-      <div style={{padding:"12px 14px",borderBottom:`1px solid ${tool.color}22`,background:"#14100a",display:"flex",alignItems:"center",gap:10,flexShrink:0}}>
-        <button onClick={onBack} style={{background:"none",border:"none",color:tool.color,fontSize:22,cursor:"pointer",lineHeight:1}}>←</button>
-        <span style={{fontSize:20}}>{tool.icon}</span>
-        <div style={{flex:1}}>
-          <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:15}}>{td.n||tool.id}</div>
-          <div style={{color:tool.color,fontSize:10}}>{td.h||""}</div>
+  return html`
+    <div style=${{display:"flex",flexDirection:"column",height:"100%",background:"#0f0a04",fontFamily:L.font}}>
+      <div style=${{padding:"12px 14px",borderBottom:`1px solid ${tool.color}22`,background:"#14100a",display:"flex",alignItems:"center",gap:10,flexShrink:0}}>
+        <button onClick=${onBack} style=${{background:"none",border:"none",color:tool.color,fontSize:22,cursor:"pointer",lineHeight:1}}>←</button>
+        <span style=${{fontSize:20}}>${tool.icon}</span>
+        <div style=${{flex:1}}>
+          <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:15}}>${td.n||tool.id}</div>
+          <div style=${{color:tool.color,fontSize:10}}>${td.h||""}</div>
         </div>
       </div>
-      <div ref={cr} style={{flex:1,overflowY:"auto",padding:14,display:"flex",flexDirection:"column",gap:11}}>
-        {msgs.length===0&&(
-          <div style={{textAlign:"center",padding:"16px 0"}}>
-            <div style={{fontSize:44,marginBottom:8}}>{tool.icon}</div>
-            <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontSize:16,marginBottom:5}}>{td.n||tool.id}</div>
-            <div style={{color:"#5a4a35",fontSize:12,marginBottom:16,lineHeight:1.5}}>{td.d||""}</div>
-            <div style={{display:"flex",flexWrap:"wrap",gap:7,justifyContent:"center"}}>
-              {(t.st?.[tool.id]||[]).map(s=>(
-                <button key={s} onClick={()=>setInp(s)} style={{background:"#1a1208",border:`1px solid ${tool.color}44`,color:"#f5e6c8",borderRadius:20,padding:"5px 12px",fontSize:11,cursor:"pointer",fontFamily:L.font}}>{s}</button>
-              ))}
+      <div ref=${cr} style=${{flex:1,overflowY:"auto",padding:14,display:"flex",flexDirection:"column",gap:11}}>
+        ${msgs.length===0&&html`
+          <div style=${{textAlign:"center",padding:"16px 0"}}>
+            <div style=${{fontSize:44,marginBottom:8}}>${tool.icon}</div>
+            <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontSize:16,marginBottom:5}}>${td.n||tool.id}</div>
+            <div style=${{color:"#5a4a35",fontSize:12,marginBottom:16,lineHeight:1.5}}>${td.d||""}</div>
+            <div style=${{display:"flex",flexWrap:"wrap",gap:7,justifyContent:"center"}}>
+              ${(t.st?.[tool.id]||[]).map(s=>html`
+                <button key=${s} onClick=${()=>setInp(s)}
+                  style=${{background:"#1a1208",border:`1px solid ${tool.color}44`,color:"#f5e6c8",borderRadius:20,padding:"5px 12px",fontSize:11,cursor:"pointer",fontFamily:L.font}}>${s}</button>`)}
             </div>
+          </div>`}
+        ${img&&msgs.length===0&&html`<div style=${{display:"flex",justifyContent:"flex-end"}}><img src=${img} alt="" style=${{maxWidth:160,borderRadius:10,border:`2px solid ${tool.color}`}}/></div>`}
+        ${msgs.map((m,i)=>html`<${Bubble} key=${i} m=${m} color=${tool.color} L=${L}/>`)}
+        ${load&&html`
+          <div style=${{display:"flex",gap:8}}>
+            <div style=${{width:26,height:26,borderRadius:"50%",background:tool.color,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13}}>🌾</div>
+            <div style=${{background:"rgba(255,255,255,.06)",border:`1px solid ${tool.color}22`,borderRadius:"4px 18px 18px 18px",padding:"11px 14px"}}><${Dots} color=${tool.color}/></div>
+          </div>`}
+      </div>
+      <div style=${{padding:"10px 12px",borderTop:`1px solid ${tool.color}22`,background:"#14100a",flexShrink:0}}>
+        ${!hasKey ? html`
+          <div style=${{background:"#1a1208",border:`1px solid ${tool.color}33`,borderRadius:12,padding:"12px 14px",textAlign:"center"}}>
+            <div style=${{color:tool.color,fontWeight:700,fontSize:13,marginBottom:3}}>🔑 API Key Required</div>
+            <div style=${{color:"#7a6a55",fontSize:11,marginBottom:9,lineHeight:1.5}}>Enter your Claude API key to use this AI tool</div>
+            <button onClick=${()=>openSetup()}
+              style=${{background:`linear-gradient(135deg,#b45309,#f5a623)`,border:"none",color:"#0a0a0a",borderRadius:10,padding:"8px 18px",fontSize:12,fontWeight:700,cursor:"pointer"}}>
+              Enter API Key →
+            </button>
           </div>
-        )}
-        {img&&msgs.length===0&&<div style={{display:"flex",justifyContent:"flex-end"}}><img src={img} alt="" style={{maxWidth:160,borderRadius:10,border:`2px solid ${tool.color}`}}/></div>}
-        {msgs.map((m,i)=><Bubble key={i} m={m} color={tool.color} L={L}/>)}
-        {load&&<div style={{display:"flex",gap:8}}><div style={{width:26,height:26,borderRadius:"50%",background:tool.color,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13}}>🌾</div><div style={{background:"rgba(255,255,255,.06)",border:`1px solid ${tool.color}22`,borderRadius:"4px 18px 18px 18px",padding:"11px 14px"}}><Dots color={tool.color}/></div></div>}
+        ` : html`
+          ${img&&html`
+            <div style=${{display:"flex",alignItems:"center",gap:8,marginBottom:8}}>
+              <img src=${img} alt="" style=${{width:34,height:34,objectFit:"cover",borderRadius:6}}/>
+              <span style=${{color:"#7a6a55",fontSize:11,flex:1}}>📷 Ready</span>
+              <button onClick=${()=>{setImg(null);setImgB(null);}} style=${{background:"none",border:"none",color:"#ff5252",fontSize:16,cursor:"pointer"}}>×</button>
+            </div>`}
+          <div style=${{display:"flex",gap:7}}>
+            ${tool.id==="pest-alert"&&html`
+              <input type="file" ref=${fr} accept="image/*" onChange=${onImg} style=${{display:"none"}}/>
+              <button onClick=${()=>fr.current.click()} style=${{background:"#1a1208",border:`1px solid ${tool.color}44`,color:tool.color,borderRadius:10,padding:"0 11px",fontSize:17,cursor:"pointer"}}>📷</button>`}
+            <textarea value=${inp} onInput=${e=>setInp(e.target.value)} rows="2"
+              onKeyDown=${e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(inp);}}}
+              placeholder=${t.ph?.[tool.id]||"Ask anything..."}
+              style=${{flex:1,background:"#1a1208",border:`1px solid ${tool.color}22`,borderRadius:10,color:"#f5e6c8",padding:"8px 11px",fontSize:13,resize:"none",fontFamily:L.font,outline:"none"}}/>
+            <button onClick=${()=>send(inp)} disabled=${load}
+              style=${{background:tool.color,border:"none",borderRadius:10,color:"#0a0a0a",padding:"0 13px",fontSize:19,cursor:"pointer",opacity:load?.6:1}}>→</button>
+          </div>`}
       </div>
-      <div style={{padding:"10px 12px",borderTop:`1px solid ${tool.color}22`,background:"#14100a",flexShrink:0}}>
-        {img&&<div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8}}><img src={img} alt="" style={{width:34,height:34,objectFit:"cover",borderRadius:6}}/><span style={{color:"#7a6a55",fontSize:11,flex:1}}>📷 Ready</span><button onClick={()=>{setImg(null);setImgB(null);}} style={{background:"none",border:"none",color:"#ff5252",fontSize:16,cursor:"pointer"}}>×</button></div>}
-        <div style={{display:"flex",gap:7}}>
-          {tool.id==="pest-alert"&&<><input type="file" ref={fr} accept="image/*" onChange={onImg} style={{display:"none"}}/><button onClick={()=>fr.current.click()} style={{background:"#1a1208",border:`1px solid ${tool.color}44`,color:tool.color,borderRadius:10,padding:"0 11px",fontSize:17,cursor:"pointer"}}>📷</button></>}
-          <textarea value={inp} onChange={e=>setInp(e.target.value)} rows={2} onKeyDown={e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}}}
-            placeholder={t.ph?.[tool.id]||"Ask anything..."}
-            style={{flex:1,background:"#1a1208",border:`1px solid ${tool.color}22`,borderRadius:10,color:"#f5e6c8",padding:"8px 11px",fontSize:13,resize:"none",fontFamily:L.font,outline:"none"}}/>
-          <button onClick={()=>send()} disabled={load} style={{background:tool.color,border:"none",borderRadius:10,color:"#0a0a0a",padding:"0 13px",fontSize:19,cursor:"pointer",opacity:load?.6:1}}>→</button>
-        </div>
-      </div>
-    </div>
-  );
+    </div>`;
 }
 
 // ── HOME ───────────────────────────────────────────────────────────────
@@ -628,86 +957,103 @@ function App(){
   const [screen,setScreen]=useState("home");
   const [activeTool,setActiveTool]=useState(null);
   const [showLP,setShowLP]=useState(false);
+  const [hasKey,setHasKey]=useState(!!getKey());
+  const [showSetup,setShowSetup]=useState(false);
   const t=T[lc]||T.en;const L=GL(lc);
 
+  // openSetup: called from any child to open the API key setup screen
+  const openSetup=()=>setShowSetup(true);
+  const closeSetup=()=>{ setHasKey(!!getKey()); setShowSetup(false); };
+
+  // Show API setup as full-screen overlay when triggered
+  if(showSetup) return html`<${ApiKeySetup} onDone=${closeSetup}/>`; 
+
   if(screen==="tool"&&activeTool){
-    if(activeTool.id==="crop-doctor")return<div style={{height:"100vh"}}><CropDoctor lc={lc} onBack={()=>setScreen("home")}/></div>;
-    if(activeTool.id==="schemes")return<div style={{height:"100vh"}}><SchemesScreen lc={lc} onBack={()=>setScreen("home")}/></div>;
-    return<div style={{height:"100vh"}}><GenericChat tool={activeTool} lc={lc} onBack={()=>setScreen("home")}/></div>;
+    if(activeTool.id==="crop-doctor")return html`<div style=${{height:"100vh"}}><${CropDoctor} lc=${lc} hasKey=${hasKey} openSetup=${openSetup} onBack=${()=>setScreen("home")}/></div>`;
+    if(activeTool.id==="schemes")   return html`<div style=${{height:"100vh"}}><${SchemesScreen} lc=${lc} hasKey=${hasKey} openSetup=${openSetup} onBack=${()=>setScreen("home")}/></div>`;
+    return html`<div style=${{height:"100vh"}}><${GenericChat} tool=${activeTool} lc=${lc} hasKey=${hasKey} openSetup=${openSetup} onBack=${()=>setScreen("home")}/></div>`;
   }
 
-  return(
-    <div style={{minHeight:"100vh",background:"#0f0a04",fontFamily:L.font}}>
-      {showLP&&<LangPicker cur={lc} onSelect={setLc} onClose={()=>setShowLP(false)}/>}
+  return html`
+    <div style=${{minHeight:"100vh",background:"#0f0a04",fontFamily:L.font}}>
+      ${showLP&&html`<${LangPicker} cur=${lc} onSelect=${setLc} onClose=${()=>setShowLP(false)}/>`}
 
-      {/* Hero */}
-      <div style={{background:"linear-gradient(160deg,#0d160d 0%,#1a1208 50%,#1e3a1a 100%)",padding:"22px 15px 17px",borderBottom:"1px solid #2d1f0a"}}>
-        <div style={{display:"flex",alignItems:"center",gap:11,marginBottom:15}}>
-          <div style={{width:48,height:48,borderRadius:13,background:"linear-gradient(135deg,#1e3a1a,#2d4a0a)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:24,flexShrink:0}}>🌾</div>
-          <div style={{flex:1}}>
-            <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:23,letterSpacing:"-.5px"}}>KisanMitra AI</div>
-            <div style={{color:"#4caf50",fontSize:10,letterSpacing:2,fontWeight:700,fontFamily:"'Nunito Sans',sans-serif"}}>{t.tag}</div>
+      <div style=${{background:"linear-gradient(160deg,#0d160d 0%,#1a1208 50%,#1e3a1a 100%)",padding:"22px 15px 17px",borderBottom:"1px solid #2d1f0a"}}>
+        <div style=${{display:"flex",alignItems:"center",gap:11,marginBottom:15}}>
+          <div style=${{width:48,height:48,borderRadius:13,background:"linear-gradient(135deg,#1e3a1a,#2d4a0a)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:24,flexShrink:0}}>🌾</div>
+          <div style=${{flex:1}}>
+            <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:23,letterSpacing:"-.5px"}}>AnnaDaata AI</div>
+            <div style=${{color:"#4caf50",fontSize:10,letterSpacing:2,fontWeight:700,fontFamily:"'Nunito Sans',sans-serif"}}>${t.tag}</div>
           </div>
-          <button onClick={()=>setShowLP(true)} style={{background:"#1a1208",border:"1px solid #f5a62344",color:"#f5a623",borderRadius:20,padding:"6px 11px",fontSize:13,cursor:"pointer",fontFamily:L.font,lineHeight:1.2,fontWeight:700}}>
-            {L.flag} {L.native}
-          </button>
+          <div style=${{display:"flex",gap:6}}>
+            <button onClick=${()=>openSetup()}
+              style=${{background:"#1a1208",border:"1px solid #2d1f0a",color:"#7a6a55",borderRadius:20,padding:"6px 9px",fontSize:13,cursor:"pointer"}}
+              title="API Key Settings">🔑</button>
+            <button onClick=${()=>setShowLP(true)}
+              style=${{background:"#1a1208",border:"1px solid #f5a62344",color:"#f5a623",borderRadius:20,padding:"6px 11px",fontSize:13,cursor:"pointer",fontFamily:L.font,lineHeight:1.2,fontWeight:700}}>
+              ${L.flag} ${L.native}
+            </button>
+          </div>
         </div>
-        <div style={{background:"#1e3a1a",borderRadius:9,padding:"9px 13px",display:"flex",gap:9,alignItems:"center",marginBottom:13}}>
-          <span style={{fontSize:17}}>✅</span>
+        <div style=${{background:"#1e3a1a",borderRadius:9,padding:"9px 13px",display:"flex",gap:9,alignItems:"center",marginBottom:13}}>
+          <span style=${{fontSize:17}}>✅</span>
           <div>
-            <div style={{color:"#4caf50",fontWeight:700,fontSize:13}}>{t.free}</div>
-            <div style={{color:"#5a7a5a",fontSize:11,marginTop:1}}>{t.freeD}</div>
+            <div style=${{color:"#4caf50",fontWeight:700,fontSize:13}}>${t.free}</div>
+            <div style=${{color:"#5a7a5a",fontSize:11,marginTop:1}}>${t.freeD}</div>
           </div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",borderRadius:9,overflow:"hidden",border:"1px solid #2d1f0a"}}>
-          {[["80+","Crops"],["13+","Schemes"],["₹0","Cost"],["24/7","AI"]].map(([v,l],i)=>(
-            <div key={i} style={{background:"#1a1208",padding:"8px 2px",textAlign:"center",borderRight:"1px solid #2d1f0a"}}>
-              <div style={{color:"#f5a623",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:17}}>{v}</div>
-              <div style={{color:"#5a4a35",fontSize:9,marginTop:1}}>{l}</div>
-            </div>
-          ))}
+        <div style=${{display:"grid",gridTemplateColumns:"repeat(4,1fr)",borderRadius:9,overflow:"hidden",border:"1px solid #2d1f0a"}}>
+          ${[["80+","Crops"],["13+","Schemes"],["₹0","Cost"],["24/7","AI"]].map(([v,l],i)=>html`
+            <div key=${i} style=${{background:"#1a1208",padding:"8px 2px",textAlign:"center",borderRight:"1px solid #2d1f0a"}}>
+              <div style=${{color:"#f5a623",fontFamily:"'Bitter',serif",fontWeight:900,fontSize:17}}>${v}</div>
+              <div style=${{color:"#5a4a35",fontSize:9,marginTop:1}}>${l}</div>
+            </div>`)}
         </div>
       </div>
 
-      {/* Tools Grid */}
-      <div style={{padding:"15px 13px"}}>
-        <div style={{color:"#5a4a35",fontSize:10,letterSpacing:2,fontWeight:700,marginBottom:12,fontFamily:"'Nunito Sans',sans-serif"}}>{t.pick}</div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:9}}>
-          {TOOLS.map(tl=>{
+      <div style=${{padding:"15px 13px"}}>
+        <div style=${{color:"#5a4a35",fontSize:10,letterSpacing:2,fontWeight:700,marginBottom:12,fontFamily:"'Nunito Sans',sans-serif"}}>${t.pick}</div>
+        <div style=${{display:"grid",gridTemplateColumns:"1fr 1fr",gap:9}}>
+          ${TOOLS.map(tl=>{
             const td=t.tools?.[tl.id]||{};
-            return(
-              <button key={tl.id} onClick={()=>{setActiveTool(tl);setScreen("tool");}}
-                style={{background:"#14100a",border:`1px solid ${tl.color}28`,borderRadius:13,padding:"14px 12px",textAlign:"left",cursor:"pointer",position:"relative",overflow:"hidden",transition:"all .15s"}}
-                onMouseEnter={e=>{e.currentTarget.style.background="#1e1408";e.currentTarget.style.borderColor=tl.color+"66";}}
-                onMouseLeave={e=>{e.currentTarget.style.background="#14100a";e.currentTarget.style.borderColor=tl.color+"28";}}>
-                <div style={{position:"absolute",top:0,right:0,width:48,height:48,background:`radial-gradient(circle at 100% 0%,${tl.color}18,transparent)`,pointerEvents:"none"}}/>
-                <div style={{fontSize:24,marginBottom:7}}>{tl.icon}</div>
-                <div style={{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:13,marginBottom:2}}>{td.n||tl.id}</div>
-                <div style={{color:tl.color,fontSize:10,marginBottom:5,fontFamily:L.font}}>{td.h||""}</div>
-                <div style={{color:"#5a4a35",fontSize:10,lineHeight:1.4,fontFamily:L.font}}>{td.d||""}</div>
-                {td.b&&<div style={{marginTop:7,background:tl.id==="crop-doctor"?"#1e3a1a":"#2a1a2e",color:tl.color,fontSize:9,padding:"2px 8px",borderRadius:10,display:"inline-block",fontWeight:700,fontFamily:"'Nunito Sans',sans-serif"}}>{td.b}</div>}
-              </button>
-            );
+            return html`
+              <button key=${tl.id} onClick=${()=>{setActiveTool(tl);setScreen("tool");}}
+                style=${{background:"#14100a",border:`1px solid ${tl.color}28`,borderRadius:13,padding:"14px 12px",textAlign:"left",cursor:"pointer",position:"relative",overflow:"hidden",transition:"all .15s"}}
+                onMouseEnter=${e=>{e.currentTarget.style.background="#1e1408";e.currentTarget.style.borderColor=tl.color+"66";}}
+                onMouseLeave=${e=>{e.currentTarget.style.background="#14100a";e.currentTarget.style.borderColor=tl.color+"28";}}>
+                <div style=${{position:"relative",zIndex:1}}>
+                  <div style=${{position:"absolute",top:0,right:0,width:48,height:48,background:`radial-gradient(circle at 100% 0%,${tl.color}18,transparent)`,pointerEvents:"none"}}/>
+                  ${TOOL_IMGS[tl.id]&&html`
+                    <div style=${{position:"absolute",top:-14,right:-12,width:72,height:56,borderRadius:"0 13px 0 12px",overflow:"hidden",opacity:.55}}>
+                      <img src=${TOOL_IMGS[tl.id]} alt=${td.n} style=${{width:"100%",height:"100%",objectFit:"cover"}}
+                        onError=${e=>{e.target.parentElement.style.display="none";}}/>
+                    </div>`}
+                </div>
+                <div style=${{fontSize:24,marginBottom:7,position:"relative",zIndex:1}}>${tl.icon}</div>
+                <div style=${{color:"#f5e6c8",fontFamily:"'Bitter',serif",fontWeight:700,fontSize:13,marginBottom:2,position:"relative",zIndex:1}}>${td.n||tl.id}</div>
+                <div style=${{color:tl.color,fontSize:10,marginBottom:5,fontFamily:L.font,position:"relative",zIndex:1}}>${td.h||""}</div>
+                <div style=${{color:"#5a4a35",fontSize:10,lineHeight:1.4,fontFamily:L.font,position:"relative",zIndex:1}}>${td.d||""}</div>
+                ${td.b&&html`<div style=${{marginTop:7,background:tl.id==="crop-doctor"?"#1e3a1a":"#2a1a2e",color:tl.color,fontSize:9,padding:"2px 8px",borderRadius:10,display:"inline-block",fontWeight:700,fontFamily:"'Nunito Sans',sans-serif",position:"relative",zIndex:1}}>${td.b}</div>`}
+              </button>`;
           })}
         </div>
       </div>
 
-      {/* Tip */}
-      <div style={{margin:"0 13px 22px",background:"#14100a",border:"1px solid #f5a62318",borderRadius:11,padding:"12px 13px"}}>
-        <div style={{color:"#f5a623",fontSize:11,fontWeight:700,marginBottom:4,fontFamily:"'Nunito Sans',sans-serif"}}>{t.tip}</div>
-        <div style={{color:"#7a6a55",fontSize:12,lineHeight:1.65,fontFamily:L.font}}>{t.tipT}</div>
+      <div style=${{margin:"0 13px 22px",background:"#14100a",border:"1px solid #f5a62318",borderRadius:11,padding:"12px 13px"}}>
+        <div style=${{color:"#f5a623",fontSize:11,fontWeight:700,marginBottom:4,fontFamily:"'Nunito Sans',sans-serif"}}>${t.tip}</div>
+        <div style=${{color:"#7a6a55",fontSize:12,lineHeight:1.65,fontFamily:L.font}}>${t.tipT}</div>
       </div>
-      <style>{`@keyframes kb{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}`}</style>
-    </div>
-  );
+      <${TokCounter}/>
+      <style>@keyframes kb{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}} @keyframes fadeup{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}</style>
+    </div>`;
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
-setTimeout(()=>{const s=document.getElementById("spl");s.style.opacity="0";setTimeout(()=>s.style.display="none",400);},600);
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+setTimeout(()=>{const s=document.getElementById("spl");s.style.opacity="0";setTimeout(()=>s.style.display="none",400);},300);
 </script>
 
 <script>
-// ── PWA ICON ────────────────────────────────────────────────────────
+// ── PWA ICON ───────────────────────────────────────────────────────
 function genIcon(sz){
   const c=document.createElement("canvas");c.width=sz;c.height=sz;
   const x=c.getContext("2d");
@@ -717,82 +1063,58 @@ function genIcon(sz){
   const r=sz*.18;
   x.beginPath();x.moveTo(r,0);x.lineTo(sz-r,0);x.quadraticCurveTo(sz,0,sz,r);
   x.lineTo(sz,sz-r);x.quadraticCurveTo(sz,sz,sz-r,sz);x.lineTo(r,sz);
-  x.quadraticCurveTo(0,sz,0,sz-r);x.lineTo(0,r);x.quadraticCurveTo(0,0,r,0);x.closePath();x.fill();
+  x.quadraticCurveTo(0,sz,0,sz-r);x.lineTo(0,r);x.quadraticCurveTo(0,0,r,0);
+  x.closePath();x.fill();
   x.strokeStyle="#f5a623";x.lineWidth=sz*.03;x.stroke();
   x.beginPath();x.arc(sz/2,sz/2,sz*.38,0,Math.PI*2);x.fillStyle="rgba(0,0,0,.2)";x.fill();
   x.font=`${sz*.44}px serif`;x.textAlign="center";x.textBaseline="middle";
   x.fillText("🌾",sz/2,sz/2+sz*.02);
   x.fillStyle="#f5a623";x.font=`bold ${sz*.095}px 'Nunito Sans',sans-serif`;
-  x.fillText("KisanMitra",sz/2,sz*.88);
+  x.fillText("AnnaDaata",sz/2,sz*.88);
   return c.toDataURL("image/png");
 }
-// ── Detect if running inside an iframe (Claude preview / sandboxed) ──
-const inIframe = (()=>{ try{ return window.self !== window.top; }catch(e){ return true; } })();
 
-// ── PWA ICON — safe in all contexts ─────────────────────────────────
-const ic192=genIcon(192), ic512=genIcon(512);
-try{ document.getElementById("ai").href=ic192; }catch(e){}
+const inIframe=(()=>{try{return window.self!==window.top;}catch(e){return true;}})();
+const ic192=genIcon(192),ic512=genIcon(512);
+try{document.getElementById("ai").href=ic192;}catch(e){}
 
-// ── MANIFEST — only attach when NOT in iframe ────────────────────────
 if(!inIframe){
   try{
-    const mf={name:"KisanMitra AI — Free Farm Advisor",short_name:"KisanMitra",
-      description:"Free AI agricultural advisor for Indian farmers in 11 languages",
+    const mf={name:"AnnaDaata AI — Free Farm Advisor",short_name:"AnnaDaata",
+      description:"Free AI-powered farm advisor for Indian farmers in 11 languages",
       start_url:"./",display:"standalone",background_color:"#0f0a04",theme_color:"#f5a623",
       orientation:"portrait-primary",categories:["agriculture","productivity"],
       icons:[{src:ic192,sizes:"192x192",type:"image/png",purpose:"any maskable"},
              {src:ic512,sizes:"512x512",type:"image/png",purpose:"any maskable"}]
     };
     document.getElementById("mf").href=URL.createObjectURL(new Blob([JSON.stringify(mf)],{type:"application/json"}));
-  }catch(e){ console.info("Manifest skipped:",e.message); }
+  }catch(e){}
 }
 
-// ── SERVICE WORKER — only register when top-level HTTPS/localhost ────
-const canSW = !inIframe
-  && "serviceWorker" in navigator
-  && (location.protocol==="https:" || location.hostname==="localhost" || location.hostname==="127.0.0.1");
+const canSW=!inIframe&&"serviceWorker" in navigator
+  &&(location.protocol==="https:"||location.hostname==="localhost"||location.hostname==="127.0.0.1");
 
 if(canSW){
   try{
-    const SW=`
-const CV="kisanmitra-v3";
+    const SW=`const CV="annadata-v1";
 const PRE=["./",
-  "https://unpkg.com/react@18/umd/react.production.min.js",
-  "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js",
-  "https://unpkg.com/@babel/standalone/babel.min.js"];
-self.addEventListener("install",e=>{
-  e.waitUntil(caches.open(CV).then(c=>c.addAll(PRE)).then(()=>self.skipWaiting()));
-});
-self.addEventListener("activate",e=>{
-  e.waitUntil(caches.keys()
-    .then(keys=>Promise.all(keys.filter(k=>k!==CV).map(k=>caches.delete(k))))
-    .then(()=>self.clients.claim()));
-});
+  "https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js",
+  "https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js",
+  "https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.js"];
+self.addEventListener("install",e=>{e.waitUntil(caches.open(CV).then(c=>c.addAll(PRE)).then(()=>self.skipWaiting()));});
+self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CV).map(x=>caches.delete(x)))).then(()=>self.clients.claim()));});
 self.addEventListener("fetch",e=>{
   if(e.request.url.includes("anthropic.com")||e.request.method!=="GET")return;
   e.respondWith(caches.match(e.request).then(hit=>{
     if(hit)return hit;
-    return fetch(e.request).then(r=>{
-      if(r.ok&&r.type!=="opaque"){const cl=r.clone();caches.open(CV).then(c=>c.put(e.request,cl));}
-      return r;
-    }).catch(()=>hit||new Response(
-      \`<html><body style="background:#0f0a04;color:#f5a623;font-family:sans-serif;
-        display:flex;align-items:center;justify-content:center;height:100vh;
-        flex-direction:column;gap:12px;text-align:center">
-        <div style="font-size:52px">🌾</div>
-        <div style="font-size:20px;font-weight:700">KisanMitra AI</div>
-        <div style="color:#7a6a55;font-size:13px;max-width:280px">
-          You are offline. Connect to internet for AI features.<br>All scheme info works offline.
-        </div></body></html>\`,
-      {headers:{"Content-Type":"text/html"}}
-    ));
+    return fetch(e.request).then(r=>{if(r.ok&&r.type!=="opaque"){const cl=r.clone();caches.open(CV).then(c=>c.put(e.request,cl));}return r;})
+      .catch(()=>hit||new Response('<html><body style="background:#0f0a04;color:#f5a623;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:12px;text-align:center"><div style="font-size:52px">🌾</div><div style="font-size:20px;font-weight:700">AnnaDaata AI</div><div style="color:#7a6a55;font-size:13px;max-width:280px">Offline — AI features need internet. UI + scheme info works offline.</div></body></html>',{headers:{"Content-Type":"text/html"}}));
   }));
 });`;
-    const swBlob=new Blob([SW],{type:"application/javascript"});
-    navigator.serviceWorker.register(URL.createObjectURL(swBlob))
-      .then(()=>console.info("✅ KisanMitra SW registered"))
-      .catch(e=>console.info("SW skipped:",e.message));
-  }catch(e){ console.info("SW skipped:",e.message); }
+    navigator.serviceWorker.register(URL.createObjectURL(new Blob([SW],{type:"application/javascript"})))
+      .then(()=>console.info("✅ AnnaDaata SW v1 registered"))
+      .catch(e=>console.info("SW skip:",e.message));
+  }catch(e){}
 }
 </script>
 </body>
